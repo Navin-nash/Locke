@@ -1,0 +1,13 @@
+The following 1 unresolved review comment(s) are on PR #2 "docs: foundation rulebook, spec, build plan" (ao/locke-4/foundation-docs → main) as of just now. You should not need to re-fetch this data unless you need additional context.
+
+1. docs/SPEC.md:117 (@chatgpt-codex-connector):
+**<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Make `none_detected` compatible with the evidence guard**
+
+Mark `none_detected` neutral or define an explicit G1 exception and downgrade path. The requests investigator only analyzes recruiter-supplied text with `extractSignals`, so it cannot produce any of G1's permitted independent source types; because this status is marked positive and the downgrade lattice has no edge from it, every ordinary message without a harmful request either violates G1 with no valid remediation or must bypass the stated guard.
+
+Useful? React with 👍 / 👎.
+   https://github.com/Navin-nash/Locke/pull/2#discussion_r4237090005
+   Thread ID: PRRT_kwDOVDdnZ86rCp5O
+
+Address each comment and push fixes. Use the thread ID to resolve each thread directly after pushing when available. You should not need to re-fetch review data unless you need additional context beyond what is provided here.
+PR: https://github.com/Navin-nash/Locke/pull/2
