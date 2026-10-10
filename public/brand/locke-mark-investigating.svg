@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" fill="none">
+  <title>Locke Live Investigating Agent Mark</title>
+  <style>
+    :root {
+      --loop-ease: cubic-bezier(0.45, 0.05, 0.55, 0.95);
+    }
+
+    /* Ambient radar sweep / aperture pulse in live investigation */
+    .investigating-pulse {
+      animation: aperturePulse 2.4s var(--loop-ease) infinite;
+      transform-origin: 144px 116px;
+    }
+
+    /* Shackle gentle forensic calibration micro-float */
+    .investigating-float {
+      animation: shackleFloat 2.4s var(--loop-ease) infinite;
+      transform-origin: 144px 108px;
+    }
+
+    @keyframes aperturePulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.85;
+      }
+      50% {
+        transform: scale(1.35);
+        opacity: 1;
+      }
+    }
+
+    @keyframes shackleFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-4px);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .investigating-pulse,
+      .investigating-float {
+        animation: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+      }
+    }
+  </style>
+
+  <!-- Foundation Stem and Vernier Shelf (Grounded Stability) -->
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M44 80 H84 V172 H180 V184 H186 V172 H196 C202.627 172 208 177.373 208 184 V200 C208 206.627 202.627 212 196 212 H44 V80 Z" fill="#0F172A"/>
+
+  <!-- Shackle Arc (Subtle Micro-float) -->
+  <path class="investigating-float" fill-rule="evenodd" clip-rule="evenodd" d="M144 44 C108.654 44 80 72.654 80 108 V140 H112 V108 C112 90.327 126.327 76 144 76 C161.673 76 176 90.327 176 108 V140 H208 V108 C208 72.654 179.346 44 144 44 Z" fill="#0D5C63"/>
+
+  <!-- Forensic Aperture Pulse / Optical Scan Dot -->
+  <circle class="investigating-pulse" cx="144" cy="116" r="14" fill="#0D5C63"/>
+</svg>
