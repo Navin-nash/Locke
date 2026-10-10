@@ -1,0 +1,14 @@
+Locke task T07: ATS adapters, discovery, matching (Claude Code, reassigned from Codex while its quota is out).
+
+Start from the latest origin/main (types, eval cases and domain tools are merged). Read AGENTS.md (including the Entire section), docs/SPEC.md §7, and docs/PLAN.md T07. Do T07 exactly as written there.
+- Owns: lib/tools/ats/** (greenhouse.ts, lever.ts, ashby.ts, smartrecruiters.ts, workable.ts, discover.ts, match.ts, index.ts), plus tests and fixtures recorded from real boards.
+- Acceptance:
+  - Five adapters normalize to the SPEC §7 posting shape. A 404 → exists:false.
+  - Verify and document Workable's endpoint behavior.
+  - atsDiscover finds a board linked from a fixture careers page, and marks slug guesses linkedFromOfficialSite:false.
+  - matchPosting handles an exact reqId, "Sr. Software Engineer" vs "Senior Software Engineer", a remote/onsite material diff, and no match.
+- Use the real boards listed in evals/README.md (from T20) to record fixtures. Unit tests use fixtures only; no live network.
+- The shared result type: use lib/tools/result.ts if T05 (PR #5) has merged; otherwise reuse T06's local copy and mark it TODO(T05).
+- TDD with superpowers:test-driven-development. Use firecrawl for the ATS API docs.
+
+Entire: run `entire status` first. If it isn't enabled, run `entire enable --agent claude-code --local`. Do NOT commit Entire config files. Commit small and often. Push and open a PR against main (standing approval). Do not merge. Finish with `ao report`, including the PR URL.
