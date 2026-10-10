@@ -1,0 +1,19 @@
+This is the product idea and usecase I'm building around. What I need you to do first
+- I'm building this for a hackathon. (https://neatlogs.com/hackathon) , Check the page, to understand the mandates, requirements , tools , products that we must use to build the product.
+- And also strengthen the idea to better spec, focused more , which can be built within the timeframe, attractive, unique and has the highest winning chances.
+- First create a CLAUDE.md and AGENTS.md files which clearly states the rules, skills, structure , architecture and usecasee of the product and how it should be built and how the orchestrator should dispatch task agents too.
+- Use Next.js, Typescript, Langgraph for agent building, must use neatlogs for agent tracing, use openrouter api for AI LLM calling. 
+- For UI tasks must use shadcn, impeccable, motion-web, 60fps-animation, accessible-animation,after-effects, ai-elements, animated-infographic, animated-principles,better-ui, better-colors, better-interface, better-accessibility, better-layout, better-typograpy,better-writing, brand-motion-guidelines,chart-animation, design-md, design-taste-frontend, emil-design-eng, gsap-core, gsap-frameworks, gsap-react, gsap-scrolltrigger,gsap-timeline, gsap-web, gsap-utils, motion-background, motion-pricing, svg-animation and so on. 
+- For planning , research and implementation use gstack, ponytail, superpowers skills effectively, check which are available and accomodate accordingly. For more deeper research use firecrawl, exa , native web search capabilities of the agents along with the deep-research skill
+- For designing the logo and icon of the product , use logo-animation, logo-design and svg-animation skills.
+
+
+The product name is locke, so draft and plan everything around it. First complete the CLAUDE.md, AGENTS.md files along with the product usecase, output and expectations of what we are building after the more deeper research related to it. And also a complete spec of the product along with the plan , pages and so on as a spec file. Check the mandatory usage of other products and partner tools too and accordingly plan everything.
+
+And for specifically agent orchestrator to dispatch task agents, the available agents are 
+1. Claude code
+2. Codex
+3. Cursor
+4. Antigravity
+
+So dispatch agents accordingly, don't overuse one single agent for all things.
