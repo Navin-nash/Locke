@@ -1,0 +1,3 @@
+{ "Status": 0, "Answer": [
+  { "name": "_dmarc.acme.com", "type": 16, "TTL": 300, "data": "\"v=DMARC1; p=quarantine; rua=mailto:d@acme.com\"" }
+] }

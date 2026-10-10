@@ -1,0 +1,4 @@
+{ "Status": 0, "Answer": [
+  { "name": "acme.com", "type": 15, "TTL": 300, "data": "10 mx1.acme.com." },
+  { "name": "acme.com", "type": 15, "TTL": 300, "data": "20 mx2.acme.com." }
+] }
