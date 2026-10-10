@@ -1,0 +1,9 @@
+Reports since your previous turn:
+
+[done] [infra: Neon link + neon.ts uploads bucket + neon deploy](ao://sessions/locke/locke-11)
+Neon linked (project Locke flat-cake-93449854, branch production, org org-broad-boat-18763979) after user re-logged in. neon.ts committed (preview.buckets.uploads private), @neon/config 1.8.6 exact devDep, .neon gitignored, project skills + skills-lock.json committed. 'neon deploy': 'No changes - branch production already matches the policy'; services in use: Postgres, Object Storage; pulled 7 env vars into gitignored .env.local (DATABASE_URL, DATABASE_URL_UNPOOLED, NEON_BRANCH, AWS_*). CLI notes preview.buckets is now GA (-> buckets); left as specified. typecheck/lint/test(10)/build green; no tsconfig exclusion needed. DATABASE_URL: written to this worktree's .env.local by neon link/deploy; D:/hackathon/Locke/.env.local ALREADY had a DATABASE_URL line, so left untouched (verify it points at the production DB if unsure). Not merged. Side effect: earlier 'neon mcp -y' minted MCP API key id 3416843 under the previous account (admin@knowshowping.com); revoke if unwanted.
+pr_created: https://github.com/Navin-nash/Locke/pull/6
+
+[done] [T06: domain tools (similarity, RDAP, DNS/DMARC, lists)](ao://sessions/locke/locke-14)
+T06 done: domainSimilarity, rdapDomain, dnsRecords, lists + tests/fixtures. 31 tests pass, lint clean (typecheck: pre-existing app/layout.tsx LayoutProps error only). Local result type copy marked TODO(T05); added tldts 7.4.18.
+pr_created: https://github.com/Navin-nash/Locke/pull/7
