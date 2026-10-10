@@ -1,5 +1,6 @@
 import { randomUUID } from "node:crypto";
 
+import { clearSmokeGraphThread } from "@/lib/agent/smoke-checkpointer";
 import { smokeGraph, smokeGraphInput } from "@/lib/agent/smoke-graph";
 import { isSmokeEndpointEnabled } from "@/lib/agent/smoke-access";
 import { createNeatlogsHandler, flushNeatlogs } from "@/lib/neatlogs";
@@ -63,7 +64,10 @@ export async function POST(request: Request) {
         }
       } finally {
         request.signal.removeEventListener("abort", abortGraph);
-        await flushNeatlogs().catch(() => false);
+        await Promise.all([
+          clearSmokeGraphThread(runId),
+          flushNeatlogs().catch(() => false),
+        ]);
         if (!cancelled) {
           controller.close();
         }

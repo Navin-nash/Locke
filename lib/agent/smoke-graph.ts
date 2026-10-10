@@ -2,7 +2,6 @@ import { HumanMessage } from "@langchain/core/messages";
 import { tool } from "@langchain/core/tools";
 import {
   END,
-  MemorySaver,
   MessagesAnnotation,
   START,
   StateGraph,
@@ -11,6 +10,7 @@ import { ToolNode } from "@langchain/langgraph/prebuilt";
 import { z } from "zod";
 
 import { getWorkerModel } from "@/lib/models";
+import { smokeCheckpointer } from "./smoke-checkpointer";
 
 export const getDomainAge = tool(
   async ({ domain }) =>
@@ -43,7 +43,7 @@ export const smokeGraph = new StateGraph(MessagesAnnotation)
   .addEdge(START, "llm")
   .addEdge("llm", "tool")
   .addEdge("tool", END)
-  .compile({ checkpointer: new MemorySaver() });
+  .compile({ checkpointer: smokeCheckpointer });
 
 export function smokeGraphInput(domain = "example.com") {
   return {

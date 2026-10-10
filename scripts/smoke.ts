@@ -6,10 +6,12 @@ loadEnvConfig(process.cwd());
 
 async function main() {
   const runId = randomUUID();
-  const [{ smokeGraph, smokeGraphInput }, neatlogs] = await Promise.all([
-    import("../lib/agent/smoke-graph"),
-    import("../lib/neatlogs"),
-  ]);
+  const [{ clearSmokeGraphThread }, { smokeGraph, smokeGraphInput }, neatlogs] =
+    await Promise.all([
+      import("../lib/agent/smoke-checkpointer"),
+      import("../lib/agent/smoke-graph"),
+      import("../lib/neatlogs"),
+    ]);
   const handler = await neatlogs.createNeatlogsHandler();
 
   try {
@@ -26,7 +28,10 @@ async function main() {
       void event;
     }
   } finally {
-    const flushed = await neatlogs.flushNeatlogs();
+    const [, flushed] = await Promise.all([
+      clearSmokeGraphThread(runId),
+      neatlogs.flushNeatlogs(),
+    ]);
     if (!flushed) {
       throw new Error("NeatLogs flush did not complete successfully.");
     }
