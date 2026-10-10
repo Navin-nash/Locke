@@ -1,0 +1,15 @@
+The following 1 unresolved review comment(s) are on PR #2 "docs: foundation rulebook, spec, build plan" (ao/locke-4/foundation-docs → main) as of just now. You should not need to re-fetch this data unless you need additional context.
+
+1. docs/SPEC.md:364 (@chatgpt-codex-connector):
+**<sub><sub>![P2 Badge](https://img.shields.io/badge/P2-yellow?style=flat)</sub></sub>  Allow case creation from a screenshot alone**
+
+Permit the creation request to represent a pending screenshot-only case. When a user supplies only a screenshot, `POST /api/cases` has neither text nor URL and is rejected by the at-least-one constraint, but the image cannot be submitted until `/run` has a case ID, so the documented screenshot input flow has no valid first request.
+
+AGENTS.md reference: [AGENTS.md:L11-L14](https://github.com/Navin-nash/Locke/blob/e0df9509968780869e8ee542dc69ea18bae93a2f/AGENTS.md#L11-L14)
+
+Useful? React with 👍 / 👎.
+   https://github.com/Navin-nash/Locke/pull/2#discussion_r4237090006
+   Thread ID: PRRT_kwDOVDdnZ86rCp5P
+
+Address each comment and push fixes. Use the thread ID to resolve each thread directly after pushing when available. You should not need to re-fetch review data unless you need additional context beyond what is provided here.
+PR: https://github.com/Navin-nash/Locke/pull/2
