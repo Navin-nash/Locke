@@ -1,0 +1,4 @@
+Stop hook feedback:
+Do NOT stop yet — these instrumentation categories from the static analysis are not fully covered (auto-instrumentation can't capture them, so they'd be lost). Instrument each now:
+- tool/retriever spans: instrument the genuine tools/retrievers that the agent/LLM functions call (@neatlogs.span(kind="TOOL"|"RETRIEVER")), skipping pure plumbing — these are NOT auto-captured for a no-framework app.
+- streaming WORKFLOW span inside the generator (POST): POST RETURNS a streaming response, so a @neatlogs.span(kind="WORKFLOW") decorator closes BEFORE the stream runs and orphans every child span. REMOVE the decorator on POST and open `with neatlogs.trace("<feature>", kind="WORKFLOW"):` INSIDE the generator, wrapping the `async for ... yield` loop (commandment G).
