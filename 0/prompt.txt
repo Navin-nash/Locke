@@ -1,0 +1,1 @@
+T05 started from latest origin/main. entire status reports not set up in this worktree despite task saying hooks active. I will inspect local setup and enable before commits. Owned paths stay scoped; hackathon.md results will need docs owner. Need later persisted tool trace integration once tracing gate is available.
