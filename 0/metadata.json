@@ -1,0 +1,38 @@
+{
+  "cli_version": "0.11.4",
+  "checkpoint_id": "01M4JPNSFQ3QCC7YDDEMFCASWK",
+  "session_id": "973a0074-7079-547e-900d-bc6136bd5ebc",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-10T10:45:32.8742179Z",
+  "branch": "ao/locke-15/entire",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "AGENTS.md",
+    "CLAUDE.md"
+  ],
+  "agent": "Claude Code",
+  "model": "claude-sonnet-5-5",
+  "turn_id": "8fd97a2b5efb",
+  "checkpoint_transcript_start": 317,
+  "transcript_lines_at_start": 317,
+  "compact_transcript_start": 28,
+  "token_usage": {
+    "input_tokens": 26,
+    "cache_creation_tokens": 17422,
+    "cache_read_tokens": 1847869,
+    "output_tokens": 7020,
+    "api_call_count": 13
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-10-10T10:45:32.7777935Z",
+    "agent_lines": 61,
+    "agent_removed": 9,
+    "human_added": 1991,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 2052,
+    "total_lines_changed": 2061,
+    "agent_percentage": 3.3964095099466274,
+    "metric_version": 2
+  }
+}
