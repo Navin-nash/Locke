@@ -2,7 +2,10 @@ import { randomUUID } from "node:crypto";
 
 import { clearSmokeGraphThread } from "@/lib/agent/smoke-checkpointer";
 import { smokeGraph, smokeGraphInput } from "@/lib/agent/smoke-graph";
-import { isSmokeEndpointEnabled } from "@/lib/agent/smoke-access";
+import {
+  isSmokeEndpointEnabled,
+  SMOKE_TOKEN_HEADER,
+} from "@/lib/agent/smoke-access";
 import { createNeatlogsHandler, flushNeatlogs } from "@/lib/neatlogs";
 
 export const runtime = "nodejs";
@@ -14,7 +17,12 @@ function sse(event: string, data: unknown) {
 }
 
 export async function POST(request: Request) {
-  if (!isSmokeEndpointEnabled(process.env)) {
+  if (
+    !isSmokeEndpointEnabled(
+      process.env,
+      request.headers.get(SMOKE_TOKEN_HEADER),
+    )
+  ) {
     return new Response("Not found", { status: 404 });
   }
 
