@@ -1,0 +1,11 @@
+Check and update the CLAUDE.md and AGENTS.md file to ensure that we are using entire so that checkpoints, analytics are handled accordingly and recorded.
+
+<ao-worker-reports>
+Reports since your previous turn:
+
+[checkpoint] [T02: domain contracts lib/types + UC1 fixture stream](ao://sessions/locke/locke-7)
+T02 PR #3 updated: added lib/types/api.ts (CreateCaseBody allows screenshot-only via hasScreenshot:true, RunBody, ResumeBody) per b87bc08. 30 tests pass.
+
+[checkpoint] [T02: domain contracts lib/types + UC1 fixture stream](ao://sessions/locke/locke-7)
+T02 PR #3: added EvalCase/UseCase (lib/types/eval.ts) for T20; all 25 PR #4 case files validate; 33 tests pass. T20 can switch its test to EvalCase once #3 merges.
+</ao-worker-reports>
