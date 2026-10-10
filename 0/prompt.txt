@@ -1,0 +1,15 @@
+I have added the env variables to .env.local to main branch
+
+<ao-worker-reports>
+Reports since your previous turn:
+
+[checkpoint] [docs: AGENTS.md + CLAUDE.md + SPEC + PLAN + hackathon.md](ao://sessions/locke/locke-4)
+PR #2: fixed the Codex P1 review comment (channel link compared with itself) in 7dd24d9, pushed, then replied to and resolved the thread. SPEC now says domainSimilarity always compares against the official domain plus linked ATS boards, and G4 requires employer evidence for matches_employer_channel. Not merged.
+
+[done] [M0: Next.js scaffold + LangGraph/OpenRouter + neatlogs trace gate](ao://sessions/locke/locke-5)
+Addressed PR #1 review comment in commit 142ada3 and pushed it. /api/smoke now returns 404 before any run ID, NeatLogs initialization, or OpenRouter model use unless NODE_ENV is development/test or CI=true. Added six access-policy cases; full validation passes: typecheck, lint, 9 tests, build. Resolved thread PRRT_kwDOVDdnZ86rCpIo directly. GitHub reports no CI checks configured. PR remains open and unmerged.
+pr_created: https://github.com/Navin-nash/Locke/pull/1
+
+[checkpoint] [docs: AGENTS.md + CLAUDE.md + SPEC + PLAN + hackathon.md](ao://sessions/locke/locke-4)
+PR #2: fixed the Codex P1 comment (Safe Route ordering) in af9e011, pushed, then replied to and resolved the thread. The guard node now runs G1/G2/G4/G6, then selectSafeRoute, then G3. The resolver runs decideOutcome on the guarded findings. Not merged.
+</ao-worker-reports>
