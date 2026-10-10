@@ -1,0 +1,2 @@
+Stop hook feedback:
+Before concluding, provide a brief summary of what you accomplished. Format: [STATUS] Your summary here
