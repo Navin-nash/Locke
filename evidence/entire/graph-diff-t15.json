@@ -1,0 +1,755 @@
+﻿{
+  "base": "origin/main",
+  "head": "HEAD",
+  "files": [
+    {
+      "path": ".agents/hooks.json",
+      "status": "A",
+      "language": "JSON",
+      "changes": [
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "entire",
+          "new_signature": "json key entire",
+          "after_start_line": 2,
+          "dependents_count": 5
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "PreToolUse",
+          "new_signature": "json key PreToolUse",
+          "after_start_line": 3,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "matcher",
+          "new_signature": "json key matcher",
+          "after_start_line": 5,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "hooks",
+          "new_signature": "json key hooks",
+          "after_start_line": 6,
+          "dependents_count": 6
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "type",
+          "new_signature": "json key type",
+          "after_start_line": 8,
+          "dependents_count": 87
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "command",
+          "new_signature": "json key command",
+          "after_start_line": 9,
+          "dependents_count": 5
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "PreInvocation",
+          "new_signature": "json key PreInvocation",
+          "after_start_line": 14,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "Stop",
+          "new_signature": "json key Stop",
+          "after_start_line": 20,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "timeout",
+          "new_signature": "json key timeout",
+          "after_start_line": 24,
+          "dependents_count": 5
+        }
+      ]
+    },
+    {
+      "path": ".claude/settings.json",
+      "status": "A",
+      "language": "JSON",
+      "changes": [
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "hooks",
+          "new_signature": "json key hooks",
+          "after_start_line": 2,
+          "dependents_count": 6
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "PostToolUse",
+          "new_signature": "json key PostToolUse",
+          "after_start_line": 3,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "matcher",
+          "new_signature": "json key matcher",
+          "after_start_line": 5,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "type",
+          "new_signature": "json key type",
+          "after_start_line": 8,
+          "dependents_count": 87
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "command",
+          "new_signature": "json key command",
+          "after_start_line": 9,
+          "dependents_count": 5
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "PreToolUse",
+          "new_signature": "json key PreToolUse",
+          "after_start_line": 23,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "SessionEnd",
+          "new_signature": "json key SessionEnd",
+          "after_start_line": 34,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "SessionStart",
+          "new_signature": "json key SessionStart",
+          "after_start_line": 45,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "Stop",
+          "new_signature": "json key Stop",
+          "after_start_line": 56,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "StopFailure",
+          "new_signature": "json key StopFailure",
+          "after_start_line": 67,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "SubagentStop",
+          "new_signature": "json key SubagentStop",
+          "after_start_line": 78,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "UserPromptSubmit",
+          "new_signature": "json key UserPromptSubmit",
+          "after_start_line": 89,
+          "dependents_count": 0
+        }
+      ]
+    },
+    {
+      "path": ".codex/hooks.json",
+      "status": "A",
+      "language": "JSON",
+      "changes": [
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "hooks",
+          "new_signature": "json key hooks",
+          "after_start_line": 2,
+          "dependents_count": 6
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "PostToolUse",
+          "new_signature": "json key PostToolUse",
+          "after_start_line": 3,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "matcher",
+          "new_signature": "json key matcher",
+          "after_start_line": 5,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "type",
+          "new_signature": "json key type",
+          "after_start_line": 8,
+          "dependents_count": 87
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "command",
+          "new_signature": "json key command",
+          "after_start_line": 9,
+          "dependents_count": 5
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "timeout",
+          "new_signature": "json key timeout",
+          "after_start_line": 10,
+          "dependents_count": 5
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "SessionEnd",
+          "new_signature": "json key SessionEnd",
+          "after_start_line": 15,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "SessionStart",
+          "new_signature": "json key SessionStart",
+          "after_start_line": 27,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "Stop",
+          "new_signature": "json key Stop",
+          "after_start_line": 39,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "SubagentStart",
+          "new_signature": "json key SubagentStart",
+          "after_start_line": 51,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "SubagentStop",
+          "new_signature": "json key SubagentStop",
+          "after_start_line": 63,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "UserPromptSubmit",
+          "new_signature": "json key UserPromptSubmit",
+          "after_start_line": 75,
+          "dependents_count": 0
+        }
+      ]
+    },
+    {
+      "path": ".cursor/hooks.json",
+      "status": "A",
+      "language": "JSON",
+      "changes": [
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "hooks",
+          "new_signature": "json key hooks",
+          "after_start_line": 2,
+          "dependents_count": 6
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "beforeSubmitPrompt",
+          "new_signature": "json key beforeSubmitPrompt",
+          "after_start_line": 3,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "command",
+          "new_signature": "json key command",
+          "after_start_line": 5,
+          "dependents_count": 5
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "preCompact",
+          "new_signature": "json key preCompact",
+          "after_start_line": 8,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "sessionEnd",
+          "new_signature": "json key sessionEnd",
+          "after_start_line": 13,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "sessionStart",
+          "new_signature": "json key sessionStart",
+          "after_start_line": 18,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "stop",
+          "new_signature": "json key stop",
+          "after_start_line": 23,
+          "dependents_count": 2
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "subagentStart",
+          "new_signature": "json key subagentStart",
+          "after_start_line": 28,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "subagentStop",
+          "new_signature": "json key subagentStop",
+          "after_start_line": 33,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "version",
+          "new_signature": "json key version",
+          "after_start_line": 39,
+          "dependents_count": 3
+        }
+      ]
+    },
+    {
+      "path": ".entire/.gitignore",
+      "status": "A",
+      "language": "Git Ignore",
+      "changes": [
+        {
+          "type": "added",
+          "kind": "document",
+          "name": ".gitignore",
+          "new_signature": "git ignore document .gitignore",
+          "after_start_line": 1,
+          "dependents_count": 0
+        }
+      ]
+    },
+    {
+      "path": ".entire/graph-agent.md",
+      "status": "A",
+      "language": "Markdown",
+      "changes": [
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "entire-graph-instructions-for-coding-agents-follow-directly",
+          "new_signature": "markdown heading entire-graph — instructions for coding agents (follow directly)",
+          "after_start_line": 1,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "The-workflow-mandatory-for-locate/fix/change-tasks",
+          "new_signature": "markdown heading The workflow (mandatory for locate/fix/change tasks)",
+          "after_start_line": 7,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "Hard-rules",
+          "new_signature": "markdown heading Hard rules",
+          "after_start_line": 17,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "When-NOT-to-use-the-graph",
+          "new_signature": "markdown heading When NOT to use the graph",
+          "after_start_line": 31,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "Reference",
+          "new_signature": "markdown heading Reference",
+          "after_start_line": 36,
+          "dependents_count": 0
+        }
+      ]
+    },
+    {
+      "path": ".entire/settings.json",
+      "status": "A",
+      "language": "JSON",
+      "changes": [
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "enabled",
+          "new_signature": "json key enabled",
+          "after_start_line": 2,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "checkpoints",
+          "new_signature": "json key checkpoints",
+          "after_start_line": 3,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "primary",
+          "new_signature": "json key primary",
+          "after_start_line": 4,
+          "dependents_count": 0
+        },
+        {
+          "type": "added",
+          "kind": "section",
+          "name": "type",
+          "new_signature": "json key type",
+          "after_start_line": 5,
+          "dependents_count": 87
+        }
+      ]
+    },
+    {
+      "path": ".gitignore",
+      "status": "M",
+      "language": "Git Ignore",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "document",
+          "name": ".gitignore",
+          "before_start_line": 1,
+          "after_start_line": 1,
+          "dependents_count": 0
+        }
+      ]
+    },
+    {
+      "path": "AGENTS.md",
+      "status": "M",
+      "language": "Markdown",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "module",
+          "name": "AGENTS.md",
+          "before_start_line": 1,
+          "after_start_line": 1,
+          "dependents_count": 0
+        }
+      ]
+    },
+    {
+      "path": "CLAUDE.md",
+      "status": "M",
+      "language": "Markdown",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "module",
+          "name": "CLAUDE.md",
+          "before_start_line": 1,
+          "after_start_line": 1,
+          "dependents_count": 0
+        }
+      ]
+    },
+    {
+      "path": "app/api/smoke/route.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "POST",
+          "before_start_line": 16,
+          "after_start_line": 19,
+          "dependents_count": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/PLAN.md",
+      "status": "M",
+      "language": "Markdown",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "module",
+          "name": "docs/PLAN.md",
+          "before_start_line": 1,
+          "after_start_line": 1,
+          "dependents_count": 0
+        }
+      ]
+    },
+    {
+      "path": "docs/SPEC.md",
+      "status": "M",
+      "language": "Markdown",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "module",
+          "name": "docs/SPEC.md",
+          "before_start_line": 1,
+          "after_start_line": 1,
+          "dependents_count": 0
+        }
+      ]
+    },
+    {
+      "path": "lib/agent/smoke-access.test.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "module",
+          "name": "lib/agent/smoke-access.test.ts",
+          "before_start_line": 1,
+          "after_start_line": 1,
+          "dependents_count": 0
+        }
+      ]
+    },
+    {
+      "path": "lib/agent/smoke-access.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "signature_changed",
+          "kind": "type",
+          "name": "SmokeEnvironment",
+          "old_signature": "type SmokeEnvironment = { CI?: string; NODE_ENV?: string; }",
+          "new_signature": "type SmokeEnvironment = { LOCKE_SMOKE_TOKEN?: string; NODE_ENV?: string; }",
+          "before_start_line": 1,
+          "after_start_line": 3,
+          "dependents_count": 1
+        },
+        {
+          "type": "renamed",
+          "kind": "field",
+          "name": "SmokeEnvironment.LOCKE_SMOKE_TOKEN",
+          "old_name": "SmokeEnvironment.CI",
+          "new_name": "SmokeEnvironment.LOCKE_SMOKE_TOKEN",
+          "old_signature": "CI : string",
+          "new_signature": "LOCKE_SMOKE_TOKEN : string",
+          "before_start_line": 2,
+          "after_start_line": 4,
+          "dependents_count": 2,
+          "similarity": 0.97,
+          "reconciliation": "RENAMED"
+        },
+        {
+          "type": "added",
+          "kind": "variable",
+          "name": "SMOKE_TOKEN_HEADER",
+          "new_signature": "SMOKE_TOKEN_HEADER = \"x-locke-smoke-token\"",
+          "after_start_line": 8,
+          "dependents_count": 1
+        },
+        {
+          "type": "signature_changed",
+          "kind": "function",
+          "name": "isSmokeEndpointEnabled",
+          "old_signature": "function isSmokeEndpointEnabled(env: SmokeEnvironment): boolean",
+          "new_signature": "function isSmokeEndpointEnabled( env: SmokeEnvironment, presentedToken?: string | null, ): boolean",
+          "before_start_line": 6,
+          "after_start_line": 10,
+          "dependents_count": 1
+        }
+      ]
+    },
+    {
+      "path": "lib/agent/smoke-lifecycle.test.ts",
+      "status": "A",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "added",
+          "kind": "module",
+          "name": "lib/agent/smoke-lifecycle.test.ts",
+          "after_start_line": 1,
+          "dependents_count": 0
+        }
+      ]
+    },
+    {
+      "path": "lib/agent/smoke-lifecycle.ts",
+      "status": "A",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "added",
+          "kind": "type",
+          "name": "TelemetryLifecycle",
+          "new_signature": "type TelemetryLifecycle = { flush: () =\u003e Promise\u003cboolean\u003e; shutdown: () =\u003e Promise\u003cboolean\u003e; }",
+          "after_start_line": 1,
+          "dependents_count": 1
+        },
+        {
+          "type": "added",
+          "kind": "field",
+          "name": "TelemetryLifecycle.flush",
+          "new_signature": "flush : () =\u003e Promise\u003cboolean\u003e",
+          "after_start_line": 2,
+          "dependents_count": 4
+        },
+        {
+          "type": "added",
+          "kind": "field",
+          "name": "TelemetryLifecycle.shutdown",
+          "new_signature": "shutdown : () =\u003e Promise\u003cboolean\u003e",
+          "after_start_line": 3,
+          "dependents_count": 4
+        },
+        {
+          "type": "added",
+          "kind": "function",
+          "name": "closeSmokeTelemetry",
+          "new_signature": "async function closeSmokeTelemetry({ flush, shutdown, }: TelemetryLifecycle): Promise\u003cvoid\u003e",
+          "after_start_line": 6,
+          "dependents_count": 1
+        }
+      ]
+    },
+    {
+      "path": "lib/neatlogs.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "added",
+          "kind": "function",
+          "name": "shutdownNeatlogs",
+          "new_signature": "function shutdownNeatlogs(): Promise\u003cboolean\u003e",
+          "after_start_line": 28,
+          "dependents_count": 1
+        }
+      ]
+    },
+    {
+      "path": "package.json",
+      "status": "M",
+      "language": "JSON",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "section",
+          "name": "typecheck",
+          "before_start_line": 8,
+          "after_start_line": 8,
+          "dependents_count": 0
+        }
+      ]
+    },
+    {
+      "path": "pnpm-lock.yaml",
+      "status": "M",
+      "language": "YAML",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "section",
+          "name": "importers",
+          "before_start_line": 10,
+          "after_start_line": 10,
+          "dependents_count": 0
+        }
+      ]
+    },
+    {
+      "path": "scripts/smoke.ts",
+      "status": "M",
+      "language": "TypeScript",
+      "changes": [
+        {
+          "type": "body_changed",
+          "kind": "function",
+          "name": "main",
+          "before_start_line": 7,
+          "after_start_line": 7,
+          "dependents_count": 1
+        }
+      ]
+    }
+  ],
+  "warnings": [
+    {
+      "code": "E_PARSE_ERROR",
+      "severity": "warning",
+      "file_path": "app/page.tsx",
+      "effect_on_semantic_completeness": "dependent references in this file may be undercounted because it failed to parse cleanly",
+      "detail": "tree-sitter syntax error nodes present: error ERROR at line 26 column 67 near \"\u0026utm_source=create-next-app\u0026utm_medium=appdir-template-tw\u0026utm_campaign=create-ne...\"; error ERROR at line 33 column 72 near \"\u0026utm_medium=appdir-template-tw\u0026utm_campaign=create-next-app\"; error ERROR at line 44 column 68 near \"\u0026utm_medium=appdir-template-tw\u0026utm_campaign=create-next-app\"; error ERROR at line 59 column 69 near \"\u0026utm_medium=appdir-template-tw\u0026utm_campaign=create-next-app\""
+    }
+  ]
+}

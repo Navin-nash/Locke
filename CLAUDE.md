@@ -89,6 +89,16 @@ Read `DESIGN.md` before any UI task. It is the source of truth for tokens, palet
   ran; label planned work as planned.
 - Commit small and often. Don't push or open a PR unless the task or the orchestrator authorizes it.
 
+## Entire (Claude Code specifics; the rules are in AGENTS.md §10)
+
+- Hooks live in `.claude/settings.json` and load at session start. If Entire was enabled mid-session
+  (check `entire status`), restart the session before relying on checkpoints.
+- Only subagents launched with `run_in_background` are captured in checkpoints. AO workers don't
+  spawn subagents anyway.
+- `entire checkpoint explain <id> --generate` summarizes through the Claude CLI and spends tokens.
+- For context, use `entire graph search` to find code and `entire graph impact` before editing a
+  symbol in `lib/agent/**` or `lib/types`; use `entire graph diff --base main --head HEAD` before a PR.
+
 <!-- entire-graph:begin -->
 <!-- Entire Graph instructions are inherited through AGENTS.md. -->
 <!-- entire-graph:end -->
