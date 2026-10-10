@@ -1,0 +1,106 @@
+{
+  "cli_version": "0.11.4",
+  "checkpoint_id": "01M4JNGYXNA5PH8784TPFX6SE3",
+  "session_id": "f923a149-b35e-4a7d-a5f8-691cd3b1e00c",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-10T10:25:42.2289472Z",
+  "branch": "main",
+  "checkpoints_count": 2,
+  "save_step_count": 2,
+  "files_touched": [
+    ".gitignore",
+    "app/api/smoke/route.ts",
+    "app/layout.tsx",
+    "instrumentation.ts",
+    "lib/agent/smoke-graph.ts"
+  ],
+  "agent": "Claude Code",
+  "model": "gemini-3.5-flash",
+  "turn_id": "45cbb374a5ae",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 780,
+    "api_call_count": 22
+  },
+  "skill_events_version": 1,
+  "skill_events": [
+    {
+      "id": "claude-skill-call_68443__neatlogs_gemini_signature_RXRrSEN0WUhBV2tVZlJOY2tiRi9ndlZhVzE0bitXcEQ5WEUyZUtnSGQ2SG0vSVA5dXRXR0VQWjB4Qm83clJqbXlEcWRBajhnTW1FZ3ZlTnZaR2t3Sjh0ZHNQaUVlVW51YjdTVTJqUXo5U1ZFelJ1Qmw5TEVmSThDcVloeTUyTHZrM0tnaUNTYzdyQkpyUHQyNzcxNkVZdmZtVlArTWt3b2k3Mmk5WGdVdEdaWWNteGNpL3kvZHpSQnJ2ekh5QXRGcXUra3hVM2VQS3Y1SkJqczI4S016VzE4cjNycDRublBMT3F1bGZjQUQ5NVNYajhXdkxic3p2RllESGNUR1FQTkZUcnlYcDJaZDBmNjZIb094NXY4S2h2YnYrNG1hZG56SnUwM0ZGS0VWbWNWVHZ2MUtTTmtuQjhYK1BVRjljWFErbmIzc0JseG9TRk90T295NTdNRmxISDhMc01iOFYzVFZ0clM2bWV6NlFlVklpZzM4aENXYTUyaVAzeDk1YUorWWt3VHoxenhiUWtRV0l6eER6TDdQZzhaK0lFL3JBWU9SWnFYRExiVkRGOFBpQXBVVTNVTVVtMVRBVFVxekE0dStWclVocm5yL1ZlSElKZW91aVM0azA0RTNRMjNpcmd3bDhEaVI5TmFYOFVEWDNBSVhXRElvZFliYS8rT2RHOWpDRjZBUmtOVzdPaXF6VzdYVTM0Mnl3UUQyS2VQSVppM1AreFZaUmc4OUZCRStwTFl4YlN1TU5XdVBFd3BwcG93cjdQdWkwMnY3RG1RRmtPMEhyaVc2OHgwaDFDMUR4UE5LMVMwSjBVbXI2cVZEWTFubndLajNPSlRjZ0JsNGlRUlBVMDV2Q1hWMXFaTHUrVGtaYTBKdmFPK05uK3FIUE9qYzY5V2I0NUVURW5wK1l4VGg0ODROeGI2YmR2cmxKZVFwVXQrNkZrbHNzQVlER1JEZmdFVmc3YzlkeEVZVGVmbkxKKzVLZ2p2ZnFRZXZTY0dDaGorZFJuakMxbmVTOUlpbkdIa09lNm5vYTFnY3p0dUs0c0U3c0hsWG94R0Rta05uLzF6d0UwQU9ZYTFscDdkOGgrTlZjQ3ZEVVl1VEM1c0dmMWxyYWVwSVhWaTRaM1BWdzFSR0ZpTUZhV2F4WmZ2a0RIQVhLZThVeUI5OHVHTm9SNXJNSEg5UDBlUHFaQW4zNDVrNEFad1NzMWlWTGtzbThzRFU0ekNWdEZkTjRJWHZjRmxYWmhNREpVVEk0UkdFVWhTMnM0MEJMdkJLVkdyYXJQRVczU2wyUlBnU2diZzJUT2hocVNvKzNDa2QyZHcraURkMXZMOW41Ulo3YTFTbk9oaU43ODA2dkkvUTd5S2ZFTzZtblNyYXhMblI4em9udnRwTyt3cEdSWTIxVVBTZDFsZWVPWm9GVnpzL1J5V3RUd0Q5ZmUzd3VhQ2QyK2NZOVJxT2NraS9CckN0d1Z2Q1FHY0llMDZHdzFuc0E2NUlUc2JTTXkxb1dYd3NsNWVEaGp5Z2VTc3pWdHp3Z29uMURtWHpqWmN2MnlqSW9Zenpmb1g5N2dzMVliYkFKdjJWT2RUYWZXWWVFeXUxQjlOd0JjT3FlOGlDWnRlWHNzQmJjT3RHUjEzaUpPWWRUYkZjMll4aFVsMVJmOS9jcVA5VlhLLzFtd1p1MWdjNjJQWkVqOGg5V0xZeDdJRnFRamlFRWpRWUx2SEl6cExpUlRsdy9tMUQ1UVRJbWV3WXNnVlNkMHlQQT09",
+      "event_type": "tool_invocation",
+      "skill": {
+        "name": "neatlogs-ts-langchain"
+      },
+      "source": {
+        "agent": "claude-code",
+        "signal": "skill_tool_use",
+        "confidence": "explicit"
+      },
+      "turn_id": "45cbb374a5ae",
+      "transcript_anchor": {
+        "unit": "line",
+        "start": 27,
+        "end": 28,
+        "entry_ids": [
+          "32903c47-6d75-4f8f-9b1f-44061997d516"
+        ],
+        "tool_use_id": "call_68443__neatlogs_gemini_signature_RXRrSEN0WUhBV2tVZlJOY2tiRi9ndlZhVzE0bitXcEQ5WEUyZUtnSGQ2SG0vSVA5dXRXR0VQWjB4Qm83clJqbXlEcWRBajhnTW1FZ3ZlTnZaR2t3Sjh0ZHNQaUVlVW51YjdTVTJqUXo5U1ZFelJ1Qmw5TEVmSThDcVloeTUyTHZrM0tnaUNTYzdyQkpyUHQyNzcxNkVZdmZtVlArTWt3b2k3Mmk5WGdVdEdaWWNteGNpL3kvZHpSQnJ2ekh5QXRGcXUra3hVM2VQS3Y1SkJqczI4S016VzE4cjNycDRublBMT3F1bGZjQUQ5NVNYajhXdkxic3p2RllESGNUR1FQTkZUcnlYcDJaZDBmNjZIb094NXY4S2h2YnYrNG1hZG56SnUwM0ZGS0VWbWNWVHZ2MUtTTmtuQjhYK1BVRjljWFErbmIzc0JseG9TRk90T295NTdNRmxISDhMc01iOFYzVFZ0clM2bWV6NlFlVklpZzM4aENXYTUyaVAzeDk1YUorWWt3VHoxenhiUWtRV0l6eER6TDdQZzhaK0lFL3JBWU9SWnFYRExiVkRGOFBpQXBVVTNVTVVtMVRBVFVxekE0dStWclVocm5yL1ZlSElKZW91aVM0azA0RTNRMjNpcmd3bDhEaVI5TmFYOFVEWDNBSVhXRElvZFliYS8rT2RHOWpDRjZBUmtOVzdPaXF6VzdYVTM0Mnl3UUQyS2VQSVppM1AreFZaUmc4OUZCRStwTFl4YlN1TU5XdVBFd3BwcG93cjdQdWkwMnY3RG1RRmtPMEhyaVc2OHgwaDFDMUR4UE5LMVMwSjBVbXI2cVZEWTFubndLajNPSlRjZ0JsNGlRUlBVMDV2Q1hWMXFaTHUrVGtaYTBKdmFPK05uK3FIUE9qYzY5V2I0NUVURW5wK1l4VGg0ODROeGI2YmR2cmxKZVFwVXQrNkZrbHNzQVlER1JEZmdFVmc3YzlkeEVZVGVmbkxKKzVLZ2p2ZnFRZXZTY0dDaGorZFJuakMxbmVTOUlpbkdIa09lNm5vYTFnY3p0dUs0c0U3c0hsWG94R0Rta05uLzF6d0UwQU9ZYTFscDdkOGgrTlZjQ3ZEVVl1VEM1c0dmMWxyYWVwSVhWaTRaM1BWdzFSR0ZpTUZhV2F4WmZ2a0RIQVhLZThVeUI5OHVHTm9SNXJNSEg5UDBlUHFaQW4zNDVrNEFad1NzMWlWTGtzbThzRFU0ekNWdEZkTjRJWHZjRmxYWmhNREpVVEk0UkdFVWhTMnM0MEJMdkJLVkdyYXJQRVczU2wyUlBnU2diZzJUT2hocVNvKzNDa2QyZHcraURkMXZMOW41Ulo3YTFTbk9oaU43ODA2dkkvUTd5S2ZFTzZtblNyYXhMblI4em9udnRwTyt3cEdSWTIxVVBTZDFsZWVPWm9GVnpzL1J5V3RUd0Q5ZmUzd3VhQ2QyK2NZOVJxT2NraS9CckN0d1Z2Q1FHY0llMDZHdzFuc0E2NUlUc2JTTXkxb1dYd3NsNWVEaGp5Z2VTc3pWdHp3Z29uMURtWHpqWmN2MnlqSW9Zenpmb1g5N2dzMVliYkFKdjJWT2RUYWZXWWVFeXUxQjlOd0JjT3FlOGlDWnRlWHNzQmJjT3RHUjEzaUpPWWRUYkZjMll4aFVsMVJmOS9jcVA5VlhLLzFtd1p1MWdjNjJQWkVqOGg5V0xZeDdJRnFRamlFRWpRWUx2SEl6cExpUlRsdy9tMUQ1UVRJbWV3WXNnVlNkMHlQQT09"
+      },
+      "native": {
+        "tool_name": "Skill",
+        "tool_use_id": "call_68443__neatlogs_gemini_signature_RXRrSEN0WUhBV2tVZlJOY2tiRi9ndlZhVzE0bitXcEQ5WEUyZUtnSGQ2SG0vSVA5dXRXR0VQWjB4Qm83clJqbXlEcWRBajhnTW1FZ3ZlTnZaR2t3Sjh0ZHNQaUVlVW51YjdTVTJqUXo5U1ZFelJ1Qmw5TEVmSThDcVloeTUyTHZrM0tnaUNTYzdyQkpyUHQyNzcxNkVZdmZtVlArTWt3b2k3Mmk5WGdVdEdaWWNteGNpL3kvZHpSQnJ2ekh5QXRGcXUra3hVM2VQS3Y1SkJqczI4S016VzE4cjNycDRublBMT3F1bGZjQUQ5NVNYajhXdkxic3p2RllESGNUR1FQTkZUcnlYcDJaZDBmNjZIb094NXY4S2h2YnYrNG1hZG56SnUwM0ZGS0VWbWNWVHZ2MUtTTmtuQjhYK1BVRjljWFErbmIzc0JseG9TRk90T295NTdNRmxISDhMc01iOFYzVFZ0clM2bWV6NlFlVklpZzM4aENXYTUyaVAzeDk1YUorWWt3VHoxenhiUWtRV0l6eER6TDdQZzhaK0lFL3JBWU9SWnFYRExiVkRGOFBpQXBVVTNVTVVtMVRBVFVxekE0dStWclVocm5yL1ZlSElKZW91aVM0azA0RTNRMjNpcmd3bDhEaVI5TmFYOFVEWDNBSVhXRElvZFliYS8rT2RHOWpDRjZBUmtOVzdPaXF6VzdYVTM0Mnl3UUQyS2VQSVppM1AreFZaUmc4OUZCRStwTFl4YlN1TU5XdVBFd3BwcG93cjdQdWkwMnY3RG1RRmtPMEhyaVc2OHgwaDFDMUR4UE5LMVMwSjBVbXI2cVZEWTFubndLajNPSlRjZ0JsNGlRUlBVMDV2Q1hWMXFaTHUrVGtaYTBKdmFPK05uK3FIUE9qYzY5V2I0NUVURW5wK1l4VGg0ODROeGI2YmR2cmxKZVFwVXQrNkZrbHNzQVlER1JEZmdFVmc3YzlkeEVZVGVmbkxKKzVLZ2p2ZnFRZXZTY0dDaGorZFJuakMxbmVTOUlpbkdIa09lNm5vYTFnY3p0dUs0c0U3c0hsWG94R0Rta05uLzF6d0UwQU9ZYTFscDdkOGgrTlZjQ3ZEVVl1VEM1c0dmMWxyYWVwSVhWaTRaM1BWdzFSR0ZpTUZhV2F4WmZ2a0RIQVhLZThVeUI5OHVHTm9SNXJNSEg5UDBlUHFaQW4zNDVrNEFad1NzMWlWTGtzbThzRFU0ekNWdEZkTjRJWHZjRmxYWmhNREpVVEk0UkdFVWhTMnM0MEJMdkJLVkdyYXJQRVczU2wyUlBnU2diZzJUT2hocVNvKzNDa2QyZHcraURkMXZMOW41Ulo3YTFTbk9oaU43ODA2dkkvUTd5S2ZFTzZtblNyYXhMblI4em9udnRwTyt3cEdSWTIxVVBTZDFsZWVPWm9GVnpzL1J5V3RUd0Q5ZmUzd3VhQ2QyK2NZOVJxT2NraS9CckN0d1Z2Q1FHY0llMDZHdzFuc0E2NUlUc2JTTXkxb1dYd3NsNWVEaGp5Z2VTc3pWdHp3Z29uMURtWHpqWmN2MnlqSW9Zenpmb1g5N2dzMVliYkFKdjJWT2RUYWZXWWVFeXUxQjlOd0JjT3FlOGlDWnRlWHNzQmJjT3RHUjEzaUpPWWRUYkZjMll4aFVsMVJmOS9jcVA5VlhLLzFtd1p1MWdjNjJQWkVqOGg5V0xZeDdJRnFRamlFRWpRWUx2SEl6cExpUlRsdy9tMUQ1UVRJbWV3WXNnVlNkMHlQQT09"
+      },
+      "collapse": {
+        "target": "tool_pair",
+        "label": "Skill: neatlogs-ts-langchain",
+        "default_collapsed": true
+      }
+    }
+  ],
+  "session_metrics": {
+    "turn_count": 2
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-10-10T10:25:42.1448554Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 236,
+    "human_removed": 215,
+    "total_committed": 0,
+    "total_lines_changed": 451,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 256,
+      "user_lines_removed": 215,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".gitignore": 48,
+        "app/api/smoke/route.ts": 93,
+        "app/layout.tsx": 33,
+        "instrumentation.ts": 19,
+        "lib/agent/smoke-graph.ts": 63
+      },
+      "user_removed_per_file": {
+        ".gitignore": 41,
+        "app/api/smoke/route.ts": 89,
+        "app/layout.tsx": 29,
+        "lib/agent/smoke-graph.ts": 56
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
+}

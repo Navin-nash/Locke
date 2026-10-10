@@ -1,0 +1,31 @@
+You are integrating Neatlogs observability into a typescript project.
+
+## Detected Stack
+- Language: typescript
+- Package manager: pnpm
+- Agent framework: langchain
+- Web framework: nextjs
+- LLM providers: openai
+- TypeScript instrumentation is EXPLICIT and per-instance. Do not pass `init({ instrumentations: [...] })`: global instrumentors cannot guarantee isolation, and the remaining keys do not provide complete capture.
+- Use these helpers for the detected libraries: langchainHandler() from 'neatlogs/langchain' via { callbacks: [handler] }; langchainHandler() from 'neatlogs/langchain', attached at the GRAPH invocation; wrapOpenAI() from 'neatlogs/openai'. Wrap/attach at the construction site (`const client = wrapOpenAI(new OpenAI())`) — plain static imports are fine, there is no import-order rule.
+- This project is ALREADY instrumented with Neatlogs (neatlogs.init() exists in source). This is a RE-RUN.
+  Do NOT re-add or duplicate neatlogs.init(), .env keys, wrap()/handler/processor setup, or existing @neatlogs.span decorators.
+  Do NOT modify existing instrumentation. ONLY add instrumentation for NEW, currently-uninstrumented functions/agents. If everything is already instrumented, make no changes.
+
+## Credentials
+- Environment variable name: NEATLOGS_API_KEY
+The secret value is held by the wizard and is intentionally absent from this prompt. Call configure_neatlogs_api_key with no arguments; never ask for, read, print, or echo the value.
+Do NOT set an endpoint anywhere — no endpoint=/endpoint: in init(), no NEATLOGS_ENDPOINT in .env. Preserve an existing explicit self-hosted endpoint.
+
+## Required init() pattern
+neatlogs.init() MUST include api_key=os.getenv("NEATLOGS_API_KEY"). This is non-negotiable.
+The SDK does NOT reliably read from env in all deployment scenarios (Docker, systemd, cron).
+
+## Instructions
+A skill is installed at .claude/skills/neatlogs-ts-langchain.
+Read .claude/skills/neatlogs-ts-langchain/SKILL.md and follow its numbered steps completely in order.
+Each step references a file in references/. Read and execute each one as needed.
+
+## Additional framework skills (this repo mixes frameworks)
+This codebase uses MORE THAN ONE framework/SDK, each with its OWN instrumentation mechanism. Additional skills are installed below — for a file that uses one of these frameworks, consult that skill and use ITS mechanism (e.g. Vercel AI SDK → wrapAISDK; Mastra → wrapMastra; LangChain → handler/callbacks; direct OpenAI/Anthropic SDK → wrapOpenAI/wrapAnthropic). Do NOT fall back to a generic manual trace() when a framework-specific wrap exists — match the mechanism to what the file imports:
+- .claude/skills/neatlogs-ts-openai/SKILL.md
