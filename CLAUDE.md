@@ -88,3 +88,7 @@ Read `DESIGN.md` before any UI task. It is the source of truth for tokens, palet
 - Keep `hackathon.md` current at the end of each work session. Record only results that actually
   ran; label planned work as planned.
 - Commit small and often. Don't push or open a PR unless the task or the orchestrator authorizes it.
+
+<!-- entire-graph:begin -->
+<!-- Entire Graph instructions are inherited through AGENTS.md. -->
+<!-- entire-graph:end -->

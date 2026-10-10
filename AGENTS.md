@@ -309,3 +309,10 @@ whatever DESIGN.md says.
 - **Copy**: plain language, short sentences. State what was verified, what was not, and why. Never
   use alarmist words (see §2.7).
 - **Responsive**: works at 360 px width. Dossier rows stack on mobile.
+
+<!-- entire-graph:begin -->
+This repo has the entire-graph code graph installed. Before exploring code with
+grep/find/whole-file reads, read .entire/graph-agent.md — resolution-first guidance
+for using graph retrieval, focused source inspection, and verification.
+@.entire/graph-agent.md
+<!-- entire-graph:end -->
