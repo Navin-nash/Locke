@@ -114,7 +114,7 @@ independent evidence (rule G1). Each W status needs positive problem evidence (r
 **`requests`**
 | Code | UI label | Tone | Meaning |
 |---|---|---|---|
-| `none_detected` | No payment or sensitive-data requests | P | |
+| `none_detected` | No payment or sensitive-data requests in what you shared | N | An observation about recruiter-supplied text only, so it is not a verification. It is neutral by design: G1 does not apply, and the lattice needs no edge from it. The UI never presents it as a reassurance. |
 | `needs_confirmation` | Request needs confirmation | N | A sensitive-data request at a plausible stage (for example tax or ID forms after an offer), or a vague request. Confirm through an employer-controlled channel. |
 | `suspicious_request_detected` | Suspicious request detected | W | Any payment, deposit, fee, equipment purchase, gift card, crypto, or check-cashing request. Or ID, bank details, or credentials requested before an interview or offer, or through an unverified channel. Or urgency combined with secrecy. |
 
