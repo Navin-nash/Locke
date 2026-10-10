@@ -1,0 +1,12 @@
+RESEARCH-ONLY task for project "locke" (neatHack AI Agent Hackathon by neatlogs, Oct 10-12 2026, https://neatlogs.com/hackathon). Do NOT write code, commit, push, or open PRs. Write ONE report to C:/Users/govin/.ao/data/artifacts/locke-1/research-partners-judging.md.
+
+Hackathon facts: there is one track, "an agent or team of agents that completes a substantial task end to end". MANDATORY: use neatlogs + Entire (entire.io) + cfo.ai. Judging: agent 30%, use of neatlogs/Entire/cfo.ai 25%, demo video 20%, building in public (#neatHack on X) 15%, usefulness/originality 10%. Evidence judges expect: before/after runs with numbers, neatlogs trace links, Entire checkpoints or entire-graph output from the repo, a cfo.ai business plan (pricing, costs, revenue, runway), a recovery run where an action failed, and #neatHack links. Judges are from Entire, Orchestrator.inc, and neatlogs. Sponsors: Dodo Payments, AWS ($25, us-east-1, no Bedrock), Crustdata (5k credits for company/people APIs).
+
+Using web search / firecrawl / exa (verify against official sources):
+1. Entire (entire.io): what is it exactly (CLI? git checkpoints for agent sessions?), install, how it hooks into Claude Code / Codex / Cursor sessions, what "checkpoints" and "entire-graph" are, and how to produce that evidence in a repo. Give exact commands.
+2. cfo.ai: what it does, how to generate a business plan, and the export format. Give the exact steps.
+3. neatlogs product overview: features most likely to impress neatlogs judges (traces, evals, replays, cost tracking, etc.).
+4. Optional sponsor leverage: Crustdata APIs, Dodo Payments, AWS deploy. Which are cheap to integrate for bonus points?
+5. Patterns that win agent hackathons judged on traces, recovery, and verification. What makes a demo video score high? A concrete evidence checklist mapped to each judging weight.
+6. Any public info on the Discord, Luma FAQ, team size, or rules.
+Keep it under 400 lines and decision-oriented. When done, run `ao report` with a one-paragraph summary.
