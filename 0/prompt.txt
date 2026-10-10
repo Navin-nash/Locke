@@ -1,0 +1,10 @@
+Research whether neatlogs (neatlogs.com) has a TypeScript/JavaScript SDK or if it's Python-only. This is critical because it determines whether we can use TypeScript with Next.js and LangGraph.js for the Locke hackathon project.
+
+Specifically investigate:
+1. Official neatlogs documentation - look for SDK/API client libraries
+2. Whether there's a JavaScript, TypeScript, or Node.js SDK
+3. If Python-only, whether there's a REST API that JavaScript can call
+4. How to integrate neatlogs with LangGraph.js and Next.js if possible
+5. Any example code showing neatlogs integration with TypeScript/JavaScript projects
+
+Return findings as a markdown report with sources.
