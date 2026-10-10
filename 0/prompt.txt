@@ -1,0 +1,15 @@
+The following 1 unresolved review comment(s) are on PR #2 "docs: foundation rulebook, spec, build plan" (ao/locke-4/foundation-docs → main) as of just now. You should not need to re-fetch this data unless you need additional context.
+
+1. docs/SPEC.md:222 (@chatgpt-codex-connector):
+**<sub><sub>![P1 Badge](https://img.shields.io/badge/P1-orange?style=flat)</sub></sub>  Compare redirected links with the official employer domain**
+
+Pass `employerContext.officialDomain` to `domainSimilarity`, not the supplied link's initial URL. For a direct attacker-controlled link, `final` and `initial` are identical, so this comparison reports `same` and can produce `matches_employer_channel` using only recruiter-supplied evidence instead of detecting an unrelated or lookalike destination.
+
+AGENTS.md reference: [AGENTS.md:L35-L37](https://github.com/Navin-nash/Locke/blob/e0df9509968780869e8ee542dc69ea18bae93a2f/AGENTS.md#L35-L37)
+
+Useful? React with 👍 / 👎.
+   https://github.com/Navin-nash/Locke/pull/2#discussion_r4237089997
+   Thread ID: PRRT_kwDOVDdnZ86rCp5I
+
+Address each comment and push fixes. Use the thread ID to resolve each thread directly after pushing when available. You should not need to re-fetch review data unless you need additional context beyond what is provided here.
+PR: https://github.com/Navin-nash/Locke/pull/2
