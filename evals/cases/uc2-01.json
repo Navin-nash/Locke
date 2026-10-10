@@ -1,0 +1,41 @@
+{
+  "id": "uc2-01",
+  "useCase": "uc2_staffing_agency",
+  "input": {
+    "text": "Hello, I'm Rosalind Achterberg, a technology recruiter with Randstad USA. One of our clients, Notion, is hiring an Engineering Manager, Mobile AI in New York (hybrid). Based on your mobile leadership background, I'd like to set up a 20-minute intro call to see whether you'd like me to present your profile. If you're interested, reply with a few times that work this week.\n\nRosalind Achterberg\nRandstad USA\nr.achterberg@randstadusa.com"
+  },
+  "expected": {
+    "outcome": "verified_route",
+    "dimensions": {
+      "employer": "confirmed",
+      "vacancy": "officially_confirmed",
+      "recruiter": "verified_intermediary",
+      "application_link": "not_provided",
+      "requests": "none_detected",
+      "safe_route": "role_posting_confirmed"
+    },
+    "safeRoute": {
+      "status": "role_posting_confirmed",
+      "url": "https://jobs.ashbyhq.com/notion/3979a6f5-2abb-447b-bd3a-0565b06bae24",
+      "host": "jobs.ashbyhq.com"
+    },
+    "forbiddenSafeRouteHosts": [],
+    "flags": {
+      "scoreUnsafeLink": false,
+      "scoreFalseAccusation": true
+    }
+  },
+  "source": {
+    "company": "Notion",
+    "officialDomain": "notion.com",
+    "board": {
+      "provider": "ashby",
+      "slug": "notion"
+    },
+    "postingId": "3979a6f5-2abb-447b-bd3a-0565b06bae24",
+    "postingUrl": "https://jobs.ashbyhq.com/notion/3979a6f5-2abb-447b-bd3a-0565b06bae24",
+    "checkedAt": "2026-10-10"
+  },
+  "syntheticDomains": [],
+  "notes": "Real agency (randstadusa.com, registered 2005) recruiting for a role that is live on Notion's Ashby board. No employer source confirms the partnership, so recruiter is verified_intermediary (neutral). A different sender domain is never a warning here."
+}

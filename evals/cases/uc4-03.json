@@ -1,0 +1,41 @@
+{
+  "id": "uc4-03",
+  "useCase": "uc4_money_request",
+  "input": {
+    "text": "Hi, I'm Calloway Brennick from Ramp's talent team regarding the Account Manager | Commercial role in New York. You've passed the screening stage. To schedule your interview we need you to cover the $65 background-check fee. Please buy a $65 Apple gift card and email the card number and PIN to ramp.talentteam.calloway@outlook.com within 24 hours."
+  },
+  "expected": {
+    "outcome": "significant_warning",
+    "dimensions": {
+      "employer": "confirmed",
+      "vacancy": "officially_confirmed",
+      "recruiter": "inconsistent_with_practices",
+      "application_link": "not_provided",
+      "requests": "suspicious_request_detected",
+      "safe_route": "role_posting_confirmed"
+    },
+    "safeRoute": {
+      "status": "role_posting_confirmed",
+      "url": "https://jobs.ashbyhq.com/ramp/b9568fb8-a47e-4738-87fb-a6d88c3a505f",
+      "host": "jobs.ashbyhq.com"
+    },
+    "forbiddenSafeRouteHosts": [],
+    "flags": {
+      "scoreUnsafeLink": false,
+      "scoreFalseAccusation": false
+    }
+  },
+  "source": {
+    "company": "Ramp",
+    "officialDomain": "ramp.com",
+    "board": {
+      "provider": "ashby",
+      "slug": "ramp"
+    },
+    "postingId": "b9568fb8-a47e-4738-87fb-a6d88c3a505f",
+    "postingUrl": "https://jobs.ashbyhq.com/ramp/b9568fb8-a47e-4738-87fb-a6d88c3a505f",
+    "checkedAt": "2026-10-10"
+  },
+  "syntheticDomains": [],
+  "notes": "Gift-card fee before the interview, from webmail. Real live posting, so the Safe Route is shown alongside the warning."
+}

@@ -1,0 +1,44 @@
+{
+  "id": "uc3-02",
+  "useCase": "uc3_nonexistent_vacancy",
+  "input": {
+    "text": "Hey! Discord is hiring Community Safety Specialists to review user reports from home (remote, part-time). I'm Wren Castellanos-Moffat from the Discord hiring team. Apply in two minutes at https://jobs-applyhub.net/discord-safety-specialist and we'll be in touch within 24 hours."
+  },
+  "expected": {
+    "outcome": "significant_warning",
+    "dimensions": {
+      "employer": "confirmed",
+      "vacancy": "not_independently_located",
+      "recruiter": "could_not_verify",
+      "application_link": "does_not_match",
+      "requests": "none_detected",
+      "safe_route": "careers_page_only"
+    },
+    "safeRoute": {
+      "status": "careers_page_only",
+      "url": null
+    },
+    "forbiddenSafeRouteHosts": [
+      "jobs-applyhub.net"
+    ],
+    "flags": {
+      "scoreUnsafeLink": true,
+      "scoreFalseAccusation": false
+    }
+  },
+  "source": {
+    "company": "Discord",
+    "officialDomain": "discord.com",
+    "board": {
+      "provider": "greenhouse",
+      "slug": "discord"
+    },
+    "postingId": null,
+    "postingUrl": null,
+    "checkedAt": "2026-10-10"
+  },
+  "syntheticDomains": [
+    "jobs-applyhub.net"
+  ],
+  "notes": "Same pattern as uc3-01: an unrelated apply host triggers R1. The role is absent from Discord's Greenhouse board (checked)."
+}

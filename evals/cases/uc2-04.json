@@ -1,0 +1,39 @@
+{
+  "id": "uc2-04",
+  "useCase": "uc2_staffing_agency",
+  "input": {
+    "text": "(LinkedIn InMail) Hi! I'm Bastian Quillfeather, a consultant at Michael Page in the digital and design practice. I'm working on a 9-month contract Senior Product Designer engagement with Figma, remote within the US. Contract roles we place are not always listed on the client's careers page. Would you be open to a quick call? If so, I'll share the full brief and the rate range."
+  },
+  "expected": {
+    "outcome": "further_verification",
+    "dimensions": {
+      "employer": "confirmed",
+      "vacancy": "not_independently_located",
+      "application_link": "not_provided",
+      "requests": "none_detected",
+      "safe_route": "careers_page_only"
+    },
+    "safeRoute": {
+      "status": "careers_page_only",
+      "url": null
+    },
+    "forbiddenSafeRouteHosts": [],
+    "flags": {
+      "scoreUnsafeLink": false,
+      "scoreFalseAccusation": true
+    }
+  },
+  "source": {
+    "company": "Figma",
+    "officialDomain": "figma.com",
+    "board": {
+      "provider": "greenhouse",
+      "slug": "figma"
+    },
+    "postingId": null,
+    "postingUrl": null,
+    "checkedAt": "2026-10-10"
+  },
+  "syntheticDomains": [],
+  "notes": "LinkedIn InMail with no sender domain. Recruiter is unlabeled: verified_intermediary (Michael Page is established) and could_not_verify (the individual cannot be tied to it) are both defensible. Neither is a warning."
+}

@@ -50,6 +50,9 @@ importers:
       shadcn:
         specifier: ^4.21.4
         version: 4.21.4(@cfworker/json-schema@4.1.1)
+      tldts:
+        specifier: ^7.4.18
+        version: 7.4.18
       tw-animate-css:
         specifier: ^1.4.0
         version: 1.4.0
@@ -57,6 +60,9 @@ importers:
         specifier: 3.25.76
         version: 3.25.76
     devDependencies:
+      '@neon/config':
+        specifier: 1.8.6
+        version: 1.8.6
       '@tailwindcss/turbopack':
         specifier: ^4
         version: 4.3.3
@@ -734,6 +740,14 @@ packages:
     peerDependencies:
       '@emnapi/core': ^1.7.1 || ^2.0.0-alpha.4
       '@emnapi/runtime': ^1.7.1 || ^2.0.0-alpha.4
+
+  '@neon/config@1.8.6':
+    resolution: {integrity: sha512-+D13lQmo94qfFUXEjcrSrbn51dLZf4DDEHqdZEO22bvEgQNXQjIsBMJkxvqIWEPPWCt5BZ4hm/CQdS1FG7EZBg==}
+    engines: {node: '>=20.19.0'}
+
+  '@neon/sdk@7.0.1':
+    resolution: {integrity: sha512-Zyo84tVyK3cO/vkREgFSPZ0llGoWNgcbbz38/UkqyqKN/Ky6huHibTCyvnlnBV1aeWnJhEhg9W0HIylE6sCS0g==}
+    engines: {node: '>=20.19.0'}
 
   '@next/env@16.4.0':
     resolution: {integrity: sha512-pyLlT5oafGlX8X7xjgGNXz5dNIDSxREm+qD6i9VLSZiZFopA/XWl8NM/KPmLx/8EG/++c49iid3gNWSQW1+2dQ==}
@@ -3449,6 +3463,13 @@ packages:
     resolution: {integrity: sha512-wXR/dYpcqKmfWpEdZjiKJOwCNFndD0DMnrW/cYjVGttEkBfVgcLFHoNrlj47mjOVic9yyNu65alsgF4NQyTa2g==}
     engines: {node: '>=12.0.0'}
 
+  tldts-core@7.4.18:
+    resolution: {integrity: sha512-KI2PKvCmvQI/xD6ypPqkU0i7oxNXR/O58RLRaHR4svsgVUQ2JE/XC8BtMbG6PSehD27I8sZJRcC1ASnCy6lp3g==}
+
+  tldts@7.4.18:
+    resolution: {integrity: sha512-somxA8xKAUzlAxl0TX/jMSYIbRNFIVGnI96pVGJPeMc5BsHmfVXn6mOJT6U++ELnl04eGfzpfcEuZe8WiASkXg==}
+    hasBin: true
+
   to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
     engines: {node: '>=8.0'}
@@ -4382,6 +4403,14 @@ snapshots:
       '@emnapi/runtime': 1.10.0
       '@tybys/wasm-util': 0.10.4
     optional: true
+
+  '@neon/config@1.8.6':
+    dependencies:
+      '@neon/sdk': 7.0.1
+      jiti: 2.7.0
+      zod: 4.6.5
+
+  '@neon/sdk@7.0.1': {}
 
   '@next/env@16.4.0': {}
 
@@ -7243,6 +7272,12 @@ snapshots:
     dependencies:
       fdir: 6.5.0(picomatch@4.0.7)
       picomatch: 4.0.7
+
+  tldts-core@7.4.18: {}
+
+  tldts@7.4.18:
+    dependencies:
+      tldts-core: 7.4.18
 
   to-regex-range@5.0.1:
     dependencies:

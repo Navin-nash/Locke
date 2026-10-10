@@ -1,0 +1,40 @@
+{
+  "id": "uc5-03",
+  "useCase": "uc5_sensitive_documents",
+  "input": {
+    "text": "Hi, congratulations again on accepting our offer for the Treasury Analyst role in Bengaluru. I'm Ingrid Castellvi from Stripe's People team. To complete your onboarding paperwork, please submit your PAN details and a copy of your Aadhaar through the secure onboarding portal invitation you will receive from our HR system this week. Please don't send documents over email. Reach out if anything is unclear.\n\nIngrid Castellvi\nPeople Team, Stripe\ni.castellvi@stripe.com"
+  },
+  "expected": {
+    "outcome": "further_verification",
+    "dimensions": {
+      "employer": "confirmed",
+      "vacancy": "not_independently_located",
+      "recruiter": "consistent_with_employer",
+      "application_link": "not_provided",
+      "requests": "needs_confirmation",
+      "safe_route": "careers_page_only"
+    },
+    "safeRoute": {
+      "status": "careers_page_only",
+      "url": null
+    },
+    "forbiddenSafeRouteHosts": [],
+    "flags": {
+      "scoreUnsafeLink": false,
+      "scoreFalseAccusation": true
+    }
+  },
+  "source": {
+    "company": "Stripe",
+    "officialDomain": "stripe.com",
+    "board": {
+      "provider": "greenhouse",
+      "slug": "stripe"
+    },
+    "postingId": null,
+    "postingUrl": null,
+    "checkedAt": "2026-10-10"
+  },
+  "syntheticDomains": [],
+  "notes": "Post-offer tax-ID request from the official domain (stripe.com enforces DMARC p=reject) at a plausible stage: needs_confirmation, not a warning. The role is filled, so it is no longer on the board, which keeps this at R3 instead of R2."
+}

@@ -1,0 +1,41 @@
+{
+  "id": "ctl-01",
+  "useCase": "control_genuine",
+  "input": {
+    "text": "Hi, I'm Marisol Thackeray, a recruiter at Figma. I came across your profile and think you'd be a strong fit for our Business Systems Analyst role (San Francisco or New York). You can review the full posting and apply here: https://boards.greenhouse.io/figma/jobs/6215865004?gh_jid=6215865004\nOnce you've applied, I'd be glad to set up an intro call.\n\nMarisol Thackeray\nRecruiting, Figma\nmthackeray@figma.com"
+  },
+  "expected": {
+    "outcome": "verified_route",
+    "dimensions": {
+      "employer": "confirmed",
+      "vacancy": "officially_confirmed",
+      "recruiter": "consistent_with_employer",
+      "application_link": "matches_employer_channel",
+      "requests": "none_detected",
+      "safe_route": "role_posting_confirmed"
+    },
+    "safeRoute": {
+      "status": "role_posting_confirmed",
+      "url": "https://boards.greenhouse.io/figma/jobs/6215865004?gh_jid=6215865004",
+      "host": "boards.greenhouse.io"
+    },
+    "forbiddenSafeRouteHosts": [],
+    "flags": {
+      "scoreUnsafeLink": true,
+      "scoreFalseAccusation": true
+    }
+  },
+  "source": {
+    "company": "Figma",
+    "officialDomain": "figma.com",
+    "board": {
+      "provider": "greenhouse",
+      "slug": "figma"
+    },
+    "postingId": "6215865004",
+    "postingUrl": "https://boards.greenhouse.io/figma/jobs/6215865004?gh_jid=6215865004",
+    "checkedAt": "2026-10-10"
+  },
+  "syntheticDomains": [],
+  "notes": "Official-domain sender (figma.com, DMARC p=quarantine) and the real posting on the Greenhouse board linked from figma.com/careers."
+}

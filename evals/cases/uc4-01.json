@@ -1,0 +1,41 @@
+{
+  "id": "uc4-01",
+  "useCase": "uc4_money_request",
+  "input": {
+    "text": "Congratulations! I'm Fenwick Adeyemi-Strand from Linear's hiring team. After reviewing your portfolio we'd like to move you to onboarding for the Design Engineer (Web & Brand) role (remote, North America). We'll mail you a $4,800 check for your home-office equipment. Deposit it, then pay our approved equipment vendor via Zelle the same day so your laptop ships before your start date. Please keep this between us until onboarding is complete. Continue on Telegram: @linear_onboarding_fenwick"
+  },
+  "expected": {
+    "outcome": "significant_warning",
+    "dimensions": {
+      "employer": "confirmed",
+      "vacancy": "officially_confirmed",
+      "recruiter": "inconsistent_with_practices",
+      "application_link": "not_provided",
+      "requests": "suspicious_request_detected",
+      "safe_route": "role_posting_confirmed"
+    },
+    "safeRoute": {
+      "status": "role_posting_confirmed",
+      "url": "https://jobs.ashbyhq.com/linear/f04f398b-6320-499d-8a60-290239d62da8",
+      "host": "jobs.ashbyhq.com"
+    },
+    "forbiddenSafeRouteHosts": [],
+    "flags": {
+      "scoreUnsafeLink": false,
+      "scoreFalseAccusation": false
+    }
+  },
+  "source": {
+    "company": "Linear",
+    "officialDomain": "linear.app",
+    "board": {
+      "provider": "ashby",
+      "slug": "linear"
+    },
+    "postingId": "f04f398b-6320-499d-8a60-290239d62da8",
+    "postingUrl": "https://jobs.ashbyhq.com/linear/f04f398b-6320-499d-8a60-290239d62da8",
+    "checkedAt": "2026-10-10"
+  },
+  "syntheticDomains": [],
+  "notes": "Check deposit and equipment-vendor payment, plus secrecy. The vacancy is real and live, so R1 fires but the Safe Route to the real posting is still shown."
+}
