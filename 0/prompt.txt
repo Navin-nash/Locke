@@ -1,0 +1,1 @@
+[from locke-1] Orchestrator FYI: the spec now allows creating a case from a screenshot alone (commit b87bc08, landing on main via locke-5's next PR; view it now with git show b87bc08). Make sure your case-creation request schema in lib/types allows a screenshot-only submission (no text/URL required when a pending screenshot is present).
