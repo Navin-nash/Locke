@@ -386,7 +386,7 @@ Postgres if abused).
 |---|---|---|
 | `POST /api/cases` | `{ text?: string ≤ 20000, url?: url }` (at least one) | `201 { id }`. Text is redacted before storage. 10 per hour per IP. |
 | `GET /api/cases/[id]` | n/a | `200 Case` or `404` |
-| `POST /api/cases/[id]/run` | `{ image?: { mime: "image/png"\|"image/jpeg"\|"image/webp", base64 ≤ 4 MB } }` | `200 text/event-stream`. `409` if a run is active or a Dossier exists. The image is transcribed by a traced `screenshot:transcribe` call (worker model, vision), and the transcription is redacted and appended to the input. **The image is never put in graph state, the checkpointer, or the DB.** |
+| `POST /api/cases/[id]/run` | `{ image?: { mime: "image/png"\|"image/jpeg"\|"image/webp", base64 ≤ 4 MB } }` | `200 text/event-stream`. `409` if a run is active or a Dossier exists. The image is transcribed by the worker model (vision), and the transcription is redacted and appended to the input. **The image is never put in graph state, the checkpointer, the DB, or any trace** (see §14 for how the call is traced without it). |
 | `POST /api/cases/[id]/resume` | `{ answer: string ≤ 500 } \| { skip: true }` | `200 text/event-stream` continuing the thread via `Command({ resume })`. `409` if the case is not `needs_input`. |
 
 The client holds a pending screenshot in memory (`lib/client/pending-upload.ts`) between
@@ -507,9 +507,20 @@ checks run in E2E.
   transcriptions, so the graph, neatlogs traces, checkpoints, and DB only ever see redacted text.
   Email domains are kept because domain analysis needs them. Personal names are not removed (known
   limitation). Locke does not investigate individuals.
-- **Screenshots:** read once by the vision call. Never stored or put in graph state. Their image
-  content does appear in the `screenshot:transcribe` span input. Ask neatlogs whether span-input
-  masking exists, and until then show the "crop personal details" notice (Risk R7).
+- **Screenshots are never traced raw.** The vision call is the one LLM call made **without** the
+  neatlogs `langchainHandler` attached. It is wrapped instead in a manual traced runnable
+  `screenshot:transcribe` that records only:
+  - input: a placeholder `{ image: "[omitted: <mime>, <KB> KB]" }`
+  - output: the **redacted** transcription
+  - metadata: the model slug and token usage
+
+  The image is held in memory for that one call and then dropped. It is never put in graph state, a
+  checkpoint, the DB, or a log. If the neatlogs TS SDK later proves to support per-span input
+  masking, that may replace the manual wrapper, but only after a trace readback shows no base64 in
+  the span. Tests: (1) the vision call is constructed without callbacks; (2) the recorded span input
+  and output contain no base64 and no unredacted PII from a fixture image transcription. The UI
+  still shows the "crop personal details" notice, because OpenRouter and the model provider do see
+  the image.
 - Secrets are server-only (`lib/env.ts`, `server-only`). No client exposure. Trace links are shared
   through the dashboard or guest links only, never through keys.
 - SSRF-safe fetch (§7). Prompt-injection defense: fetched content is wrapped as untrusted, the
@@ -617,7 +628,7 @@ pilot in month 6, and API from month 9.
 | R4 | Live postings change between baseline and improved | Run back-to-back, re-check before each run, relabel and note it. |
 | R5 | Over-eager LLM accuses legitimate recruiters | Deterministic outcome rules, guard G1-G6, isolated verifier, and the measured `false_accusation_rate`. |
 | R6 | Prompt injection through fetched pages | Untrusted wrapping, bounded text, deterministic outcomes, verifier isolation. |
-| R7 | Screenshot content in traces | Notice to the user; ask neatlogs about masking; screenshot is P1 and can be cut. |
+| R7 | Screenshot content leaking into traces | The vision call runs without the neatlogs handler and is traced through a manual placeholder span (§14), with tests asserting no base64. Screenshot input is P1 and can be cut. |
 | R8 | Crustdata 30 rpm limit during evals | Concurrency 2 and backoff. Search fallback. |
 | R9 | Vercel duration and streaming limits | `maxDuration = 300`, budgets ≤ 150 s, persisted state with reload via GET. |
 | R10 | Judges can't open neatlogs traces or Entire pages | Screenshots, CLI JSON exports, guest links. Ask on Discord. |

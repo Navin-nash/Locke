@@ -67,8 +67,8 @@ Pending. The URL and instructions will be added once the Vercel preview runs end
 
 ## Known limitations and next steps
 - Planned limitations for V1: no accounts; no multi-message case threads; Locke never sends email;
-  personal names are not redacted (only contact details, IDs, and financial numbers are); screenshot
-  content is visible in the transcription trace span.
+  personal names are not redacted (only contact details, IDs, and financial numbers are);
+  screenshots are sent to the vision model (OpenRouter) but are never stored or traced raw.
 - Next steps: see `docs/PLAN.md`, starting with M0.
 
 ## Submission

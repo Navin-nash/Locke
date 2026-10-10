@@ -205,8 +205,10 @@ Don't re-dispatch these. Downstream tasks depend on their merged PRs.
 - **Acceptance:** The SPEC §9 routes with zod validation, 404/409/429 paths tested, and redaction
   applied before insert. SSE emits `StreamEvent`s in `seq` order. On abort: the graph is aborted, the
   run is marked `cancelled`, and `flush()` runs in `finally`. `PostgresSaver.setup()` is in
-  `db:setup`. `LOCKE_CHECKPOINTER=memory|postgres`. The screenshot is transcribed via a traced call
-  and never persisted (a test asserts the DB row and checkpoint contain no base64).
+  `db:setup`. `LOCKE_CHECKPOINTER=memory|postgres`. The screenshot vision call runs **without**
+  the neatlogs handler, wrapped in the manual `screenshot:transcribe` placeholder span (SPEC §14).
+  Tests assert that the DB row, the checkpoint, and the recorded span input and output contain no
+  base64.
 - **Skills:** `superpowers:test-driven-development`, `langgraph-persistence`, `security-review`.
 
 ### T14 Stream integration, fault-injected recovery, fixture recording (Claude Code, 3h, W5)
