@@ -128,7 +128,9 @@ independent evidence (rule G1). Each W status needs positive problem evidence (r
 ## 5. Overall outcomes and decision rules
 
 `decideOutcome(findings) → { outcome, reasonCodes[] }` is pure, deterministic, and unit-tested. It
-runs **after** the guard (§6.7). Rules are evaluated in order, and the first match wins.
+runs in the resolver, **after** the guard has finished, including Safe Route selection and G3
+(§6.7). It therefore reads the guarded `safe_route` finding. Rules are evaluated in order, and the
+first match wins.
 
 | # | Outcome (`Outcome`) | UI title | Rule |
 |---|---|---|---|
@@ -153,6 +155,9 @@ here instead"). The reason codes (for example `R1:application_link=lookalike_des
 deterministic `outcomeReason` sentence and the next-step selection.
 
 ### Safe Route selection (`selectSafeRoute`, deterministic)
+This runs **inside the guard node**, after G1, G2, G4, and G6 have settled the other findings and
+before G3 validates the result (see the order in §6.7). The output is written as the `safe_route`
+finding plus `state.safeRoute`.
 1. If `vacancy=officially_confirmed`, use the matched posting's URL from the ATS API or the official
    site → `role_posting_confirmed`.
 2. Otherwise, if the official careers page (on the official domain, or a linked ATS board root) was
@@ -253,7 +258,7 @@ not_independently_located; conflicting_information → partially_matched. `recru
 consistent_with_employer / verified_intermediary → could_not_verify; apparent_impersonation →
 could_not_verify. `application_link`: matches_* → could_not_check; does_not_match /
 lookalike_destination → could_not_check; does_not_match → matches_intermediary_channel (G6 only). `requests`: suspicious_request_detected → needs_confirmation.
-`safe_route` is never set by the verifier. It is computed by the resolver.
+`safe_route` is never set by the verifier. It is computed by the guard node (§6.7).
 
 ### 6.7 `guard` (deterministic, `lib/agent/guard.ts`)
 | Rule | Check | Action |
@@ -265,11 +270,21 @@ lookalike_destination → could_not_check; does_not_match → matches_intermedia
 | G5 language | No banned words (AGENTS.md §2.7) in resolver prose | Regenerate once, then fall back to template prose |
 | G6 intermediary reconciliation | `application_link=does_not_match` and the link's registrable domain equals the sender's own (non-webmail) domain while the sender presents as an agency | Becomes `matches_intermediary_channel` if `recruiter=verified_intermediary`, otherwise `could_not_check` ("the agency's own site; the agency is not established"). This exists because `channel` and `recruiter` run in parallel; it prevents UC2 false accusations. |
 
+**Order inside the guard node** (fixed, and tested):
+1. Apply G1, G2, G4, and G6 to the investigator and verifier findings.
+2. `selectSafeRoute` (§5) on the guarded findings produces the candidate route.
+3. G3 validates the candidate. If it fails, fall back to `careers_page_only` or `not_established`.
+4. Write the `safe_route` finding and `state.safeRoute`.
+
+G5 is not part of this node. It runs in the resolver on the generated prose (§6.8).
+
 Each violation is a traced runnable `guard:<rule>` and a `guard_violation` event. In a correct run,
 the guard fires rarely. The Detections in neatlogs watch for it.
 
 ### 6.8 `resolver`
-1. `decideOutcome` (§5), `selectSafeRoute`, and `findVerificationContact` (all deterministic).
+1. `decideOutcome` (§5) on the guarded findings, including the guard-computed `safe_route`, then
+   `findVerificationContact`. Both are deterministic. The resolver never re-selects or alters the
+   Safe Route.
 2. Next steps come from a fixed catalogue chosen by statuses: `apply_via_safe_route`,
    `confirm_recruiter_with_employer`, `do_not_pay`, `do_not_send_documents`, `ask_specific_questions`
    (UC6: one question per material diff), `request_missing_info`, `save_case_link`.

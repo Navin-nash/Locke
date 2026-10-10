@@ -71,8 +71,8 @@ flowchart TD
     E --> C["channel investigator"]
     V & RC & C & Q --> VF["verifier: skeptic, downgrade-only"]
     VF -.->|"recheck (max once)"| V
-    VF --> GD["guard: deterministic invariants G1-G6"]
-    GD --> RS["resolver: decideOutcome + Safe Route + prose + draft"]
+    VF --> GD["guard: G1/G2/G4/G6, then selectSafeRoute, then G3"]
+    GD --> RS["resolver: decideOutcome + prose + draft + G5 lint"]
   end
   E & V & RC & C -.->|"tools"| T[("Crustdata, ATS APIs, RDAP, DoH DNS, safe fetch, web search")]
   RS --> D[("Neon: cases + checkpoints")]

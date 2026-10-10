@@ -190,7 +190,9 @@ Don't re-dispatch these. Downstream tasks depend on their merged PRs.
   tests.
 - **Acceptance:** TDD. `decideOutcome` has a table test with at least 1 row per rule R1-R4 and the
   UC1-UC6 shapes. The guard tests cover G1-G6, including "the supplied link becomes the Safe Route
-  only with independent evidence" and G6 for an agency. The lattice is enforced (a verifier upgrade
+  only with independent evidence" and G6 for an agency. The guard-node order is tested
+  (G1/G2/G4/G6 → `selectSafeRoute` → G3), including a fully confirmed case that reaches
+  `verified_route` because R2 sees the guarded `safe_route=role_posting_confirmed`. The lattice is enforced (a verifier upgrade
   is rejected). Recheck runs at most once. The language lint rejects the banned words. The resolver
   produces a full `Dossier` for the 3 demo inputs.
 - **Skills:** `superpowers:test-driven-development`, `prompt-engineering-patterns`.
