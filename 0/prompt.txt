@@ -1,0 +1,7 @@
+<task-notification>
+<task-id>bixxjck3t</task-id>
+<tool-use-id>toolu_01YHYvCn47GHjJpnEDcZxdYw</tool-use-id>
+<output-file>C:\Users\govin\AppData\Local\Temp\claude\C--Users-govin--ao-data-worktrees-locke-locke-11\4f30338e-9a36-4189-a495-f2aefdc8be6c\tasks\bixxjck3t.output</output-file>
+<status>completed</status>
+<summary>Background command "neon orgs list 2&gt;&amp;1 | head; neon projects list 2&gt;&amp;1 | head -20; neon profile list -o json 2&gt;&amp;1 | head -20" completed (exit code 0)</summary>
+</task-notification>
