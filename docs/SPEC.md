@@ -384,14 +384,15 @@ Postgres if abused).
 
 | Route | Body / params | Response |
 |---|---|---|
-| `POST /api/cases` | `{ text?: string ≤ 20000, url?: url }` (at least one) | `201 { id }`. Text is redacted before storage. 10 per hour per IP. |
+| `POST /api/cases` | `{ text?: string ≤ 20000, url?: url, hasScreenshot?: boolean }` (at least one of `text`, `url`, or `hasScreenshot: true`) | `201 { id }`. Text is redacted before storage. `hasScreenshot` is stored as `input.hadScreenshot`. The image itself is **not** sent here (see `/run`). 10 per hour per IP. |
 | `GET /api/cases/[id]` | n/a | `200 Case` or `404` |
-| `POST /api/cases/[id]/run` | `{ image?: { mime: "image/png"\|"image/jpeg"\|"image/webp", base64 ≤ 4 MB } }` | `200 text/event-stream`. `409` if a run is active or a Dossier exists. The image is transcribed by the worker model (vision), and the transcription is redacted and appended to the input. **The image is never put in graph state, the checkpointer, the DB, or any trace** (see §14 for how the call is traced without it). |
+| `POST /api/cases/[id]/run` | `{ image?: { mime: "image/png"\|"image/jpeg"\|"image/webp", base64 ≤ 4 MB } }` | `200 text/event-stream`. `409` if a run is active or a Dossier exists. `422 { code: "screenshot_required" }` if the case has no text and no URL and no image was sent. The image is transcribed by the worker model (vision), and the transcription is redacted and appended to the input. **The image is never put in graph state, the checkpointer, the DB, or any trace** (see §14 for how the call is traced without it). |
 | `POST /api/cases/[id]/resume` | `{ answer: string ≤ 500 } \| { skip: true }` | `200 text/event-stream` continuing the thread via `Command({ resume })`. `409` if the case is not `needs_input`. |
 
 The client holds a pending screenshot in memory (`lib/client/pending-upload.ts`) between
-`/investigate` and `/case/[id]`. If the page reloads, the screenshot is gone and the run proceeds
-without it.
+`/investigate` and `/case/[id]`. If the page reloads, the screenshot is gone. A case that also has
+text or a URL proceeds without it. A **screenshot-only** case gets `422 screenshot_required` from
+`/run`, and the case page shows a re-upload drop zone that retries `/run` with the image.
 
 **SSE format:** `event: <type>\ndata: <json>\n\n`. Every event has `{ seq, ts, runId }` and is a
 member of the `StreamEvent` discriminated union in `lib/types/events.ts`:

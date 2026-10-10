@@ -202,7 +202,7 @@ Don't re-dispatch these. Downstream tasks depend on their merged PRs.
   `lib/agent/run.ts` and runs against a stub iterable until T11 merges.
 - **Owns:** `app/api/**`, `lib/db/**` (`client.ts`, `cases.ts`, `schema.sql`), `lib/server/sse.ts`
   (`AsyncIterable<StreamEvent>` → SSE `Response`), `lib/server/rate-limit.ts`, `scripts/db-setup.ts`.
-- **Acceptance:** The SPEC §9 routes with zod validation, 404/409/429 paths tested, and redaction
+- **Acceptance:** The SPEC §9 routes with zod validation, 404/409/422/429 paths tested (including a screenshot-only case), and redaction
   applied before insert. SSE emits `StreamEvent`s in `seq` order. On abort: the graph is aborted, the
   run is marked `cancelled`, and `flush()` runs in `finally`. `PostgresSaver.setup()` is in
   `db:setup`. `LOCKE_CHECKPOINTER=memory|postgres`. The screenshot vision call runs **without**
@@ -232,7 +232,7 @@ Don't re-dispatch these. Downstream tasks depend on their merged PRs.
   `lib/client/samples.ts`.
 - **Acceptance:** SPEC §10 `/investigate` with all states. 3 sample buttons. Screenshot drop zone
   with the privacy notice (holds the image in memory only). Keyboard-complete and labelled. Posts to
-  `/api/cases` (mocked until T13).
+  `/api/cases` with `hasScreenshot: true` when an image is attached (mocked until T13).
 - **Skills:** `shadcn`, `better-layout`, `better-accessibility`, `better-writing`.
 
 ### T10 Case live view against fixture streams (Cursor, 4h, W3)
@@ -260,7 +260,8 @@ Don't re-dispatch these. Downstream tasks depend on their merged PRs.
 - **Depends:** T13, T14, T15.
 - **Owns:** `app/case/[id]/**` (data wiring), `lib/client/**`.
 - **Acceptance:** End-to-end on localhost: investigate → live stream → Dossier. Reload restores via
-  `GET /api/cases/[id]`. States: cancelled (rerun), error with partial findings, 404. The trace link
+  `GET /api/cases/[id]`. States: cancelled (rerun), error with partial findings, 404, and a
+  screenshot-only case after reload (`422 screenshot_required` → re-upload drop zone → retry `/run`). The trace link
   is shown when present.
 - **Skills:** `qa`, `superpowers:verification-before-completion`.
 
