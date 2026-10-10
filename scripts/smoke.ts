@@ -6,15 +6,20 @@ loadEnvConfig(process.cwd());
 
 async function main() {
   const runId = randomUUID();
-  const [{ clearSmokeGraphThread }, { smokeGraph, smokeGraphInput }, neatlogs] =
-    await Promise.all([
-      import("../lib/agent/smoke-checkpointer"),
-      import("../lib/agent/smoke-graph"),
-      import("../lib/neatlogs"),
-    ]);
-  const handler = await neatlogs.createNeatlogsHandler();
+  const [
+    { clearSmokeGraphThread },
+    { smokeGraph, smokeGraphInput },
+    { closeSmokeTelemetry },
+    neatlogs,
+  ] = await Promise.all([
+    import("../lib/agent/smoke-checkpointer"),
+    import("../lib/agent/smoke-graph"),
+    import("../lib/agent/smoke-lifecycle"),
+    import("../lib/neatlogs"),
+  ]);
 
   try {
+    const handler = await neatlogs.createNeatlogsHandler();
     const events = await smokeGraph.stream(smokeGraphInput(), {
       configurable: { thread_id: runId },
       streamMode: ["updates", "messages"],
@@ -28,12 +33,13 @@ async function main() {
       void event;
     }
   } finally {
-    const [, flushed] = await Promise.all([
-      clearSmokeGraphThread(runId),
-      neatlogs.flushNeatlogs(),
-    ]);
-    if (!flushed) {
-      throw new Error("NeatLogs flush did not complete successfully.");
+    try {
+      await clearSmokeGraphThread(runId);
+    } finally {
+      await closeSmokeTelemetry({
+        flush: neatlogs.flushNeatlogs,
+        shutdown: neatlogs.shutdownNeatlogs,
+      });
     }
   }
 
