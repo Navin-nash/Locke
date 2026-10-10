@@ -1,0 +1,18 @@
+Reports since your previous turn:
+
+[checkpoint] [docs: AGENTS.md + CLAUDE.md + SPEC + PLAN + hackathon.md](ao://sessions/locke/locke-4)
+PR #2: fixed the Codex P1 comment (raw screenshots in traces) in a9e6d56, pushed, then replied to and resolved the thread. The vision call now runs without the neatlogs handler, traced through a manual placeholder span with no base64 (tests required). Not merged.
+
+[done] [M0: Next.js scaffold + LangGraph/OpenRouter + neatlogs trace gate](ao://sessions/locke/locke-5)
+Addressed PR #1 MemorySaver review comment in commit 1adfdcc and pushed it. The graph still compiles with the required MemorySaver, but API and CLI one-shot runs now delete their thread checkpoints and pending writes after streaming, including abort/error cleanup paths. Added a regression test against both storage maps. Validation passes: typecheck, lint, 10 tests, build. Resolved thread PRRT_kwDOVDdnZ86rCpIr directly. GitHub reports no CI checks configured. PR remains open and unmerged.
+pr_created: https://github.com/Navin-nash/Locke/pull/1
+
+[checkpoint] [docs: AGENTS.md + CLAUDE.md + SPEC + PLAN + hackathon.md](ao://sessions/locke/locke-4)
+PR #2: fixed the Codex P2 comment (none_detected vs G1) in f90eb46 by making it N tone, pushed, then replied to and resolved the thread. Not merged.
+
+[done] [M0: Next.js scaffold + LangGraph/OpenRouter + neatlogs trace gate](ao://sessions/locke/locke-5)
+Addressed PR #1 NeatLogs CLI lifecycle review comment in commit a888fe5 and pushed it. pnpm smoke now protects handler creation and graph execution with cleanup that deletes the thread, flushes telemetry, then calls shutdown('locke-smoke-cli') even when initialization/streaming/flush fails. The Next route remains flush-only and never shuts down per request. Added lifecycle ordering and failure tests. Validation passes: typecheck, lint, 13 tests, build. Resolved thread PRRT_kwDOVDdnZ86rCpIt directly. GitHub reports no CI checks configured. PR remains open and unmerged.
+pr_created: https://github.com/Navin-nash/Locke/pull/1
+
+[checkpoint] [docs: AGENTS.md + CLAUDE.md + SPEC + PLAN + hackathon.md](ao://sessions/locke/locke-4)
+PR #2: fixed the Codex P2 comment (screenshot-only case creation) in b87bc08, pushed, then replied to and resolved the thread. Not merged.
