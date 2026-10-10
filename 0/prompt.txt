@@ -1,0 +1,14 @@
+Locke task T02: domain contracts in lib/types (Claude Code).
+
+Context: the foundation docs and the scaffold are in open PRs that haven't merged yet.
+- Docs live on branch `ao/locke-4/foundation-docs`. Read them with `git show ao/locke-4/foundation-docs:docs/SPEC.md` (plus AGENTS.md, CLAUDE.md and docs/PLAN.md the same way). If that local branch isn't visible, they're also at C:/Users/govin/.ao/data/worktrees/locke/locke-4/.
+- The scaffold (package.json, zod, vitest) is on branch `ao/locke-5/m0-scaffold` (PR #1).
+- Start by merging both branches into your work branch locally (`git merge ao/locke-5/m0-scaffold ao/locke-4/foundation-docs`, or fetch them from origin) so you have zod, vitest and the docs. Before you push, rebase onto origin/main once they're merged, so your PR diff contains ONLY your files. If they haven't merged when you finish, open the PR anyway and note the dependency.
+
+Do task T02 exactly as written in docs/PLAN.md:
+- Owns: lib/types/** and fixtures/streams/sample-uc1.json.
+- Acceptance: zod schemas for everything in SPEC §8, the StreamEvent union from SPEC §9, the per-dimension status enums, and the STATUS_LABELS / STATUS_TONE maps (SPEC §4). One hand-written, schema-valid fixture stream of about 40 events for UC1 (fake recruiter, real job, safe route found), which must include a recovery event and a verifier challenge event. A vitest test parses every fixture against StreamEvent.
+- Skills: superpowers:writing-plans, plan-eng-review, superpowers:test-driven-development. Stay ponytail-lean.
+
+This is the shared contract that Codex (tools), Cursor (UI) and the agent graph all build on, so keep names stable, export everything from lib/types/index.ts, and add brief JSDoc.
+Publishing: push your branch and open a PR against main (standing user approval). Do not merge. If `entire` is installed, run `entire enable --agent claude-code` first. Finish with `ao report`, including the PR URL.
