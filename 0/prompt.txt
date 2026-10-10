@@ -1,0 +1,130 @@
+Context: This summary will be shown in a list to help users and Claude choose which conversations are relevant.
+
+Please write a concise, factual summary of this conversation. Output ONLY the summary - no preamble. Claude will see this summary when searching previous conversations for useful memories and information.
+
+Summarize what happened in 2-4 sentences. Be factual and specific. Output in <summary></summary> tags.
+
+Include:
+- What was built/changed/discussed (be specific)
+- Key technical decisions or approaches
+- Problems solved or current state
+
+Exclude:
+- Apologies, meta-commentary, or your questions
+- Raw logs or debug output
+- Generic descriptions - focus on what makes THIS conversation unique
+
+Good:
+<summary>Built JWT authentication for React app with refresh tokens and protected routes. Fixed token expiration bug by implementing refresh-during-request logic.</summary>
+
+Bad:
+<summary>I apologize. The conversation discussed authentication and various approaches were considered...</summary>
+
+User: You are integrating Neatlogs observability into a typescript project.
+
+## Detected Stack
+- Language: typescript
+- Package manager: pnpm
+- Agent framework: langchain
+- Web framework: nextjs
+- LLM providers: openai
+- TypeScript instrumentation is EXPLICIT and per-instance. Do not pass `init({ instrumentations: [...] })`: global instrumentors cannot guarantee isolation, and the remaining keys do not provide complete capture.
+- Use these helpers for the detected libraries: langchainHandler() from 'neatlogs/langchain' via { callbacks: [handler] }; langchainHandler() from 'neatlogs/langchain', attached at the GRAPH invocation; wrapOpenAI() from 'neatlogs/openai'. Wrap/attach at the construction site (`const client = wrapOpenAI(new OpenAI())`) — plain static imports are fine, there is no import-order rule.
+- This project is ALREADY instrumented with Neatlogs (neatlogs.init() exists in source). This is a RE-RUN.
+  Do NOT re-add or duplicate neatlogs.init(), .env keys, wrap()/handler/processor setup, or existing @neatlogs.span decorators.
+  Do NOT modify existing instrumentation. ONLY add instrumentation for NEW, currently-uninstrumented functions/agents. If everything is already instrumented, make no changes.
+
+## Credentials
+- Environment variable name: NEATLOGS_API_KEY
+The secret value is held by the wizard and is intentionally absent from this prompt. Call configure_neatlogs_api_key with no arguments; never ask for, read, print, or echo the value.
+Do NOT set an endpoint anywhere — no endpoint=/endpoint: in init(), no NEATLOGS_ENDPOINT in .env. Preserve an existing explicit self-hosted endpoint.
+
+## Required init() pattern
+neatlogs.init() MUST include api_key=os.getenv("NEATLOGS_API_KEY"). This is non-negotiable.
+The SDK does NOT reliably read from env in all deployment scenarios (Docker, systemd, cron).
+
+## Instrumentation anchors (from static analysis — start HERE, do not scan the whole repo)
+The analyzer scanned 22 functions and found the 1 that anchor tracing. Instrument these and follow their connections (the tools / retrievers / chains each agent or route uses) by reading those functions. Skip everything else unless an anchor leads you to it.
+
+## What deserves a WORKFLOW (and what does NOT)
+A WORKFLOW span is the trace ROOT of a meaningful unit of AI work. Root ONLY entry points that (directly or transitively) reach an LLM/agent/tool/retriever — a chat / generate / analyze / agent-run / model-calling consumer. Do NOT root pure CRUD/read endpoints (list_*/get_*/create_*/update_*/delete_*, health/ping) — they just hit a DB and rooting them spams the platform with empty content-free traces that bury the real agent traces. Test: "if this ran, would its trace contain an LLM/tool/retriever span?" No → not a workflow, instrument nothing.
+AUTO-ROOT (important): the provider wrappers (`neatlogs.wrap(client)` in Python, `wrapOpenAI`/`wrapAnthropic`/`wrapGoogleGenAI`/… in TypeScript) and Python `instrumentations=[...]` now open a WORKFLOW root AUTOMATICALLY when a provider/LLM call would otherwise be parentless — so a lone wrapped call does NOT orphan and renders on its own. You therefore add a manual `@span(kind="WORKFLOW")` at a feature entry point to GROUP a multi-step feature (several LLM calls + tools + your own functions) under ONE named root, NOT merely to make a single call render. If a manual root is active, the auto-root detects it and steps aside (never a double root). Framework handlers/processors (LangChain, OpenAI Agents, CrewAI) root themselves the same way.
+
+## How to work: FIRST TRACE FAST, then fan out, then verify
+Your FIRST goal (like PostHog) is to land ONE proper trace to the platform in minutes, THEN reach full coverage.
+0. FIRST-TRACE PATH (do this first, fast): pick the SIMPLEST high-value feature from the anchors — ideally a non-streaming request→LLM→response route. Add neatlogs.init() + the skill-selected wrapper/handler/hook/processor, then build and exercise that exact path yourself through verify_run so a proper rooted trace lands. A supported wrapper owns its LLM span; never add a second manual LLM trace. When the feature is multi-step, add a WORKFLOW span only to group the steps under one named root. Do NOT defer init()/the first feature to the end.
+   RETRIEVAL-AND-GENERATION EXAMPLE: for a feature that retrieves stored context and then generates an answer, keep the app's existing retrieval and prompt construction unchanged. Instrument the user-facing route/command as WORKFLOW (only when it groups multiple steps), and use the framework/provider integration for the model call. If the selected wrapper/handler/hook/processor/instrumentor actually captures the retrieval operation, it owns that RETRIEVER span—never add a duplicate manual RETRIEVER span. Otherwise add a manual RETRIEVER for the custom/unsupported lookup, use neatlogs.retriever.* attributes only, and never generate neatlogs.retrieval.*. Expected shape: WORKFLOW → RETRIEVER + one integration-owned LLM. Build, restart the process that loads init, invoke the documented retrieval-and-generation path, and confirm that exact run in Neatlogs. Never add a manual LLM decorator beside the integration.
+1. THEN fan out: dispatch the remaining per-file `instrumentor` subagents in parallel — put MULTIPLE Agent tool calls (8-16) in ONE assistant message so they run concurrently; do NOT send one Agent call, wait, then send the next (that serializes the whole phase and is the #1 cause of a slow run). Each subagent gets ONE file + its exact `file:line` anchors + function→kind list; tell them to Grep straight to those lines (no full-file read). Distinct files to distinct subagents. (Package install runs as a background task alongside.)
+2. The global wiring (init/.env/wrap) is already done from step 0; just register any remaining framework handler/processor.
+3. Keep each wave wide (≈8-16 concurrent). Prioritise RAW-HTTP LLM files and custom TOOL/RETRIEVER files not actually captured by the selected wrapper/handler/hook/processor/instrumentor.
+4. VERIFY — proportional, not a blanket sweep (do these on the EDITED files only, using the subagent reports to know what changed):
+   a. Compile-check ONLY the files that were edited (Python: `python -m py_compile <those files>`; TS: `tsc --noEmit` / `node --check`). When several files need FIXES, fan the fixes out the same way as step 1 — multiple `instrumentor` Agent calls in ONE message (each given the file + the precise problem to fix), NOT one fix at a time. Serial re-editing in this phase is what makes a run drag.
+   b. ADVERSARIAL contract check on each `neatlogs.trace(...)`/`@neatlogs.span(...)` site ADDED (read just those sites — these are RUNTIME bugs a compile check passes over). Assume it is broken until you confirm each: (i) ARGS are valid for the call. A `@neatlogs.span(...)` decorator needs ONLY `kind=` — the span name DEFAULTS to the function name, so a bare `@neatlogs.span(kind="WORKFLOW")` is correct and preferred; an explicit name is the OPTIONAL `name=` kwarg. `neatlogs.trace(...)` needs a name as its FIRST POSITIONAL (`trace("name", kind=...)`) and must not also pass `name=` (both → `TypeError: got multiple values for argument name`) nor omit it (`trace(kind=...)` → missing name). NEVER pass `workflow_name=` to `@span()`/`trace()` — that raises `TypeError: span() got an unexpected keyword argument workflow_name` and crashes at import; `workflow_name=` exists ONLY on `neatlogs.init()`. (ii) `.set_attribute(...)` is on the SPAN (the `as span:` / `__enter__()` return), never on the `trace()` context-manager value. (iii) manual streaming spans `__exit__` exactly once. (iv) NO DUPLICATE span on an already-instrumented call — if the call is an SDK client you `wrap()`ed (or a framework handler covers it), do NOT also wrap it in a manual `trace(kind="LLM")`; and do NOT nest a same-kind span inside another (e.g. `@span(kind="EMBEDDING")` on a fn whose body opens `trace(kind="EMBEDDING")`). One logical call = one span of that kind. (iv-b) EVERY `neatlogs.wrap(X)` you added: X MUST be a supported vendor SDK client (OpenAI/AsyncOpenAI, Anthropic/AsyncAnthropic, google.genai.Client, CrewAI Crew/Flow, Pydantic AI Agent, DSPy module, Agno agent, Google ADK Runner, Strands). If X is `httpx.AsyncClient(...)`, `requests.Session(...)`, `aiohttp.ClientSession(...)`, or a boto3 client, `wrap()` raises `TypeError` at IMPORT — REMOVE the wrap(), restore the bare construction, and put a MANUAL `trace()` span on the `.post()`/`.stream()` CALL instead (raw-http rule). This is a hard import-time crash, not a style nit — step 4a `py_compile` only PARSES (never imports), so it cannot catch it; you MUST verify it here. (v) any LLM/EMBEDDING/RERANKER span sets the OUTPUT (`neatlogs.llm.output` etc.), not just input. Fix any site that fails.
+   c. Confirm no health/readiness/ping/warmup/startup function got a span (commandment F).
+   d. Confirm each feature has exactly ONE WORKFLOW root (commandment B); streaming/SSE handlers open the WORKFLOW span INSIDE the generator (commandment G). You are blocked from stopping until WORKFLOW + raw-HTTP + tool categories are covered.
+   e. Call mcp__wizard-tools__verify_run with a SAFE, documented representative command. For a server, pass its start command plus exercise_command so the tool restarts the rebuilt process and invokes the real user route. It injects the key and an ephemeral correlation marker only into that launched process, then the WIZARD (not you) polls the exact marker every 2 seconds for up to 10 minutes, waits for backend finalization, pages through every span, and verifies required application I/O. Never put credentials or invent a marker in tool input. Do not add your own polling loop or repeatedly call verify_run after a timeout unless you first exercise a new real application run.
+   f. Treat a successful verify_run result as the final platform gate. The parent Wizard owns authenticated persisted-trace readback, waits for finalization, pages through every span, and verifies hierarchy plus required application I/O before returning success. Do not call hosted Neatlogs tools, search for another trace, poll processing yourself, invent a verification ID, or ask for a new verification tool.
+   g. Inspect the persisted shape: one root, nested children, exactly one integration-owned LLM span per real call, no health-only traces, and requested session/end-user identity. Persisted WORKFLOW, AGENT, LLM, TOOL, and MCP_TOOL spans must have non-empty input_value AND output_value; event-like/infrastructure spans can legitimately be one-sided. A single missing required application input/output fails verification. Local span logs are diagnostic only.
+   h. If a browser-only web path cannot be exercised with the available tools, do not pretend setup succeeded and do not ask the user to rerun setup. Give one UUID and the COMPLETE sequence: preserve existing OTEL_RESOURCE_ATTRIBUTES while adding `neatlogs.verification.marker=<uuid>`, restart the web app with that environment, exercise the real path in the browser, then run `npx @neatlogs/wizard verify --api-key <key> --verification-marker <same-uuid> --expected-root-span <the exact root span name>`. The marker and expected root are mandatory. Verify is read-only: it never detects, edits, builds, installs, or invokes the coding agent.
+
+### Model call sites (1) — each needs a span, but CLASSIFY BY THE MODEL'S JOB (the analyzer can't tell these apart — that's your call):
+Do NOT blindly use kind="LLM". Pick the specific kind: an EMBEDDING model (text→vector: titan-embed, .embeddings.create, embed_documents, invoke_model on an *embed* model) → kind="EMBEDDING"; a RERANK model (query+docs→scores: cohere.rerank, invoke_model on a *rerank* model) → kind="RERANKER"; a generate/chat/completion model → kind="LLM". Apply per callStyle:
+- **framework** — framework → use its installed-skill mechanism (callback handler, hook, processor, runner wrapper, or native telemetry); add no manual LLM trace around covered calls:
+    - lib\agent\smoke-graph.ts:31  callModel
+
+### Independent workflows (10 candidate roots) — ONE WORKFLOW span per genuine feature, do NOT merge
+Each entry below is an INDEPENDENT feature = its OWN trace root. Open exactly ONE WORKFLOW span per genuine feature; every CHAIN/AGENT/TOOL/RETRIEVER/LLM span it reaches nests UNDER that one WORKFLOW. A different feature is a SEPARATE sibling root — never nest one WORKFLOW inside another, never merge two features into one. The `evidence` is the raw structural signal (verbatim decorator / shape) — YOU decide the kind (HTTP route, CLI command, cron, queue/stream consumer, event handler, library API, agent loop). A WORKFLOW DECORATOR needs only `kind` — `@neatlogs.span(kind="WORKFLOW")` (the name defaults to the function name; an explicit name is the OPTIONAL `name=`). NEVER pass `workflow_name=` to @span()/trace() (that kwarg exists only on neatlogs.init() — on a span it crashes at import). SKIP candidates that are health/readiness/ping/warmup/boot or internal helpers (commandment F). For a multiplexed entry (one handler dispatching on task type / msg.topic), open the WORKFLOW span PER BRANCH with a per-feature name — every independently-running workflow gets its own trace.
+
+Uncalled public functions (10) — MAY be library/API entry points or just dead code; CONFIRM before rooting:
+- app\api\smoke\route.ts:16  POST
+- app\api\smoke\route.ts:24  abortGraph
+- app\api\smoke\route.ts:37  start
+- app\api\smoke\route.ts:76  cancel
+- app\layout.tsx:20  RootLayout
+- app\page.tsx:3  Home
+- components\ui\button.tsx:42  Button
+- lib\agent\smoke-graph.ts:31  callModel
+- lib\models.ts:31  getPlannerModel
+- lib\models.ts:33  getVerifierModel
+
+## Instructions
+A skill is installed at .claude/skills/neatlogs-ts-langchain.
+Read .claude/skills/neatlogs-ts-langchain/SKILL.md ONCE for the one-time setup (install, init, env, global wrap/handler).
+Do NOT read every reference file up front — open a specific reference ONLY if you personally need it for the global wiring. The per-file span work is delegated to instrumentor subagents (which are self-contained and must NOT read the skill).
+
+## Additional framework skills (this repo mixes frameworks)
+This codebase uses MORE THAN ONE framework/SDK, each with its OWN instrumentation mechanism. Additional skills are installed below — for a file that uses one of these frameworks, consult that skill and use ITS mechanism (e.g. Vercel AI SDK → wrapAISDK; Mastra → wrapMastra; LangChain → handler/callbacks; direct OpenAI/Anthropic SDK → wrapOpenAI/wrapAnthropic). Do NOT fall back to a generic manual trace() when a framework-specific wrap exists — match the mechanism to what the file imports:
+- .claude/skills/neatlogs-ts-openai/SKILL.md
+
+Agent: The Neatlogs observability setup for Locke is verified and fully functional.
+
+### Configuration & Wiring Summary
+
+- **`lib/neatlogs.ts`**:
+  Initializes Neatlogs single-shot with `apiKey: getServerEnv().NEATLOGS_API_KEY`, `workflowName: "locke-agent"`, and `tags: ["neathack-2026"]`. Exports `createNeatlogsHandler()` (returns `langchainHandler()` from `neatlogs/langchain`) and `flushNeatlogs()`.
+
+- **`app/api/smoke/route.ts` & `scripts/smoke.ts`**:
+  Executes `smokeGraph.stream(...)` with `callbacks: [handler]`, automatically tracing the graph execution, model calls (`getWorkerModel()`), and tool calls (`get_domain_age`).
+
+- **Verification Run**:
+  Executed `pnpm exec tsx scripts/smoke.ts` with live Neatlogs API key export:
+  `Locke smoke trace run id: 11f709b3-5984-408f-b264-dff13bb72862` — flushed and completed successfully.
+
+---
+Skipped: Additional manual `@neatlogs.span` wrappers on model/tool functions. Add when custom non-LangChain endpoints or manual span hierarchies are introduced.
+
+---
+
+User: Stop hook feedback:
+Before concluding, provide a brief summary of what you accomplished. Format: [STATUS] Your summary here
+
+Agent: [STATUS] Configured and verified Neatlogs TypeScript instrumentation for Locke (`lib/neatlogs.ts`, `app/api/smoke/route.ts`, `scripts/smoke.ts`). Typecheck and unit tests passed, and live smoke trace `11f709b3-5984-408f-b264-dff13bb72862` successfully exported to Neatlogs.
+
+---
+
+User: Stop hook feedback:
+Do NOT stop yet — these instrumentation categories from the static analysis are not fully covered (auto-instrumentation can't capture them, so they'd be lost). Instrument each now:
+- tool/retriever spans: instrument the genuine tools/retrievers that the agent/LLM functions call (@neatlogs.span(kind="TOOL"|"RETRIEVER")), skipping pure plumbing — these are NOT auto-captured for a no-framework app.
+- streaming WORKFLOW span inside the generator (POST): POST RETURNS a streaming response, so a @neatlogs.span(kind="WORKFLOW") decorator closes BEFORE the stream runs and orphans every child span. REMOVE the decorator on POST and open `with neatlogs.trace("<feature>", kind="WORKFLOW"):` INSIDE the generator, wrapping the `async for ... yield` loop (commandment G).
+
+Agent: [STATUS] Completed Neatlogs instrumentation updates: created `instrumentation.ts` with Next.js dynamic import initialization, wrapped streaming generator in `app/api/smoke/route.ts` with an in-generator WORKFLOW trace span (`trace({ name: "smoke-stream", kind: "WORKFLOW" })`), and wrapped tool execution in `lib/agent/smoke-graph.ts` with `span({ kind: "TOOL", toolName: "get_domain_age" })`. `pnpm typecheck` and `pnpm test` pass cleanly.
