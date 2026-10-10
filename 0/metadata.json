@@ -1,0 +1,39 @@
+{
+  "cli_version": "0.11.4",
+  "checkpoint_id": "01M4JKZ5PBDH6VY5FA36NGTYBN",
+  "session_id": "f09e4a22-2084-4e94-8fc5-081b8a62ef0f",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-10T09:58:09.6146274Z",
+  "branch": "ao/locke-6/root",
+  "checkpoints_count": 1,
+  "files_touched": [
+    "public/brand/verify.html"
+  ],
+  "agent": "Antigravity",
+  "model": "",
+  "turn_id": "104eac928eb3",
+  "initial_attribution": {
+    "calculated_at": "2026-10-10T09:58:09.5723247Z",
+    "agent_lines": 152,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 0,
+    "human_removed": 0,
+    "total_committed": 152,
+    "total_lines_changed": 152,
+    "agent_percentage": 100,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 281,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        "DESIGN.md": 281
+      }
+    }
+  ]
+}

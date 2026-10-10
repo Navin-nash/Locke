@@ -1,0 +1,35 @@
+Task: BRAND + LOGO + DESIGN SYSTEM for "Locke" (neatHack hackathon, 48h).
+
+Product: Locke is an AI investigator agent team that verifies job opportunities. A candidate pastes a recruiter message, link or screenshot. Locke independently checks the employer, the vacancy, the recruiter's affiliation and the application channel, then returns an evidence-backed Dossier and a "Safe Route": the verified official way to apply. It never uses a fake "92% safe" score; it is honest about uncertainty and avoids false accusations.
+Taglines: "Know who's really hiring." / "Evidence before trust."
+Name story: John Locke (empiricism: knowledge comes from evidence), plus a lock (safety). Audience: students, fresh grads, remote job seekers, career centers.
+Brand feel: calm, forensic, trustworthy, precise, warm enough for anxious students. NOT generic AI purple gradients, NOT scary hacker/cyber neon, NOT a cartoon padlock cliché.
+Full context: C:/Users/govin/.ao/data/artifacts/locke-1/concept-brief.md and C:/Users/govin/.ao/data/artifacts/locke-1/user-vision.md.
+
+Follow these skill guides (read each SKILL.md and apply it):
+- C:/Users/govin/.claude/skills/logo-design/SKILL.md
+- C:/Users/govin/.claude/skills/logo-animation/SKILL.md
+- C:/Users/govin/.claude/skills/svg-animation/SKILL.md
+- C:/Users/govin/.claude/skills/design-md/SKILL.md
+- C:/Users/govin/.claude/skills/brand-motion-guidelines/SKILL.md
+- C:/Users/govin/.claude/skills/better-colors/SKILL.md
+
+Deliverables (only these paths; the scaffold and docs are being built by other workers in parallel, so do not create package.json, app/, AGENTS.md, CLAUDE.md or docs/SPEC.md):
+1. brand/explorations.md: 3 distinct logo concepts with rationale. Pick one and justify it.
+2. public/brand/: the final logo as hand-crafted, optimized SVG. Include the mark (icon), the wordmark, a horizontal lockup, a monochrome version, and a light/dark variant. Also favicon.svg plus an app icon (512px PNG export if you can render one) and an OG image (1200x630 SVG).
+3. public/brand/locke-logo-animated.svg plus brand/logo-animation.md: a short (≤1.6s) logo reveal using CSS/SMIL or a GSAP-ready structure with transform/opacity only. It must respect prefers-reduced-motion. Also a subtle "investigating" loop variant for the live-agent UI.
+4. DESIGN.md (repo root, per the design-md skill): the full design system. Cover the color tokens (light + dark, semantic tokens for the evidence statuses verified / unverified / suspicious / insufficient that are colorblind-safe and WCAG AA verified), typography (font picks, scale), spacing, radius, elevation, iconography, motion principles (durations, easings, reduced-motion rules), voice & tone for copy, and do/don't examples. Map the tokens to shadcn CSS variables (--background, --primary, etc.) so the UI worker can drop them into globals.css.
+5. Open the logo SVGs in a browser to visually verify they render crisply at 16px, 32px and 512px. Iterate until they do.
+
+Conventional commits, small and frequent, on your branch. If the `entire` CLI is installed, run `entire enable --agent antigravity` (or the closest supported agent name) before your first commit.
+PUBLISHING: commit locally only. Do NOT push or open a PR. When done, run `ao report` with a summary and the file list.
+
+---
+
+8781-4a65-801c-15b0bf1ee922">
+[from locke-1] Orchestrator, Entire setup: the shared Entire config (.entire/settings.json, .claude/settings.json hooks, .codex/hooks.json, .cursor/hooks.json, .agents/hooks.json) is being committed by locke-5 in its gate0/Entire PR. Do NOT commit any of those files from your branch. To get checkpoints on your commits now, run the local-only variant in your worktree: `entire enable --local` with the closest agent name for Antigravity (check `entire agent list` or --help), then `entire status`. Don't git add the generated config files.
+</ao-session-delivery>
+
+---
+
+Continue
