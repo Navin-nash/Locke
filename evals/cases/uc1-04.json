@@ -1,0 +1,43 @@
+{
+  "id": "uc1-04",
+  "useCase": "uc1_impersonation",
+  "input": {
+    "text": "Hi, this is Junia Ferraday from Notion HR. We are hiring Remote Data Entry Specialists, $35/hour, flexible hours, no experience needed. The interview is a quick chat on WhatsApp at +1 202-555-0147. Fill in your details to reserve a slot: https://n0tion-careers.com/remote-data-entry"
+  },
+  "expected": {
+    "outcome": "significant_warning",
+    "dimensions": {
+      "vacancy": "not_independently_located",
+      "recruiter": "inconsistent_with_practices",
+      "application_link": "lookalike_destination",
+      "requests": "none_detected",
+      "safe_route": "careers_page_only"
+    },
+    "safeRoute": {
+      "status": "careers_page_only",
+      "url": null
+    },
+    "forbiddenSafeRouteHosts": [
+      "n0tion-careers.com"
+    ],
+    "flags": {
+      "scoreUnsafeLink": true,
+      "scoreFalseAccusation": false
+    }
+  },
+  "source": {
+    "company": "Notion",
+    "officialDomain": "notion.com",
+    "board": {
+      "provider": "ashby",
+      "slug": "notion"
+    },
+    "postingId": null,
+    "postingUrl": null,
+    "checkedAt": "2026-10-10"
+  },
+  "syntheticDomains": [
+    "n0tion-careers.com"
+  ],
+  "notes": "Homoglyph lookalike (0 for o) of notion.com. No matching posting exists on Notion's Ashby board, so the Safe Route is the official careers page only. Employer is unlabeled for the same reason as uc1-02."
+}

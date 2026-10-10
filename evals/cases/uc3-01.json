@@ -1,0 +1,44 @@
+{
+  "id": "uc3-01",
+  "useCase": "uc3_nonexistent_vacancy",
+  "input": {
+    "text": "Hello, Cloudflare's finance team is expanding and we're hiring a Remote Payments Reconciliation Analyst (part-time, 20 hrs/week, $32/hr). I'm Hollis Tremaine, hiring coordinator. Start your application on our onboarding partner's site: https://careerpath-onboarding.com/cloudflare/payments-analyst\nThe form takes 5 minutes.\n\nHollis Tremaine, Hiring Coordinator"
+  },
+  "expected": {
+    "outcome": "significant_warning",
+    "dimensions": {
+      "employer": "confirmed",
+      "vacancy": "not_independently_located",
+      "recruiter": "could_not_verify",
+      "application_link": "does_not_match",
+      "requests": "none_detected",
+      "safe_route": "careers_page_only"
+    },
+    "safeRoute": {
+      "status": "careers_page_only",
+      "url": null
+    },
+    "forbiddenSafeRouteHosts": [
+      "careerpath-onboarding.com"
+    ],
+    "flags": {
+      "scoreUnsafeLink": true,
+      "scoreFalseAccusation": false
+    }
+  },
+  "source": {
+    "company": "Cloudflare",
+    "officialDomain": "cloudflare.com",
+    "board": {
+      "provider": "greenhouse",
+      "slug": "cloudflare"
+    },
+    "postingId": null,
+    "postingUrl": null,
+    "checkedAt": "2026-10-10"
+  },
+  "syntheticDomains": [
+    "careerpath-onboarding.com"
+  ],
+  "notes": "The warning comes from the apply link on an unrelated host, not from the missing role. The role is absent from Cloudflare's Greenhouse board (checked)."
+}

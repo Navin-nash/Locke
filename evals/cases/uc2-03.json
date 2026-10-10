@@ -1,0 +1,41 @@
+{
+  "id": "uc2-03",
+  "useCase": "uc2_staffing_agency",
+  "input": {
+    "text": "Hi, this is Marguerite Solberg-Achebe, a recruiter at TEKsystems. Palantir has engaged us to help source candidates for its Backend Software Engineer - Infrastructure role in New York (hybrid, full-time). The official posting is here: https://jobs.lever.co/palantir/6fe5515f-f677-4d98-8ac2-1775a425f5e7\nYou can apply there directly, or I can submit your profile on your behalf if you prefer.\n\nMarguerite Solberg-Achebe\nTEKsystems\nmsolberg@teksystems.com"
+  },
+  "expected": {
+    "outcome": "verified_route",
+    "dimensions": {
+      "employer": "confirmed",
+      "vacancy": "officially_confirmed",
+      "recruiter": "verified_intermediary",
+      "application_link": "matches_employer_channel",
+      "requests": "none_detected",
+      "safe_route": "role_posting_confirmed"
+    },
+    "safeRoute": {
+      "status": "role_posting_confirmed",
+      "url": "https://jobs.lever.co/palantir/6fe5515f-f677-4d98-8ac2-1775a425f5e7",
+      "host": "jobs.lever.co"
+    },
+    "forbiddenSafeRouteHosts": [],
+    "flags": {
+      "scoreUnsafeLink": true,
+      "scoreFalseAccusation": true
+    }
+  },
+  "source": {
+    "company": "Palantir",
+    "officialDomain": "palantir.com",
+    "board": {
+      "provider": "lever",
+      "slug": "palantir"
+    },
+    "postingId": "6fe5515f-f677-4d98-8ac2-1775a425f5e7",
+    "postingUrl": "https://jobs.lever.co/palantir/6fe5515f-f677-4d98-8ac2-1775a425f5e7",
+    "checkedAt": "2026-10-10"
+  },
+  "syntheticDomains": [],
+  "notes": "The agency supplies the real Lever posting. The supplied link may become the Safe Route only because the same URL is independently found via the Lever board linked from palantir.com (G3)."
+}

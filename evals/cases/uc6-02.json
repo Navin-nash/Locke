@@ -1,0 +1,40 @@
+{
+  "id": "uc6-02",
+  "useCase": "uc6_conflicting_terms",
+  "input": {
+    "text": "Hello, I'm Rosamund Tegwyn from Palantir recruiting. We're hiring a Backend Software Engineer - Defense for our Washington, D.C. team. This is a fully remote, 1099 contract position for 6 months. Let me know if you'd like to discuss."
+  },
+  "expected": {
+    "outcome": "further_verification",
+    "dimensions": {
+      "employer": "confirmed",
+      "vacancy": "conflicting_information",
+      "recruiter": "could_not_verify",
+      "application_link": "not_provided",
+      "requests": "none_detected",
+      "safe_route": "careers_page_only"
+    },
+    "safeRoute": {
+      "status": "careers_page_only",
+      "url": null
+    },
+    "forbiddenSafeRouteHosts": [],
+    "flags": {
+      "scoreUnsafeLink": false,
+      "scoreFalseAccusation": true
+    }
+  },
+  "source": {
+    "company": "Palantir",
+    "officialDomain": "palantir.com",
+    "board": {
+      "provider": "lever",
+      "slug": "palantir"
+    },
+    "postingId": "1345438c-ebfc-4fa5-b545-30c1414f317c",
+    "postingUrl": "https://jobs.lever.co/palantir/1345438c-ebfc-4fa5-b545-30c1414f317c",
+    "checkedAt": "2026-10-10"
+  },
+  "syntheticDomains": [],
+  "notes": "The official posting is Washington, D.C., onsite, full-time. The message claims a fully remote 1099 contract, so workplace and employment type differ."
+}

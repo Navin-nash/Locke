@@ -1,0 +1,40 @@
+{
+  "id": "uc3-04",
+  "useCase": "uc3_nonexistent_vacancy",
+  "input": {
+    "text": "Hi, this is Saoirse Valdemar from Figma HR. We have an opening for a Junior UX Researcher (remote, Canada) and your background looks like a fit. Could you send your CV and a few times for a 30-minute video call?\n\nSaoirse Valdemar\nfigma.hr.saoirse@gmail.com"
+  },
+  "expected": {
+    "outcome": "further_verification",
+    "dimensions": {
+      "employer": "confirmed",
+      "vacancy": "not_independently_located",
+      "recruiter": "inconsistent_with_practices",
+      "application_link": "not_provided",
+      "requests": "none_detected",
+      "safe_route": "careers_page_only"
+    },
+    "safeRoute": {
+      "status": "careers_page_only",
+      "url": null
+    },
+    "forbiddenSafeRouteHosts": [],
+    "flags": {
+      "scoreUnsafeLink": false,
+      "scoreFalseAccusation": true
+    }
+  },
+  "source": {
+    "company": "Figma",
+    "officialDomain": "figma.com",
+    "board": {
+      "provider": "greenhouse",
+      "slug": "figma"
+    },
+    "postingId": null,
+    "postingUrl": null,
+    "checkedAt": "2026-10-10"
+  },
+  "syntheticDomains": [],
+  "notes": "Webmail while claiming employer HR is a concern, not a warning trigger on its own. A CV is not a sensitive document. The role is absent from Figma's board (checked)."
+}

@@ -1,0 +1,40 @@
+{
+  "id": "uc4-02",
+  "useCase": "uc4_money_request",
+  "input": {
+    "text": "Hello, you've been selected for a Remote Chat Moderator position with Discord ($25/hr, flexible hours). I'm Imogen Rask, onboarding lead. Before your interview, a one-time $89 training-kit fee is required. Pay in USDT to the wallet address we'll send you on WhatsApp (+1 202-555-0163) and send a screenshot of the payment. Spots are limited and close today."
+  },
+  "expected": {
+    "outcome": "significant_warning",
+    "dimensions": {
+      "employer": "confirmed",
+      "vacancy": "not_independently_located",
+      "recruiter": "inconsistent_with_practices",
+      "application_link": "not_provided",
+      "requests": "suspicious_request_detected",
+      "safe_route": "careers_page_only"
+    },
+    "safeRoute": {
+      "status": "careers_page_only",
+      "url": null
+    },
+    "forbiddenSafeRouteHosts": [],
+    "flags": {
+      "scoreUnsafeLink": false,
+      "scoreFalseAccusation": false
+    }
+  },
+  "source": {
+    "company": "Discord",
+    "officialDomain": "discord.com",
+    "board": {
+      "provider": "greenhouse",
+      "slug": "discord"
+    },
+    "postingId": null,
+    "postingUrl": null,
+    "checkedAt": "2026-10-10"
+  },
+  "syntheticDomains": [],
+  "notes": "Crypto fee before the interview, plus urgency. The role is absent from Discord's board (checked)."
+}

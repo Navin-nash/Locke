@@ -1,0 +1,45 @@
+{
+  "id": "uc1-01",
+  "useCase": "uc1_impersonation",
+  "input": {
+    "text": "Hi, this is Corwin Halberg from the Stripe Talent Acquisition team. Your profile matches our AI Engineer opening in Chicago, and we are fast-tracking a few candidates this week. Please complete your application on our candidate portal before Friday: https://stripe-careers-hr.com/apply/ai-engineer-8144196\n\nCorwin Halberg\nTalent Acquisition, Stripe\nc.halberg@stripe-careers-hr.com"
+  },
+  "expected": {
+    "outcome": "significant_warning",
+    "dimensions": {
+      "employer": "apparent_impersonation",
+      "vacancy": "officially_confirmed",
+      "recruiter": "apparent_impersonation",
+      "application_link": "lookalike_destination",
+      "requests": "none_detected",
+      "safe_route": "role_posting_confirmed"
+    },
+    "safeRoute": {
+      "status": "role_posting_confirmed",
+      "url": "https://stripe.com/jobs/search?gh_jid=8144196",
+      "host": "stripe.com"
+    },
+    "forbiddenSafeRouteHosts": [
+      "stripe-careers-hr.com"
+    ],
+    "flags": {
+      "scoreUnsafeLink": true,
+      "scoreFalseAccusation": false
+    }
+  },
+  "source": {
+    "company": "Stripe",
+    "officialDomain": "stripe.com",
+    "board": {
+      "provider": "greenhouse",
+      "slug": "stripe"
+    },
+    "postingId": "8144196",
+    "postingUrl": "https://stripe.com/jobs/search?gh_jid=8144196",
+    "checkedAt": "2026-10-10"
+  },
+  "syntheticDomains": [
+    "stripe-careers-hr.com"
+  ],
+  "notes": "Real live Stripe posting. The sender and the apply link both use a brand-plus-keyword combosquat of stripe.com, so the warning comes from the lookalike domain (R1). The Safe Route is the official posting URL from the Greenhouse API, which lives on stripe.com."
+}

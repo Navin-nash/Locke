@@ -1,0 +1,40 @@
+{
+  "id": "uc3-03",
+  "useCase": "uc3_nonexistent_vacancy",
+  "input": {
+    "text": "(LinkedIn message) Hi, I'm Odalys Pemberton, a talent partner hiring for Stripe. We're building out a Payments Operations team and have an opening for a Payments Operations Associate, remote within India. Would you be open to a short call next week to discuss? Let me know a good time."
+  },
+  "expected": {
+    "outcome": "further_verification",
+    "dimensions": {
+      "employer": "confirmed",
+      "vacancy": "not_independently_located",
+      "recruiter": "could_not_verify",
+      "application_link": "not_provided",
+      "requests": "none_detected",
+      "safe_route": "careers_page_only"
+    },
+    "safeRoute": {
+      "status": "careers_page_only",
+      "url": null
+    },
+    "forbiddenSafeRouteHosts": [],
+    "flags": {
+      "scoreUnsafeLink": false,
+      "scoreFalseAccusation": true
+    }
+  },
+  "source": {
+    "company": "Stripe",
+    "officialDomain": "stripe.com",
+    "board": {
+      "provider": "greenhouse",
+      "slug": "stripe"
+    },
+    "postingId": null,
+    "postingUrl": null,
+    "checkedAt": "2026-10-10"
+  },
+  "syntheticDomains": [],
+  "notes": "No link and no requests. The role is not on Stripe's board, which is not a negative signal. Expected further_verification; significant_warning here is a false accusation."
+}
