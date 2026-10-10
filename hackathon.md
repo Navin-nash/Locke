@@ -50,6 +50,10 @@ Planned; nothing below is running yet.
 - Pinned the LangChain 0.3 cohort for neatlogs 1.1.21 compatibility. Postgres checkpointer pinned to
   0.1.3, the last line that peers on core <0.4 (checked against the npm registry).
 
+- The orchestrator dispatched `locke-5` (Codex: scaffold, env, neatlogs and models setup, and the
+  smoke graph for the trace gate) and `locke-6` (Antigravity: logo and `DESIGN.md`). The docs now
+  treat `DESIGN.md` as the source of truth for design tokens.
+
 **Not yet done / notes**
 - Entire CLI was **not installed** on the build machine when this docs commit was made, so this
   commit has no checkpoint. Installing Entire is human task H2, before the scaffold lands.

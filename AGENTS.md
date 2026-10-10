@@ -1,7 +1,8 @@
 # AGENTS.md: Locke rulebook (all harnesses)
 
 Canonical rules for every coding agent working in this repo: Claude Code, Codex, Cursor, Antigravity.
-Product detail lives in `docs/SPEC.md`. The task list lives in `docs/PLAN.md`. If this file and a task
+Product detail lives in `docs/SPEC.md`. The task list lives in `docs/PLAN.md`. Design tokens,
+palette, type, and motion live in `DESIGN.md`, which is **required reading before any UI work**. If this file and a task
 prompt conflict, ask the orchestrator. If this file and the SPEC conflict, the SPEC wins on product
 behavior and this file wins on engineering process.
 
@@ -102,10 +103,12 @@ app/                      Next.js routes
   case/[id]/              live view + Dossier          [Cursor]
   evals/                  scoreboard                   [Cursor]
   api/                    route handlers               [Codex]
-  layout.tsx globals.css  shell + design tokens        [Antigravity tokens; Cursor shell]
+  layout.tsx globals.css  shell + tokens implemented from DESIGN.md  [Antigravity tokens; Cursor shell]
 components/
   ui/ ai-elements/        generated shadcn / AI Elements (add, don't hand-edit)  [Cursor]
   brand/ landing/ method/                              [Antigravity]
+brand/  public/brand/     logo sources and exported assets                [Antigravity]
+DESIGN.md                 design tokens, palette, type, motion (source of truth) [Antigravity]
   case/ dossier/ evals/ investigate/                   [Cursor]
 lib/
   types/                  zod contracts, shared by everyone              [Claude Code]
@@ -114,7 +117,7 @@ lib/
   net/                    safe fetch (SSRF guard)                         [Codex]
   db/                     Neon client, cases repo, schema.sql             [Codex]
   server/                 SSE adapter, rate limit                         [Codex]
-  env.ts models.ts neatlogs.ts                                            [Codex env; Claude Code models/neatlogs]
+  env.ts models.ts neatlogs.ts                                            [Codex]
   client/                 browser hooks (SSE reader)                      [Cursor]
 evals/cases/              labeled eval cases                              [Claude Code]
 evals/results/            committed run outputs                          [eval runner]
@@ -262,10 +265,10 @@ A task is done when all of these hold:
 
 | Harness | Strengths used | Owns |
 |---|---|---|
-| **Claude Code** | reasoning, prompts, agent design, docs | `lib/types`, `lib/agent/**` (graph, state, nodes, prompts, verifier, guard, outcome, Safe Route), `lib/models.ts`, `lib/neatlogs.ts`, `evals/cases`, `fixtures/streams`, `docs/**`, README, `hackathon.md` |
-| **Codex** | precise deterministic code, tests, infra | scaffold and config, `lib/tools/**`, `lib/net/**`, `lib/db/**`, `lib/env.ts`, `app/api/**`, `scripts/**`, eval runner and scorer, CI, Vercel deploy |
+| **Claude Code** | reasoning, prompts, agent design, docs | `lib/types`, `lib/agent/**` (graph, state, nodes, prompts, verifier, guard, outcome, Safe Route), `evals/cases`, `fixtures/streams`, `docs/**`, README, `hackathon.md` |
+| **Codex** | precise deterministic code, tests, infra | scaffold and config, M0 smoke graph and trace gate, `lib/neatlogs.ts`, `lib/models.ts`, `lib/tools/**`, `lib/net/**`, `lib/db/**`, `lib/env.ts`, `app/api/**`, `scripts/**`, eval runner and scorer, CI, Vercel deploy |
 | **Cursor** | interactive product UI | `app/investigate`, `app/case/[id]`, `app/evals`, `app/layout.tsx` shell, `components/{ui,ai-elements,case,dossier,evals,investigate}`, `lib/client/**` |
-| **Antigravity** | visual design, motion, browser automation | brand and logo, design tokens in `app/globals.css`, `app/page.tsx` landing, `app/method`, `components/{brand,landing,method}`, `public/brand`, `e2e/**`, demo capture assets in `evidence/` |
+| **Antigravity** | visual design, motion, browser automation | `DESIGN.md`, `brand/`, `public/brand/`, logo, tokens implemented in `app/globals.css`, `app/page.tsx` landing, `app/method`, `components/{brand,landing,method}`, `e2e/**`, demo capture assets in `evidence/` |
 
 ### Dispatch rules
 
@@ -286,6 +289,10 @@ A task is done when all of these hold:
 
 ## 14. UI and motion principles (for harnesses without design skills)
 
+**Read `DESIGN.md` first.** It is the source of truth for tokens, palette, type, and motion. Use its
+tokens and never hard-code hex values in components. The rules below are the baseline that applies
+whatever DESIGN.md says.
+
 - **Accessibility**: WCAG 2.2 AA contrast (4.5:1 text, 3:1 large text and UI). Every interactive
   element is keyboard reachable with a visible `:focus-visible` ring. Use semantic landmarks, label
   every input, and announce streaming status through an `aria-live="polite"` region. Status is never
@@ -294,7 +301,7 @@ A task is done when all of these hold:
   150-250 ms with ease-out and no bounce. Stagger evidence cards by about 40 ms. Honor
   `prefers-reduced-motion: reduce` by replacing motion with instant state changes. No autoplaying
   loops on product pages. GSAP and ScrollTrigger only on `/` and `/method`, cleaned up on unmount.
-- **Tone**: calm, forensic, trustworthy. Use the palette and type in SPEC §12. No purple AI gradients,
+- **Tone**: calm, forensic, trustworthy. Use the palette and type in DESIGN.md. No purple AI gradients,
   no glassmorphism, no emoji in the product UI.
 - **Copy**: plain language, short sentences. State what was verified, what was not, and why. Never
   use alarmist words (see §2.7).

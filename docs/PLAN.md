@@ -23,17 +23,20 @@ task may edit (plus `package.json` and the lockfile for its own dependencies). T
 
 | Harness | Tasks | Hours |
 |---|---|---|
-| Claude Code | T02 T03 T11 T12 T14 T20 T23 T28 | 25.5 |
-| Codex | T01 T05 T06 T07 T08 T13 T21 T24 T27 | 28.5 |
+| Claude Code | T02 T11 T12 T14 T20 T23 T28 | 23 |
+| Codex | T01 (locke-5) T05 T06 T07 T08 T13 T21 T24 T27 | 31 |
 | Cursor | T09 T10 T15 T16 T19 T30 | 20 |
-| Antigravity | T04 T17 T18 T26 T29 | 17 |
+| Antigravity | T04 (locke-6) T31 T17 T18 T26 T29 | 19 |
+
+Codex sits at about a third of the 93 task-hours, which is the AGENTS.md §13 ceiling. If it slips,
+move T08 to Claude Code (its file set is self-contained) rather than adding Codex sessions.
 
 ## Waves (parallel lanes)
 
 | Wave | Start (≈) | Claude Code | Codex | Cursor | Antigravity | Human |
 |---|---|---|---|---|---|---|
-| W1 | Oct 10 14:00 | T02 | T01 | n/a | T04 (logo exploration first) | **H2** Entire, **H1** keys |
-| W2 | 17:00 | T03, T20 | T05, T06 | T09 | T04 | H3 kickoff post |
+| W1 | Oct 10 14:00 | T02 | **T01 (locke-5, running)** | n/a | **T04 (locke-6, running)** | **H2** Entire, **H1** keys |
+| W2 | 17:00 | T20 | T05, T06 | T09 | T31 | H3 kickoff post |
 | W3 | 20:00 | T11 | T07, T08 | T10 | T17 | n/a |
 | W4 | Oct 11 00:00 | T12 | T13 | T15 | T18 | n/a |
 | W5 | 07:00 | T14 | T27 (preview deploy) | T16 | n/a | H4 Detections, H5 posts |
@@ -42,23 +45,43 @@ task may edit (plus `package.json` and the lockfile for its own dependencies). T
 | W8 | Oct 12 04:00 | improved run (T23 finish) | n/a | n/a | T29 | n/a |
 | W9 | 08:00 | T28 | n/a | n/a | T29 | H6 cfo.ai, H8 Entire export, H7 video, H9 submit |
 
+## Already dispatched (Oct 10, by the orchestrator)
+
+| Task | AO session | Harness | Scope (owned paths) |
+|---|---|---|---|
+| T01 | `locke-5` | Codex | Next.js scaffold, `package.json`, `lib/env.ts`, `lib/neatlogs.ts`, `lib/models.ts`, the M0 smoke graph (**Gate 0**) |
+| T04 | `locke-6` | Antigravity | `brand/`, `public/brand/`, root `DESIGN.md` (tokens, palette, type, motion) |
+
+Don't re-dispatch these. Downstream tasks depend on their merged PRs.
+
 ---
 
 ## M0: Scaffold and first-trace gate
 
-### T01 Scaffold, pins, CI (Codex, 3h, W1)
-- **Depends:** none (H2 should run first so these commits are checkpointed).
+### T01 Scaffold, pins, CI, neatlogs + models, smoke graph (Codex, 5.5h, W1): dispatched as `locke-5`
+- **Depends:** H1 for the keys (H2 should run first so these commits are checkpointed).
 - **Owns:** `package.json`, `pnpm-lock.yaml`, `.nvmrc`, `tsconfig.json`, `next.config.ts`,
   `eslint.config.mjs`, `vitest.config.ts`, `postcss.config.mjs`, `components.json`,
   `app/layout.tsx` (minimal), `app/page.tsx` (placeholder), `app/globals.css` (Tailwind import only),
-  `lib/env.ts`, `.github/workflows/ci.yml`, `.gitignore`.
-- **Acceptance:** Next 16.4.0 App Router on pnpm with TS strict plus `noUncheckedIndexedAccess`.
-  Exact pins from AGENTS.md §5 with `pnpm.overrides` forcing a single `@langchain/core@0.3.79`
-  (`pnpm why @langchain/core` shows one version). shadcn initialized (Tailwind v4). `lib/env.ts`
-  parses the AGENTS §6 vars with zod and imports `server-only`. Scripts: `dev`, `build`,
-  `typecheck`, `lint`, `test`, `test:e2e`, `evals`, `db:setup`. CI runs typecheck, lint, and test.
-  `pnpm build` passes.
-- **Skills:** `shadcn`, `context7` (Next 16, Tailwind 4).
+  `lib/env.ts`, `lib/neatlogs.ts`, `lib/models.ts`, the smoke graph and its script,
+  `.github/workflows/ci.yml`, `.gitignore`.
+- **Acceptance:**
+  - Next 16.4.0 App Router on pnpm with TS strict plus `noUncheckedIndexedAccess`.
+  - Exact pins from AGENTS.md §5, with `pnpm.overrides` forcing a single `@langchain/core@0.3.79`
+    (`pnpm why @langchain/core` shows one version).
+  - shadcn initialized (Tailwind v4).
+  - `lib/env.ts` parses the AGENTS §6 vars with zod and imports `server-only`.
+  - Scripts: `dev`, `build`, `typecheck`, `lint`, `test`, `test:e2e`, `evals`, `db:setup`. CI runs
+    typecheck, lint, and test. `pnpm build` passes.
+  - **Gate 0:** the smoke graph runs 2 nodes (an LLM call through OpenRouter `ChatOpenAI`, one
+    `tool()`, and an `interrupt()`/`Command` resume on MemorySaver) with one `langchainHandler()`,
+    tags `variant:baseline scenario:gate run:<id>`, and `flush()`. `neatlogs doctor --local --json`
+    and `--probe` pass. The trace is persisted with node → LLM/tool nesting and token counts
+    (screenshot in the PR plus `evidence/neatlogs/gate.json`).
+  - `lib/neatlogs.ts` documents how tags and metadata map.
+  - `lib/models.ts` exports the planner, worker, and verifier models plus a price table.
+- **Skills:** `shadcn`, `context7`, `neatlogs-ts`, `langgraph-fundamentals`,
+  `langgraph-human-in-the-loop`.
 
 ### T02 Domain contracts in `lib/types` (Claude Code, 2h, W1, parallel with T01)
 - **Depends:** none (adds no dependencies; T01 brings zod).
@@ -69,30 +92,24 @@ task may edit (plus `package.json` and the lockfile for its own dependencies). T
   fixture against `StreamEvent`.
 - **Skills:** `superpowers:writing-plans`, `plan-eng-review`.
 
-### T03 Trace gate: neatlogs + OpenRouter + LangGraph hello (Claude Code, 2.5h, W2)
-- **Depends:** T01, H1 (OpenRouter and neatlogs keys).
-- **Owns:** `lib/neatlogs.ts`, `lib/models.ts`, `lib/agent/checkpointer.ts`, `scripts/trace-gate.ts`.
-- **Acceptance:** `pnpm tsx scripts/trace-gate.ts` runs a 2-node graph (LLM call through OpenRouter
-  `ChatOpenAI` + one `tool()` + `interrupt()`/`Command` resume) with one `langchainHandler()`, tags
-  `variant:baseline scenario:gate run:<id>`, and `flush()`. `neatlogs doctor --local --json` and
-  `--probe` pass. The trace is visible in the dashboard with node → LLM/tool nesting and token counts
-  (screenshot in the PR plus `evidence/neatlogs/gate.json`). Document in `lib/neatlogs.ts` how tags
-  and metadata map. Also verify the OpenRouter web plugin annotations survive through `ChatOpenAI`
-  (`__includeRawResponse`), and that the worker model accepts image input; note the result for T08.
-- **Skills:** `neatlogs-ts`, `langgraph-fundamentals`, `langgraph-human-in-the-loop`,
-  `superpowers:verification-before-completion`.
+### T04 Brand: logo and DESIGN.md (Antigravity, 3h, W1): dispatched as `locke-6`
+- **Depends:** none.
+- **Owns:** `brand/**`, `public/brand/**`, `DESIGN.md`.
+- **Acceptance:** `DESIGN.md` is the source of truth for tokens (palette, status tones, type, spacing,
+  radius) and motion, and meets the requirements in SPEC §12, including a contrast table where every
+  text and status token is ≥ 4.5:1. Logo sources and exports (SVG mark, wordmark, a favicon legible
+  at 16 px, PNG for social). A logo PNG is shared for the kickoff post (H3).
+- **Skills:** `logo-design`, `logo-animation`, `svg-animation`, `design-md`, `better-colors`,
+  `better-typography`, `brand-motion-guidelines`.
 
-### T04 Brand system: logo, tokens, fonts (Antigravity, 3h, W1-W2)
-- **Depends:** T01 for `globals.css` (logo work can start immediately).
-- **Owns:** `components/brand/**`, `public/brand/**`, `app/icon.svg`, `app/globals.css` (tokens
-  section), `app/fonts.ts`.
-- **Acceptance:** The `LockeMark` SVG (static plus an animated 1.2 s reveal, reduced-motion static)
-  and `Wordmark`, per the SPEC §12 brief, legible at 16 px. Palette tokens from SPEC §12 as CSS
-  variables wired into the Tailwind theme and the shadcn theme vars. Newsreader, IBM Plex Sans, and
-  IBM Plex Mono via `next/font`. A contrast check table in the PR (all text tokens ≥ 4.5:1 on paper).
-  Share a logo PNG for the kickoff post (H3).
-- **Skills:** `logo-design`, `logo-animation`, `svg-animation`, `better-colors`, `better-typography`,
-  `brand-motion-guidelines`.
+### T31 Implement DESIGN.md tokens, fonts, brand components (Antigravity, 2h, W2)
+- **Depends:** T01 (locke-5), T04 (locke-6).
+- **Owns:** `app/globals.css` (tokens section), `app/fonts.ts`, `app/icon.svg`, `components/brand/**`.
+- **Acceptance:** DESIGN.md tokens become CSS variables wired into the Tailwind theme and the shadcn
+  theme vars, with fonts loaded via `next/font`. `LockeMark` (static, plus an animated reveal that is
+  static under reduced motion) and `Wordmark` React components. Cursor's T09 switches from shadcn
+  defaults to these tokens once this merges.
+- **Skills:** `design-md`, `svg-animation`, `accessible-animation`.
 
 ---
 
@@ -134,13 +151,16 @@ task may edit (plus `package.json` and the lockfile for its own dependencies). T
 - **Skills:** `superpowers:test-driven-development`, `firecrawl` (ATS docs).
 
 ### T08 Crustdata, web search, tool registry (Codex, 2.5h, W3)
-- **Depends:** T03 (model config and the web-plugin finding), T05.
+- **Depends:** T01 (`lib/models.ts`), T05.
 - **Owns:** `lib/tools/crustdata.ts`, `lib/tools/web-search.ts`, `lib/tools/index.ts` (wraps every
   tool as a LangChain `tool()` with name, description, and zod schema), plus tests.
 - **Acceptance:** `crustdataIdentify` by name and by domain, with 429 backoff and the fault-injection
   path tested. `webSearch` through the OpenRouter `web` plugin (engine `exa`) returns
   `url_citation`s mapped to results (fixture test). A live smoke test runs under `pnpm test:live`.
-  `index.ts` exports every SPEC §7 tool. One trace shows a tool span nested under a node.
+  `index.ts` exports every SPEC §7 tool. One trace shows a tool span nested under a node. Confirm
+  that the web-plugin `annotations` survive through `ChatOpenAI` (`__includeRawResponse`), and that
+  the worker model accepts image input (for the screenshot transcription). Note both results in the
+  PR.
 - **Skills:** `context7`, `neatlogs-ts`.
 
 ---
@@ -148,8 +168,9 @@ task may edit (plus `package.json` and the lockfile for its own dependencies). T
 ## M2: Graph end-to-end
 
 ### T11 Graph: state, intake + HITL, planner, investigators (Claude Code, 4h, W3)
-- **Depends:** Gate 0 (T03), T05, T06. T07 and T08 can be stubbed with fixtures until they merge.
+- **Depends:** Gate 0 (T01 / locke-5), T05, T06. T07 and T08 can be stubbed with fixtures until they merge.
 - **Owns:** `lib/agent/state.ts`, `lib/agent/graph.ts`, `lib/agent/nodes/{intake,planner,employer,requests,vacancy,recruiter,channel}.ts`,
+  `lib/agent/checkpointer.ts` (`LOCKE_CHECKPOINTER=memory|postgres` factory),
   `lib/agent/prompts/{intake,planner,investigators}.ts`, `lib/agent/emit.ts` (typed `config.writer`),
   `lib/agent/run.ts` (`startRun(caseInput, opts)` / `resumeRun(caseId, answer, opts)` →
   `AsyncIterable<StreamEvent>`. This is the single entry point for the API and the eval runner. It
@@ -175,7 +196,7 @@ task may edit (plus `package.json` and the lockfile for its own dependencies). T
 - **Skills:** `superpowers:test-driven-development`, `prompt-engineering-patterns`.
 
 ### T13 API routes, SSE, Neon persistence (Codex, 4h, W4)
-- **Depends:** T02, T03 (checkpointer factory). It consumes `startRun` and `resumeRun` from T11's
+- **Depends:** T01, T02, and the checkpointer factory from T11. It consumes `startRun` and `resumeRun` from T11's
   `lib/agent/run.ts` and runs against a stub iterable until T11 merges.
 - **Owns:** `app/api/**`, `lib/db/**` (`client.ts`, `cases.ts`, `schema.sql`), `lib/server/sse.ts`
   (`AsyncIterable<StreamEvent>` → SSE `Response`), `lib/server/rate-limit.ts`, `scripts/db-setup.ts`.
@@ -201,7 +222,7 @@ task may edit (plus `package.json` and the lockfile for its own dependencies). T
 ## M3: UI (built against fixtures first, then the live API)
 
 ### T09 App shell and `/investigate` (Cursor, 3h, W2)
-- **Depends:** T01, T02 (tokens from T04 when they land; shadcn defaults until then).
+- **Depends:** T01, T02 (tokens from T31 when they land; shadcn defaults until then). Read `DESIGN.md`.
 - **Owns:** `app/layout.tsx` (shell, nav, skip link), `app/investigate/**`,
   `components/investigate/**`, `components/ui/**`, `lib/client/pending-upload.ts`,
   `lib/client/samples.ts`.
@@ -240,7 +261,7 @@ task may edit (plus `package.json` and the lockfile for its own dependencies). T
 - **Skills:** `qa`, `superpowers:verification-before-completion`.
 
 ### T17 Landing page `/` (Antigravity, 4h, W3)
-- **Depends:** T04. A sample Dossier from `fixtures/streams/sample-uc1.json`. It reuses T15's
+- **Depends:** T31. A sample Dossier from `fixtures/streams/sample-uc1.json`. It reuses T15's
   `DimensionTable` once merged, and uses its own static markup until then.
 - **Owns:** `app/page.tsx`, `components/landing/**`.
 - **Acceptance:** SPEC §10 landing: hero with the animated mark, sample Dossier, GSAP ScrollTrigger
@@ -251,7 +272,7 @@ task may edit (plus `package.json` and the lockfile for its own dependencies). T
   `motion-background`, `motion-pricing`, `gsap-performance`.
 
 ### T18 Methodology page `/method` (Antigravity, 3h, W4)
-- **Depends:** T04, T02 (it renders labels from `STATUS_LABELS`).
+- **Depends:** T31, T02 (it renders labels from `STATUS_LABELS`).
 - **Owns:** `app/method/**`, `components/method/**`.
 - **Acceptance:** SPEC §10 `/method` content in full: the 7 → 6 mapping, the vocabularies, outcome
   rules in plain words, source hierarchy, never-do list, privacy, and limitations. An animated

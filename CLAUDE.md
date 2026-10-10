@@ -51,12 +51,14 @@ Before starting a task, read your task block in `docs/PLAN.md` and the SPEC sect
 
 ## UI work (Cursor owns product UI, Antigravity owns brand and motion; use these when Claude Code reviews or pairs on UI)
 
+Read `DESIGN.md` before any UI task. It is the source of truth for tokens, palette, type, and motion.
+
 | When | Skill |
 |---|---|
 | Adding or composing components, presets, `components.json` | `shadcn` |
 | Agent-run visuals: task lists, tool calls, sources, loaders | `ai-elements` |
 | Overall design direction, critique, or hardening a screen | `impeccable` |
-| Writing `DESIGN.md`-style tokens or extending the design system | `design-md` |
+| Reading `DESIGN.md` or proposing a token change (Antigravity owns the file; route changes through the orchestrator) | `design-md` |
 | Landing or marketing composition that must not look generic | `design-taste-frontend` |
 | Polishing details (radius, depth, hit areas) | `better-ui`, `emil-design-eng` |
 | Full polish pass across a page | `better-interface` (runs layout, typography, colors, accessibility, writing) |

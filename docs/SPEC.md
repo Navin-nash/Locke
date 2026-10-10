@@ -447,49 +447,30 @@ pipeline (reduced-motion: static diagram).
 `EvidenceCard`, `EvidenceDrawer`, `SafeRouteCard`, `VerificationDraft`, `NextSteps`,
 `InvestigationMap`, `RecoveryRow`, `ChallengeCard`, `NeedsInputCard`, `MetricCard`, `BeforeAfterChart`.
 Antigravity: `LockeMark` (static and animated SVG), `Wordmark`, `HowItWorks`, `TrustStrip`,
-`PricingTeaser`. Shared tokens are in `app/globals.css`.
+`PricingTeaser`. Tokens come from `DESIGN.md` and are implemented in `app/globals.css`.
 
 ## 12. Design direction
 
-**Feel:** calm, forensic, trustworthy, like a case file laid out on a desk. Archival paper, ink, and
-brass. Not the generic AI look: no purple gradients, glass, or neon.
+**Source of truth: `/DESIGN.md`** (owned by Antigravity). It defines tokens, palette, type, logo,
+and motion. If it conflicts with this section, DESIGN.md wins. This section only states the product
+requirements that DESIGN.md must satisfy:
 
-**Palette** (light theme only in V1; contrast measured on `paper`):
-| Token | Hex | Use |
-|---|---|---|
-| `ink` | `#0E1A2B` | headings, dark sections, primary buttons |
-| `paper` | `#F7F5F0` | page background |
-| `surface` | `#FFFFFF` | cards |
-| `line` | `#DAD5CB` | borders, dividers |
-| `text` | `#1B2433` | body text |
-| `muted` | `#556070` | secondary text (≥ 5:1) |
-| `brass` | `#A7834A` | brand mark and decorative accents only (not for text) |
-| `brass-strong` | `#7A5C2E` | accent text and links on paper |
-| `verified` | `#1E6F55` | P tone |
-| `neutral` | `#556070` | N tone |
-| `caution` | `#8A5A00` | `needs_confirmation`, `inconsistent_with_practices` |
-| `warning` | `#A8231B` | W tone |
-Each tone also has a tinted background at about 8% for pills and banners. Recheck AA when the
-tokens are implemented (`better-colors`).
-
-**Type:** headings in **Newsreader** (variable serif, archival voice). UI and body in **IBM Plex
-Sans**. URLs, domains, and evidence excerpts in **IBM Plex Mono**. Use `tabular-nums` for metrics.
-Fonts load via `next/font/google`. Long URLs break with `overflow-wrap: anywhere`.
-
-**Logo brief (Antigravity):** a monogram where the inner corner of an "L" forms a keyhole, or a
-keyhole that doubles as a magnifier lens. Wordmark "Locke" in Newsreader semibold. It must work at
-16 px (favicon) in one color. Animation: a single 1.2 s reveal (a scan line passes and the keyhole
-settles). Plays once and is static under reduced motion.
-
-**Motion language: "evidence settles".** Elements enter with an 8 px rise and fade in 200 ms with
-ease-out. Status pills cross-fade from neutral to their final tone in 150 ms. Running map nodes
-breathe with an opacity pulse (0.6 ↔ 1, 1.6 s). A verifier challenge shows a brass underline sweep.
-No bounce, at most one spinner per screen, and transform and opacity only. GSAP ScrollTrigger only
-on `/` and `/method`.
+- **Feel:** calm, forensic, trustworthy, like a case file on a desk. Not the generic AI look: no
+  purple gradients, glass, or neon. Light theme only in V1.
+- **Status tones:** DESIGN.md provides one token each for P (verified), N (neutral or uncertain), a
+  caution tone (`needs_confirmation`, `inconsistent_with_practices`), and W (warning). Every tone
+  must reach ≥ 4.5:1 on the page background and have a tinted background variant for pills and
+  banners.
+- **Type:** a readable UI face, a monospace face for URLs, domains, and evidence excerpts, and
+  `tabular-nums` for metrics. Long URLs wrap with `overflow-wrap: anywhere`.
+- **Logo:** works in one color at 16 px. Any reveal animation plays once and is static under reduced
+  motion.
+- **Product motion:** calm and short ("evidence settles"): transform and opacity only, no bounce, at
+  most one spinner per screen. GSAP ScrollTrigger only on `/` and `/method`.
 
 ## 13. Accessibility
 
-WCAG 2.2 AA. Keyboard-complete flows, a visible `:focus-visible` ring (2 px `ink` plus offset), and
+WCAG 2.2 AA. Keyboard-complete flows, a visible `:focus-visible` ring (2 px, high-contrast DESIGN.md token, with offset), and
 a skip link. Landmarks and a heading order per page. All inputs labelled, with errors linked via
 `aria-describedby`. The streaming status is announced in an `aria-live="polite"` region, throttled
 to node-level changes (never every evidence card). Status is always conveyed by icon plus text plus
