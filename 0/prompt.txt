@@ -1,0 +1,7 @@
+<task-notification>
+<task-id>bxq927wzd</task-id>
+<tool-use-id>toolu_01E1p6etFVi95wYityVTbCTC</tool-use-id>
+<output-file>C:\Users\govin\AppData\Local\Temp\claude\C--Users-govin--ao-data-worktrees-locke-orchestrator-locke-orchestrator\2ea4f117-6bc8-446f-823b-b764514bebad\tasks\bxq927wzd.output</output-file>
+<status>completed</status>
+<summary>Background command "Wait for brand PR to open" completed (exit code 0)</summary>
+</task-notification>
