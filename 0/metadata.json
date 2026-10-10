@@ -1,0 +1,86 @@
+{
+  "cli_version": "0.11.4",
+  "checkpoint_id": "01M4JNGYXNA5PH8784TPFX6SE3",
+  "session_id": "4abe2521-b866-4362-8f63-efdd7ae22fa2",
+  "strategy": "manual-commit",
+  "created_at": "2026-10-10T10:25:40.4415246Z",
+  "branch": "main",
+  "checkpoints_count": 5,
+  "save_step_count": 5,
+  "files_touched": [
+    ".gitignore",
+    "app/api/smoke/route.ts",
+    "app/layout.tsx",
+    "instrumentation.ts",
+    "lib/agent/smoke-graph.ts"
+  ],
+  "agent": "Claude Code",
+  "model": "gemini-3.5-flash",
+  "turn_id": "eceaeb8038ec",
+  "compact_transcript_start": 0,
+  "token_usage": {
+    "input_tokens": 0,
+    "cache_creation_tokens": 0,
+    "cache_read_tokens": 0,
+    "output_tokens": 3825,
+    "api_call_count": 46
+  },
+  "session_metrics": {
+    "turn_count": 5
+  },
+  "initial_attribution": {
+    "calculated_at": "2026-10-10T10:25:40.3207247Z",
+    "agent_lines": 0,
+    "agent_removed": 0,
+    "human_added": 0,
+    "human_modified": 236,
+    "human_removed": 41,
+    "total_committed": 167,
+    "total_lines_changed": 277,
+    "agent_percentage": 0,
+    "metric_version": 2
+  },
+  "prompt_attributions": [
+    {
+      "checkpoint_number": 1,
+      "user_lines_added": 48,
+      "user_lines_removed": 41,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0,
+      "user_added_per_file": {
+        ".gitignore": 48
+      },
+      "user_removed_per_file": {
+        ".gitignore": 41
+      }
+    },
+    {
+      "checkpoint_number": 2,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 3,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 4,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    },
+    {
+      "checkpoint_number": 5,
+      "user_lines_added": 0,
+      "user_lines_removed": 0,
+      "agent_lines_added": 0,
+      "agent_lines_removed": 0
+    }
+  ]
+}
