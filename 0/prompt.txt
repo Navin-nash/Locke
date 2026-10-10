@@ -1,0 +1,1 @@
+Our product build should mandatorily use neatlogs, entire and cfo.ai. Neatlogs for tracing and entire for git tracking and other operations. Can you check if entire is integrated or now
