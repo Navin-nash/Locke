@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" fill="none">
+  <title>Locke — Open Graph Image</title>
+  <!-- Background Canvas: Deep Midnight Slate -->
+  <rect width="1200" height="630" fill="#0A0F1D"/>
+
+  <!-- Architectural Subtle Grid & Ambient Precision Accents -->
+  <g opacity="0.12" stroke="#334155" stroke-width="1">
+    <line x1="80" y1="0" x2="80" y2="630"/>
+    <line x1="1120" y1="0" x2="1120" y2="630"/>
+    <line x1="0" y1="80" x2="1200" y2="80"/>
+    <line x1="0" y1="550" x2="1200" y2="550"/>
+  </g>
+
+  <!-- Left Column: Hero Brand Mark (Large, 190x190) -->
+  <g transform="translate(100, 150) scale(0.9)">
+    <!-- Shackle Arc (Teal 400) -->
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M144 44 C108.654 44 80 72.654 80 108 V140 H112 V108 C112 90.327 126.327 76 144 76 C161.673 76 176 90.327 176 108 V140 H208 V108 C208 72.654 179.346 44 144 44 Z" fill="#2DD4BF"/>
+    <!-- Forensic Aperture Pin -->
+    <circle cx="144" cy="116" r="14" fill="#2DD4BF"/>
+    <!-- Base Stem & Shelf with Verification Notch -->
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M44 80 H84 V172 H180 V184 H186 V172 H196 C202.627 172 208 177.373 208 184 V200 C208 206.627 202.627 212 196 212 H44 V80 Z" fill="#F8FAFC"/>
+  </g>
+
+  <!-- Left Column: Brand Lockup & Typography -->
+  <g transform="translate(340, 160)">
+    <!-- Wordmark -->
+    <g transform="translate(-30, 0) scale(0.9)" fill="#F8FAFC">
+      <path d="M30 36 H62 V98 H106 V124 H30 V36 Z"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M164 36 C139.699 36 120 55.699 120 80 C120 104.301 139.699 124 164 124 C188.301 124 208 104.301 208 80 C208 55.699 188.301 36 164 36 Z M164 60 C175.046 60 184 68.954 184 80 C184 91.046 175.046 100 164 100 C152.954 100 144 91.046 144 80 C144 68.954 152.954 60 164 60 Z"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M266 36 C241.699 36 222 55.699 222 80 C222 104.301 241.699 124 266 124 C287.106 124 304.707 109.187 308.971 89.5 H282.883 C279.462 95.733 273.266 100 266 100 C254.954 100 246 91.046 246 80 C246 68.954 254.954 60 266 60 C273.266 60 279.462 64.267 282.883 70.5 H308.971 C304.707 50.813 287.106 36 266 36 Z"/>
+      <path d="M324 36 H354 V70.2 L378.8 36 H414.5 L372.5 80.5 L418 124 H379.5 L354 89.2 V124 H324 V36 Z"/>
+      <path d="M430 36 H506 V60 H460 V68 H496 V90 H460 V100 H510 V124 H430 V36 Z"/>
+    </g>
+
+    <!-- Tagline 1: Know who's really hiring. -->
+    <text x="0" y="160" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#F8FAFC" letter-spacing="-0.02em">
+      Know who’s really hiring.
+    </text>
+
+    <!-- Tagline 2 / Subtitle: Evidence before trust. -->
+    <text x="0" y="202" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="400" fill="#94A3B8">
+      Evidence before trust. Forensic verification for job seekers.
+    </text>
+
+    <!-- Value Prop Pills -->
+    <g transform="translate(0, 240)">
+      <!-- Pill 1: Employer Identity -->
+      <rect x="0" y="0" width="170" height="36" rx="18" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+      <circle cx="16" cy="18" r="4" fill="#2DD4BF"/>
+      <text x="28" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" font-weight="500" fill="#E2E8F0">Verified Employer</text>
+
+      <!-- Pill 2: Public ATS Match -->
+      <rect x="182" y="0" width="160" height="36" rx="18" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+      <circle cx="198" cy="18" r="4" fill="#2DD4BF"/>
+      <text x="210" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" font-weight="500" fill="#E2E8F0">Direct ATS API</text>
+
+      <!-- Pill 3: Safe Route -->
+      <rect x="354" y="0" width="144" height="36" rx="18" fill="#0D5C63" stroke="#2DD4BF" stroke-width="1"/>
+      <circle cx="370" cy="18" r="4" fill="#FFFFFF"/>
+      <text x="382" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">Safe Route</text>
+    </g>
+  </g>
+
+  <!-- Right Column: Micro Forensic Dossier Card -->
+  <g transform="translate(830, 130)">
+    <!-- Card Frame -->
+    <rect width="270" height="360" rx="16" fill="#162031" stroke="#334155" stroke-width="1.5"/>
+    <!-- Card Header -->
+    <rect x="0" y="0" width="270" height="52" rx="16" fill="#1E293B"/>
+    <text x="20" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" font-weight="600" fill="#F8FAFC" letter-spacing="0.05em">EVIDENCE DOSSIER</text>
+    <rect x="200" y="18" width="50" height="18" rx="9" fill="#064E3B"/>
+    <text x="210" y="31" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" font-weight="700" fill="#34D399">ACTIVE</text>
+
+    <!-- Finding Rows -->
+    <!-- Row 1: Org -->
+    <g transform="translate(20, 74)">
+      <circle cx="6" cy="6" r="5" fill="#10B981"/>
+      <text x="20" y="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" font-weight="500" fill="#CBD5E1">Organization</text>
+      <text x="20" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" font-weight="400" fill="#64748B">Confirmed • Crustdata API</text>
+    </g>
+    <!-- Row 2: Vacancy -->
+    <g transform="translate(20, 124)">
+      <circle cx="6" cy="6" r="5" fill="#10B981"/>
+      <text x="20" y="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" font-weight="500" fill="#CBD5E1">Vacancy</text>
+      <text x="20" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" font-weight="400" fill="#64748B">Matched • Ashby Board</text>
+    </g>
+    <!-- Row 3: Recruiter Affiliation -->
+    <g transform="translate(20, 174)">
+      <circle cx="6" cy="6" r="5" fill="#F59E0B"/>
+      <text x="20" y="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" font-weight="500" fill="#CBD5E1">Recruiter Domain</text>
+      <text x="20" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" font-weight="400" fill="#64748B">Lookalike • Needs check</text>
+    </g>
+    <!-- Row 4: Channel Resolution -->
+    <g transform="translate(20, 224)">
+      <circle cx="6" cy="6" r="5" fill="#10B981"/>
+      <text x="20" y="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" font-weight="500" fill="#CBD5E1">Official Route</text>
+      <text x="20" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" font-weight="400" fill="#2DD4BF">careers.acme.com/job/412</text>
+    </g>
+
+    <!-- Bottom Badge -->
+    <rect x="20" y="290" width="230" height="46" rx="8" fill="#0D5C63"/>
+    <text x="36" y="318" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="12" font-weight="600" fill="#FFFFFF">Proceed via Safe Route →</text>
+  </g>
+
+  <!-- Footer Tag: neatHack 48h -->
+  <text x="100" y="586" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14" font-weight="500" fill="#475569">
+    neatHack 2026 • AI Investigator Agent Team
+  </text>
+</svg>
