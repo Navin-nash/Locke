@@ -1,0 +1,52 @@
+You are the docs/spec author for "Locke" (neatHack AI Agent Hackathon by neatlogs, Oct 10-12 2026, 48h, submissions Oct 12 7:00-11:55 PM IST). The repo is empty apart from an initial commit. Your job is to produce the foundational docs that every later worker (Claude Code, Codex, Cursor, Antigravity) will follow. Write docs only, no app code.
+
+READ FIRST (all in C:/Users/govin/.ao/data/artifacts/locke-1/):
+- user-vision.md: the user's product vision. It is the source of truth for product intent and trust principles. Do not dilute it.
+- concept-brief.md: the orchestrator's sharpened 48h concept: agent design, eval loop, pages, cuts, harness dispatch policy.
+- research-tech-stack.md: verified stack (neatlogs TS SDK + LangGraph.js callback, OpenRouter config, version pins, streaming, checkpointer, model split).
+- research-partners-judging.md: Entire / cfo.ai / neatlogs evidence playbook, judging weights, demo beats, evidence checklist.
+Use superpowers:brainstorming / writing-plans and gstack plan-eng-review style thinking, and stay ponytail-lean (no speculative scope). Verify anything uncertain with web search / firecrawl / context7.
+
+FIXED DECISIONS (do not change):
+- Next.js App Router + TypeScript, single app at repo root, pnpm, Node runtime routes only (no Edge).
+- LangGraph.js for the agent. neatlogs TS SDK (`neatlogs` + `neatlogs/langchain` langchainHandler attached once at graph invocation) for every run. OpenRouter via @langchain/openai ChatOpenAI for EVERY LLM call. Use the research's pinned compatibility cohort; the first technical gate is one persisted, correctly nested neatlogs trace.
+- UI: shadcn/ui + ai-elements, Tailwind, motion/GSAP per the skills below.
+- Mandatory hackathon tools: neatlogs (runtime tracing, detections, fixes, before/after), Entire (dev-loop checkpoints + entire-graph evidence), cfo.ai (business plan using real per-run cost from neatlogs). Sponsor: Crustdata for employer identity.
+- Persistence: Neon Postgres (cases + LangGraph PostgresSaver), MemorySaver allowed for local day-1 only. Deploy target: Vercel.
+- Web evidence sources: public ATS JSON APIs (Greenhouse, Lever, Ashby, SmartRecruiters, Workable), Crustdata company API, RDAP + DNS-over-HTTPS, direct careers-page fetch, and a web-search tool (pick ONE in the spec with a reason, preferably OpenRouter's web plugin so no extra vendor is needed).
+- Hard invariant: never recommend a recruiter-supplied link as the Safe Route unless it was independently matched to an employer-controlled source. Missing evidence never equals fraud. No numeric trust score.
+
+DELIVERABLES (commit them on your branch):
+1. AGENTS.md: the canonical, harness-agnostic rulebook (Codex, Cursor, and Antigravity read it). Cover: product one-liner and use case; trust principles as coding invariants; architecture (graph nodes, state, tools, data flow diagram in mermaid); repo structure; tech stack + pins; env vars (names only); coding rules (TS strict, zod at boundaries, small files, no secrets client-side, every tool wrapped and traced, tool output bounded/untrusted); testing rules (vitest unit tests for deterministic tools, eval harness for agent behavior, TDD for tools); neatlogs tracing rules (tags: variant:baseline/improved, scenario id, recovery); Entire rules (commit small and often, push so checkpoint refs reach the remote); git/PR conventions (conventional commits, branch per task, one PR per task, never commit to main directly); definition of done; and an ORCHESTRATOR DISPATCH section: harness ownership table (Claude Code = agent graph/prompts/verifier/evals/docs; Codex = deterministic tools, adapters, API routes, tests, eval runner, CI; Cursor = product UI pages/components; Antigravity = brand/logo, landing + method motion pages, browser E2E + demo capture), file-ownership boundaries to avoid merge conflicts, task-sizing rules, how to hand off contracts (shared types in lib/types first), and a rule never to overload one harness.
+2. CLAUDE.md: starts with an `@AGENTS.md` import, then Claude-Code-specific guidance only: which skills to invoke per task type. Planning/process: superpowers (brainstorming, writing-plans, test-driven-development, subagent-driven-development, verification-before-completion, systematic-debugging), gstack (autoplan, plan-eng-review, plan-design-review, office-hours, review, qa, ship), ponytail. Research: firecrawl, firecrawl-deep-research, exa-search, deep-research, native web search, context7/docs-lookup. Agent/LangGraph: langgraph-fundamentals, langgraph-human-in-the-loop, langgraph-persistence, neatlogs-ts skill (npx skills add neatlogs/skills --skill "neatlogs-ts"). UI: shadcn, impeccable, ai-elements, motion-web, 60fps-animation, accessible-animation, after-effects, animated-infographic, animation-principles, better-ui, better-colors, better-interface, better-accessibility, better-layout, better-typography, better-writing, brand-motion-guidelines, chart-animation, design-md, design-taste-frontend, emil-design-eng, gsap-core, gsap-frameworks, gsap-react, gsap-scrolltrigger, gsap-timeline, gsap-web, gsap-utils, gsap-plugins, gsap-performance, motion-background, motion-pricing, svg-animation, micro-interaction, page-transition-animation, dataviz. Brand: logo-design, logo-animation, svg-animation. Map each skill to WHEN to use it, not just a list. Non-Claude harnesses may lack these skills, so AGENTS.md must state the underlying principles (60fps transform/opacity-only animation, prefers-reduced-motion, WCAG AA contrast, focus states, etc.).
+3. docs/SPEC.md: the complete product spec. Include:
+   - Problem, users, and positioning ("Locke: know who's really hiring" / "Evidence before trust", the John Locke empiricism name story).
+   - V1 scope and explicit cuts.
+   - The 7 investigation questions mapped to the 6 Dossier dimensions, with exact status vocabularies.
+   - The 4 overall outcomes with precise decision rules.
+   - Agent graph spec: Intake/Extractor with HITL follow-up, Planner, parallel Investigators, Verifier/skeptic, Resolver.
+   - Each tool's contract: input/output zod shapes, timeouts, fallbacks, recovery chain.
+   - Data model: Case, OpportunityClaim, Finding, Evidence, SafeRoute, Run.
+   - API routes and the streaming event protocol.
+   - Pages with per-page content, states and components: / landing, /investigate, /case/[id] live view + Dossier, /evals scoreboard, /method.
+   - Design direction: brand palette, type, and motion language (calm, forensic, trustworthy; not generic AI purple).
+   - Accessibility, and privacy (PII redaction before tracing).
+   - Eval set design: ~25 labeled cases across the 6 use cases; metrics include unsafe-link-recommended = 0 and false-accusation rate.
+   - Hackathon evidence plan mapped to judging weights.
+   - Demo video beat sheet: 3 cases + recovery + before/after + cfo.ai.
+   - Business model summary (free / Pro / university seats / platform API) as cfo.ai input.
+   - Risks.
+4. docs/PLAN.md: a time-boxed build plan from now (Oct 10 ~14:00 IST) to submission. Phases with milestones:
+   - M0: scaffold + first neatlogs trace gate
+   - M1: tools
+   - M2: graph end-to-end
+   - M3: UI
+   - M4: evals baseline → fixes → improved
+   - M5: polish, brand, demo, business plan, submission
+   Break it into worker-sized tasks (2-4h each). Each task needs: id, title, harness (spread across all 4 harnesses by strength; none overloaded), dependencies, files owned, acceptance criteria, and skills to use. Mark which tasks can run in parallel. Include the human-only tasks: accounts/API keys, Entire install, cfo.ai session, X posts, video recording, submission.
+5. hackathon.md: the root build log in the format of the neatlogs hackathon skill (https://neatlogs.com/hackathon/skill). Fetch it and follow its format, with a first dated entry.
+6. .env.example: names only.
+
+ENTIRE: before committing, run `entire version`. If Entire is installed, run `entire enable --agent claude-code` (or with --local if it would churn shared config) so this commit is checkpointed, and note it. If it is not installed, commit anyway and say so in your report.
+PUBLISHING: commit locally on your branch only. Do NOT push and do NOT open a PR; the orchestrator will get the user's go-ahead first.
+Keep AGENTS.md under ~350 lines, CLAUDE.md under ~150, and SPEC as long as it needs to be but tight. When done, run `ao report` with a summary and the file list.
