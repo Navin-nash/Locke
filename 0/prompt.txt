@@ -1,0 +1,73 @@
+Context: This summary will be shown in a list to help users and Claude choose which conversations are relevant.
+
+Please write a concise, factual summary of this conversation. Output ONLY the summary - no preamble. Claude will see this summary when searching previous conversations for useful memories and information.
+
+Summarize what happened in 2-4 sentences. Be factual and specific. Output in <summary></summary> tags.
+
+Include:
+- What was built/changed/discussed (be specific)
+- Key technical decisions or approaches
+- Problems solved or current state
+
+Exclude:
+- Apologies, meta-commentary, or your questions
+- Raw logs or debug output
+- Generic descriptions - focus on what makes THIS conversation unique
+
+Good:
+<summary>Built JWT authentication for React app with refresh tokens and protected routes. Fixed token expiration bug by implementing refresh-during-request logic.</summary>
+
+Bad:
+<summary>I apologize. The conversation discussed authentication and various approaches were considered...</summary>
+
+User: RESEARCH-ONLY task for project "locke" (neatHack AI Agent Hackathon by neatlogs, Oct 10-12 2026, https://neatlogs.com/hackathon). Do NOT write code, commit, push, or open PRs. Write ONE report to C:/Users/govin/.ao/data/artifacts/locke-1/research-partners-judging.md.
+
+Hackathon facts: there is one track, "an agent or team of agents that completes a substantial task end to end". MANDATORY: use neatlogs + Entire (entire.io) + cfo.ai. Judging: agent 30%, use of neatlogs/Entire/cfo.ai 25%, demo video 20%, building in public (#neatHack on X) 15%, usefulness/originality 10%. Evidence judges expect: before/after runs with numbers, neatlogs trace links, Entire checkpoints or entire-graph output from the repo, a cfo.ai business plan (pricing, costs, revenue, runway), a recovery run where an action failed, and #neatHack links. Judges are from Entire, Orchestrator.inc, and neatlogs. Sponsors: Dodo Payments, AWS ($25, us-east-1, no Bedrock), Crustdata (5k credits for company/people APIs).
+
+Using web search / firecrawl / exa (verify against official sources):
+1. Entire (entire.io): what is it exactly (CLI? git checkpoints for agent sessions?), install, how it hooks into Claude Code / Codex / Cursor sessions, what "checkpoints" and "entire-graph" are, and how to produce that evidence in a repo. Give exact commands.
+2. cfo.ai: what it does, how to generate a business plan, and the export format. Give the exact steps.
+3. neatlogs product overview: features most likely to impress neatlogs judges (traces, evals, replays, cost tracking, etc.).
+4. Optional sponsor leverage: Crustdata APIs, Dodo Payments, AWS deploy. Which are cheap to integrate for bonus points?
+5. Patterns that win agent hackathons judged on traces, recovery, and verification. What makes a demo video score high? A concrete evidence checklist mapped to each judging weight.
+6. Any public info on the Discord, Luma FAQ, team size, or rules.
+Keep it under 400 lines and decision-oriented. When done, run `ao report` with a one-paragraph summary.
+
+Agent: Still researching: Entire and neatlogs are covered. Next I'm checking the cfo.ai export and MCP docs, the Entire checkpoint push and sharing docs, and the sponsors.
+
+I've finished the partner tools. Next: the neatlogs sharing commands, the sponsor APIs (Crustdata, Dodo, AWS), and what wins hackathons. Then I'll write the report.
+
+The report is written (219 lines). The AO note was over the 1,000-character limit, so I'm resending a shorter version.
+
+The report is written to `C:/Users/govin/.ao/data/artifacts/locke-1/research-partners-judging.md` (219 lines) and filed with `ao report --done`. I wrote it to the `locke-1` artifacts folder you named, not this session's `locke-3` one. The facts and commands come from the official docs. Where I couldn't confirm something it's marked unverified, and nothing was run or tested.
+
+- **Entire** is a command-line tool that records each coding-agent session alongside your git history.
+  - Install it with `irm https://entire.io/install.ps1 | iex` on Windows, then run `entire enable --agent claude-code` before the first real hackathon commit.
+  - Every commit then gets an `Entire-Checkpoint:` line, and the checkpoint data goes to GitHub when you `git push`. `git ls-remote origin 'refs/entire/checkpoints/*'` confirms it arrived.
+  - Evidence commands:
+    - `entire checkpoint explain <id> --json` dumps the session behind a commit.
+    - `entire checkpoint tokens <after> --compare <before>` gives a before/after token comparison.
+    - "entire-graph" is an add-on that maps the code: `entire plugin install graph`, then `entire graph checkpoint <id>`, `graph diff` and `graph health --json`.
+  - Entire records our build sessions, not the product agent's runs, unless the agent itself commits through Claude Code or Codex.
+- **cfo.ai**: Ari, its AI finance agent, builds a 24-month plan from a list of prompts, which I included.
+  - The docs only describe sharing the plan as a read-only link that needs no login. They mention no PDF or Excel export, so also take screenshots and write a short summary file.
+  - Signup is at `cfo.ai/neathacks` and needs a card. Cancel the trial straight away in Settings → Billing.
+- **neatlogs**: the Python setup (`neatlogs.init()`) has to run before the Anthropic library is imported. Mark every tool and step with `@span` and tag runs `baseline`, `improved` and `recovery`.
+  - The Claude Agent SDK isn't on the supported list, so use the `anthropic` setting plus manual spans.
+  - The features most likely to impress these judges:
+    - **Detections**: rules that flag a failing step.
+    - **Fixes**: suggests the root cause from failing runs.
+    - **Session Replay**: plays a run back step by step.
+    - **Analytics**: cost and error charts.
+- **Sponsors**: Crustdata is one API call with free credits, worth adding only if our task uses company or people data. Dodo can be a no-code test-mode payment link. Skip AWS unless the agent needs it.
+- **Winning pattern**: show one loop on camera. neatlogs flags a failure, Fixes suggests a cause, we fix it in Claude Code (Entire records the session), rerun, and show the improvement in numbers. Then feed the real cost per run from neatlogs into the cfo.ai plan. That one chain uses all three mandatory tools.
+- **Also in the report**: a demo-video outline of about 2:50, an evidence checklist mapped to each judging weight, and logistics.
+  - Submission is a quote-tweet of the official neatlogs X post on Oct 12, 7:00–11:55 PM IST, and neatlogs and cfo.ai engage with the first 50, so post early in the window.
+  - Web check-in is needed for the AWS credits.
+
+To ask on Discord before we rely on them:
+- Can judges open our neatlogs traces, or do we need to invite them or use screenshots?
+- Do checkpoint pages on entire.io require login?
+- Is a cfo.ai share link enough, or do they expect a PDF?
+- What is the maximum team size, and is pre-event work allowed? The FAQ answers aren't public.
+- Does our existing `initial commit` count, given the rule that commits must be dated during the hackathon?
