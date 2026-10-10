@@ -29,6 +29,7 @@
     "zod": "3.25.76"
   },
   "devDependencies": {
+    "@neon/config": "1.8.6",
     "@tailwindcss/turbopack": "^4",
     "@types/node": "24.10.9",
     "@types/react": "^19",
