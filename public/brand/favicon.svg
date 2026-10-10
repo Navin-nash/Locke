@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none">
+  <title>Locke Favicon</title>
+  <!-- Optical small-scale 32x32 pixel-grid tuned icon -->
+  <!-- Dark grounding rounded base container (Navy) -->
+  <rect x="2" y="2" width="28" height="28" rx="7" fill="#0F172A"/>
+  <!-- Shackle Arc (Teal 400 for maximum pixel clarity on dark base) -->
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M16 6 C12.134 6 9 9.134 9 13 V17 H12.5 V13 C12.5 11.067 14.067 9.5 16 9.5 C17.933 9.5 19.5 11.067 19.5 13 V17 H23 V13 C23 9.134 19.866 6 16 6 Z" fill="#2DD4BF"/>
+  <!-- Central Evidence Pin -->
+  <circle cx="16" cy="14" r="1.75" fill="#2DD4BF"/>
+  <!-- Calibrated Foundation Stem and Vernier Shelf (Warm White) -->
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M8 15 H12 V22 H22 V25 H8 V15 Z" fill="#F8FAFC"/>
+</svg>

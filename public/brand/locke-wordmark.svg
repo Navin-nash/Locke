@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 160" width="540" height="160" fill="none">
+  <title>Locke Wordmark</title>
+  <!-- Bespoke architectural geometric serif wordmark: LOCKE -->
+  <g fill="#0F172A">
+    <!-- L -->
+    <!-- Stem: x=30..62, y=36..124; Foot: x=30..106, y=98..124 with terminal bracket -->
+    <path d="M30 36 H62 V98 H106 V124 H30 V36 Z"/>
+
+    <!-- O -->
+    <!-- Geometric counter, optical circular harmony, center=(164, 80), outer R=44, inner R=20 -->
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M164 36 C139.699 36 120 55.699 120 80 C120 104.301 139.699 124 164 124 C188.301 124 208 104.301 208 80 C208 55.699 188.301 36 164 36 Z M164 60 C175.046 60 184 68.954 184 80 C184 91.046 175.046 100 164 100 C152.954 100 144 91.046 144 80 C144 68.954 152.954 60 164 60 Z"/>
+
+    <!-- C -->
+    <!-- Precise geometric open aperture, outer R=44, inner R=20, terminal gap at right -->
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M266 36 C241.699 36 222 55.699 222 80 C222 104.301 241.699 124 266 124 C287.106 124 304.707 109.187 308.971 89.5 H282.883 C279.462 95.733 273.266 100 266 100 C254.954 100 246 91.046 246 80 C246 68.954 254.954 60 266 60 C273.266 60 279.462 64.267 282.883 70.5 H308.971 C304.707 50.813 287.106 36 266 36 Z"/>
+
+    <!-- K -->
+    <!-- Vertical stem: x=324..354, y=36..124; upper diagonal to (402, 36); lower diagonal to (406, 124) -->
+    <path d="M324 36 H354 V70.2 L378.8 36 H414.5 L372.5 80.5 L418 124 H379.5 L354 89.2 V124 H324 V36 Z"/>
+
+    <!-- E -->
+    <!-- Vertical stem: x=430..460; Top bar: 460..504, y=36..58; Mid bar: 460..494, y=69..89; Base bar: 460..510, y=102..124 -->
+    <path d="M430 36 H506 V60 H460 V68 H496 V90 H460 V100 H510 V124 H430 V36 Z"/>
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" fill="none">
+  <title>Locke App Icon</title>
+  <!-- Background squircle tile -->
+  <rect width="512" height="512" rx="112" fill="#0F172A"/>
+  <!-- Subtle optical boundary ring -->
+  <rect x="2" y="2" width="508" height="508" rx="110" stroke="#334155" stroke-width="4"/>
+
+  <!-- Centered Caliper Lock Mark -->
+  <g transform="translate(100, 100) scale(1.21875)">
+    <!-- Shackle Arc (Teal 400) -->
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M144 44 C108.654 44 80 72.654 80 108 V140 H112 V108 C112 90.327 126.327 76 144 76 C161.673 76 176 90.327 176 108 V140 H208 V108 C208 72.654 179.346 44 144 44 Z" fill="#2DD4BF"/>
+    <!-- Forensic Aperture Pin -->
+    <circle cx="144" cy="116" r="14" fill="#2DD4BF"/>
+    <!-- Foundation Base Stem & Shelf (Crisp White) with Verification Notch -->
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M44 80 H84 V172 H180 V184 H186 V172 H196 C202.627 172 208 177.373 208 184 V200 C208 206.627 202.627 212 196 212 H44 V80 Z" fill="#F8FAFC"/>
+  </g>
+</svg>

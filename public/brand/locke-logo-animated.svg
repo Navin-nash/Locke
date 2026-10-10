@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 180" width="740" height="180" fill="none">
+  <title>Locke Logo Animated Reveal</title>
+  <style>
+    /* Motion principles: ≤1.6s reveal total, transform/opacity only, respects prefers-reduced-motion */
+    :root {
+      --ease-settle: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-focal: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* 1. Base Caliper Shelf & L-stem (0.0s -> 0.6s) */
+    .anim-base {
+      opacity: 0;
+      transform: translateY(12px);
+      animation: revealBase 0.6s var(--ease-settle) 0.1s forwards;
+      transform-origin: 128px 180px;
+    }
+
+    /* 2. Shackle Arc scans down into lock (0.3s -> 0.95s) */
+    .anim-shackle {
+      opacity: 0;
+      transform: translateY(-20px) scale(0.96);
+      animation: seatShackle 0.65s var(--ease-settle) 0.35s forwards;
+      transform-origin: 144px 108px;
+    }
+
+    /* 3. Focal Pin snaps with tactile precision (0.7s -> 1.1s) */
+    .anim-pin {
+      opacity: 0;
+      transform: scale(0.2);
+      animation: snapPin 0.45s var(--ease-focal) 0.7s forwards;
+      transform-origin: 144px 116px;
+    }
+
+    /* 4. Wordmark staggered entrance (0.8s -> 1.45s) */
+    .anim-wordmark {
+      opacity: 0;
+      transform: translateX(10px);
+      animation: revealWordmark 0.6s var(--ease-settle) 0.85s forwards;
+    }
+
+    @keyframes revealBase {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes seatShackle {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes snapPin {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes revealWordmark {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Accessibility: Instant static display when reduced motion is preferred */
+    @media (prefers-reduced-motion: reduce) {
+      .anim-base,
+      .anim-shackle,
+      .anim-pin,
+      .anim-wordmark {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+      }
+    }
+  </style>
+
+  <!-- Mark (Icon) -->
+  <g id="mark" transform="translate(24, 24) scale(0.515625)">
+    <!-- Base Stem and Vernier Shelf -->
+    <path class="anim-base" fill-rule="evenodd" clip-rule="evenodd" d="M44 80 H84 V172 H180 V184 H186 V172 H196 C202.627 172 208 177.373 208 184 V200 C208 206.627 202.627 212 196 212 H44 V80 Z" fill="#0F172A"/>
+
+    <!-- Shackle Arc (Teal) -->
+    <path class="anim-shackle" fill-rule="evenodd" clip-rule="evenodd" d="M144 44 C108.654 44 80 72.654 80 108 V140 H112 V108 C112 90.327 126.327 76 144 76 C161.673 76 176 90.327 176 108 V140 H208 V108 C208 72.654 179.346 44 144 44 Z" fill="#0D5C63"/>
+
+    <!-- Forensic Aperture Pin -->
+    <circle class="anim-pin" cx="144" cy="116" r="14" fill="#0D5C63"/>
+  </g>
+
+  <!-- Wordmark LOCKE -->
+  <g id="wordmark" class="anim-wordmark" transform="translate(190, 10)" fill="#0F172A">
+    <!-- L -->
+    <path d="M30 36 H62 V98 H106 V124 H30 V36 Z"/>
+    <!-- O -->
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M164 36 C139.699 36 120 55.699 120 80 C120 104.301 139.699 124 164 124 C188.301 124 208 104.301 208 80 C208 55.699 188.301 36 164 36 Z M164 60 C175.046 60 184 68.954 184 80 C184 91.046 175.046 100 164 100 C152.954 100 144 91.046 144 80 C144 68.954 152.954 60 164 60 Z"/>
+    <!-- C -->
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M266 36 C241.699 36 222 55.699 222 80 C222 104.301 241.699 124 266 124 C287.106 124 304.707 109.187 308.971 89.5 H282.883 C279.462 95.733 273.266 100 266 100 C254.954 100 246 91.046 246 80 C246 68.954 254.954 60 266 60 C273.266 60 279.462 64.267 282.883 70.5 H308.971 C304.707 50.813 287.106 36 266 36 Z"/>
+    <!-- K -->
+    <path d="M324 36 H354 V70.2 L378.8 36 H414.5 L372.5 80.5 L418 124 H379.5 L354 89.2 V124 H324 V36 Z"/>
+    <!-- E -->
+    <path d="M430 36 H506 V60 H460 V68 H496 V90 H460 V100 H510 V124 H430 V36 Z"/>
+  </g>
+</svg>

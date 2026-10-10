@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Locke — Visual Verification Harness (16px, 32px, 512px)</title>
+  <style>
+    :root {
+      --bg: #0A0F1D;
+      --card-bg: #162031;
+      --border: #334155;
+      --text: #F8FAFC;
+      --muted: #94A3B8;
+      --accent: #2DD4BF;
+    }
+    body {
+      margin: 0;
+      padding: 32px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    h1 {
+      font-size: 26px;
+      margin-bottom: 8px;
+    }
+    p {
+      color: var(--muted);
+      margin-top: 0;
+      margin-bottom: 32px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .card h2 {
+      font-size: 16px;
+      margin-top: 0;
+      margin-bottom: 16px;
+      color: var(--accent);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+    .scale-row {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+    .scale-label {
+      width: 70px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .preview-box {
+      background: #0F172A;
+      border: 1px dashed #475569;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+    .preview-box.light {
+      background: #FFFFFF;
+    }
+    .hero-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Locke — Vector & Brand Asset Visual Audit</h1>
+  <p>Visual testing across optical sizes (16px, 32px, 512px) in light, dark, and animated modes.</p>
+
+  <div class="grid">
+    <!-- Test Card 1: 16px & 32px Micro Favicon Rendering -->
+    <div class="card">
+      <h2>1. Favicon & Micro-Scale Crispness</h2>
+      <div class="scale-row">
+        <div class="scale-label">16×16 px</div>
+        <div class="preview-box">
+          <img src="favicon.svg" width="16" height="16" alt="16px Favicon">
+        </div>
+        <div class="scale-label">32×32 px</div>
+        <div class="preview-box">
+          <img src="favicon.svg" width="32" height="32" alt="32px Favicon">
+        </div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-label">Light Tab</div>
+        <div class="preview-box light">
+          <img src="favicon.svg" width="24" height="24" alt="Light Tab Favicon">
+        </div>
+        <div class="scale-label">64×64 px</div>
+        <div class="preview-box">
+          <img src="favicon.svg" width="64" height="64" alt="64px Icon">
+        </div>
+      </div>
+    </div>
+
+    <!-- Test Card 2: App Icon 512px Rendering -->
+    <div class="card">
+      <h2>2. App Icon (512×512 SVG & Rendered PNG)</h2>
+      <div style="display: flex; gap: 16px; align-items: center; justify-content: center;">
+        <img src="locke-app-icon.svg" width="160" height="160" alt="App Icon SVG">
+        <img src="locke-app-icon.png" width="160" height="160" alt="App Icon PNG">
+      </div>
+    </div>
+
+    <!-- Test Card 3: Mark & Wordmark Lockup -->
+    <div class="card">
+      <h2>3. Horizontal Lockup (Light & Dark)</h2>
+      <div class="preview-box light" style="margin-bottom: 12px;">
+        <img src="locke-horizontal.svg" width="320" alt="Horizontal Lockup Light">
+      </div>
+      <div class="preview-box">
+        <img src="locke-horizontal-dark.svg" width="320" alt="Horizontal Lockup Dark">
+      </div>
+    </div>
+
+    <!-- Test Card 4: Animated Reveal & Live Agent Loop -->
+    <div class="card">
+      <h2>4. Dynamic Motion (Reveal & Live Agent)</h2>
+      <div class="preview-box light" style="margin-bottom: 12px;">
+        <img src="locke-logo-animated.svg" width="320" alt="Animated Reveal">
+      </div>
+      <div style="display: flex; gap: 16px; align-items: center; justify-content: center;">
+        <div class="preview-box">
+          <img src="locke-mark-investigating.svg" width="80" height="80" alt="Live Investigating Loop">
+        </div>
+        <span style="font-size: 13px; color: var(--muted);">Live Agent Investigating Pulse</span>
+      </div>
+    </div>
+
+    <!-- Test Card 5: Open Graph Preview -->
+    <div class="card" style="grid-column: 1 / -1;">
+      <h2>5. Open Graph Card (1200×630)</h2>
+      <img src="locke-og.svg" class="hero-img" alt="Open Graph Card">
+    </div>
+  </div>
+</body>
+</html>
