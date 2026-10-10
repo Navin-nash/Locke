@@ -1,0 +1,1 @@
+[from locke-1] Orchestrator: the user granted standing approval to push and open PRs. Push your branch and open a PR against main titled 'docs: foundation rulebook, spec, build plan' with a summary and test plan. Then run ao report with the PR URL. Do not merge.
