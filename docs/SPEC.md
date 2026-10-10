@@ -218,8 +218,16 @@ finishes.
 | `employer` | `crustdataIdentify(name)` → `webSearch("<company> official website")` → `fetchPage(home)` → `rdapDomain` | Disambiguate candidates (name collisions, subsidiaries) | `employer` finding, `employerContext.officialDomain`, `careersUrl` |
 | `requests` | `extractSignals` (no network) | Classify each cue: request kind, stage, channel | `requests` finding |
 | `vacancy` | `atsDiscover` → `atsLookup` → `matchPosting` → slug-guess `atsLookup` → `webSearch("site:<official> <title>")` | Tie-break between the top 3 `matchPosting` candidates; judge whether a diff is material | `vacancy` finding, `atsBoards` |
-| `recruiter` | `domainSimilarity(sender)` → `dnsRecords(official)` → `crustdataIdentify(agency domain)` → `webSearch("site:<official> <agency>")` | Judge practice consistency (off-platform pushes, chat-only interviews) | `recruiter` finding |
-| `channel` | `fetchPage(supplied)` for the redirect chain → `domainSimilarity(final, initial)` → `rdapDomain(final)` | none | `application_link` finding |
+| `recruiter` | `domainSimilarity({ candidate: senderDomain, officialDomains: [employerContext.officialDomain], brand })` → `dnsRecords(official)` → `crustdataIdentify(agency domain)` → `webSearch("site:<official> <agency>")` | Judge practice consistency (off-platform pushes, chat-only interviews) | `recruiter` finding |
+| `channel` | `fetchPage(supplied)` for the redirect chain → `domainSimilarity` on **both** the initial and the final host, each with `officialDomains = [employerContext.officialDomain, ...linked ATS board hosts]` → `rdapDomain(final)` | none | `application_link` finding. The worse relation of the two hosts wins. |
+
+**Comparison base rule:** `domainSimilarity` must always compare against the established employer
+channels: `employerContext.officialDomain` plus the ATS boards with `linkedFromOfficialSite=true`.
+These come from non-recruiter evidence in phase A. A recruiter-supplied URL, a redirect hop, or a
+sender domain must never be passed as `officialDomains`. Otherwise a direct attacker link compared
+with itself would report `same`. If no employer channel was established, `application_link` is
+`could_not_check` (G4) and `recruiter` is `could_not_verify`. A unit test asserts that a supplied link
+on an unrelated domain never yields `matches_employer_channel`.
 
 Recovery is a first-class step. Each fallback is a traced runnable `recovery:<dimension>:<from>-><to>`
 and emits a `recovery` event. Exhausting a chain yields the dimension's uncertain status, never a
@@ -253,7 +261,7 @@ lookalike_destination → could_not_check; does_not_match → matches_intermedia
 | G1 independence | A P status needs ≥1 evidence item with `sourceType ∈ {employer_controlled, ats_board (linked), company_database, registry}` | Downgrade along the lattice |
 | G2 positive-evidence | A W status needs a `derived` similarity result or a quoted request, not an absence | Downgrade to the uncertain status |
 | G3 Safe Route | The Safe Route invariant (§5) | Fall back to `careers_page_only` or `not_established` |
-| G4 comparison base | `does_not_match` requires an established employer channel | → `could_not_check` |
+| G4 comparison base | `does_not_match` **and** `matches_employer_channel` both require an established employer channel. A `matches_employer_channel` finding must also cite `employer_controlled` or linked `ats_board` evidence for the matched host. | → `could_not_check` |
 | G5 language | No banned words (AGENTS.md §2.7) in resolver prose | Regenerate once, then fall back to template prose |
 | G6 intermediary reconciliation | `application_link=does_not_match` and the link's registrable domain equals the sender's own (non-webmail) domain while the sender presents as an agency | Becomes `matches_intermediary_channel` if `recruiter=verified_intermediary`, otherwise `could_not_check` ("the agency's own site; the agency is not established"). This exists because `channel` and `recruiter` run in parallel; it prevents UC2 false accusations. |
 
