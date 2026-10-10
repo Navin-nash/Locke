@@ -94,4 +94,9 @@ describe("status vocabulary", () => {
       }
     }
   });
+
+  it("keeps requests=none_detected neutral, since it only observes recruiter-supplied text", () => {
+    expect(STATUS_TONE.none_detected).toBe("neutral");
+    expect(STATUS_LABELS.none_detected).toBe("No payment or sensitive-data requests in what you shared");
+  });
 });
