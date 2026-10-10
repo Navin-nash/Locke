@@ -1,0 +1,40 @@
+Locke task: ENTIRE INTEGRATION (Claude Code). One PR that makes Entire checkpoints and analytics work, and documents how every agent must use it. Entire is a MANDATORY hackathon tool (judged: "Entire checkpoints or entire-graph output from the repository").
+
+Current state (audited by the orchestrator):
+- The Entire CLI 0.11.4 is installed, and git hooks are in the shared .git/hooks.
+- The user ran `entire enable` in the main checkout D:/hackathon/Locke. The resulting config (.entire/settings.json, .claude/settings.json, .codex/hooks.json, .cursor/hooks.json, .agents/hooks.json) is UNTRACKED there and NOT on main.
+- ZERO commits on any branch carry an `Entire-Checkpoint:` trailer, and there are no refs/entire/* locally or on origin.
+- `entire doctor` warns "Codex-discovered hooks are out of date" and "Codex project layer missing in this worktree".
+- Likely cause: agent session hooks aren't committed, and sessions that enabled Entire mid-run never loaded them.
+Background research: C:/Users/govin/.ao/data/artifacts/locke-1/research-partners-judging.md §1 (commands). VERIFY every command and flag against `entire --help`, `entire <cmd> --help` and https://docs.entire.io before relying on it or documenting it. Don't invent flags.
+
+Work on a new branch off the latest origin/main. Do these steps in order:
+1. Generate and commit the Entire config in your worktree: `entire enable --agent claude-code`, then `entire agent add` for codex, cursor and antigravity (whatever names `entire agent` supports). Run `entire doctor` and fix every warning. Commit .entire/settings.json and all the agent hook files. Never commit secrets or machine-local state; gitignore anything local, e.g. .entire/settings.local.json, .entire/logs, .entire/metadata if those are local-only.
+2. `entire plugin install graph`, then `entire graph init-agents --repo .`. Keep the managed block it writes into AGENTS.md/CLAUDE.md small.
+3. Repo fixes:
+   - .gitignore currently has `.env*`; add `!.env.example`.
+   - package.json typecheck script → `next typegen && tsc --noEmit`, so a clean checkout passes.
+   - Cherry-pick these already-reviewed commits that never reached main: `git cherry-pick a888fe5 5721dbd b87bc08`.
+4. UPDATE AGENTS.md: replace §10 with a complete "Entire (mandatory)" section that every harness follows. It should cover:
+   - Session-start check: `entire status` must show Enabled with your agent listed. If not, stop and tell the orchestrator.
+   - Commit cadence, push cadence, and how to verify a checkpoint after each commit (e.g. `git log -1 --format='%(trailers:key=Entire-Checkpoint)'`).
+   - Never squash, rebase or force-push checkpointed commits; merge PRs with merge commits.
+   - Analytics and evidence commands: `entire checkpoint list`, `checkpoint explain <id> [--json]`, `checkpoint tokens <id> --compare <id>` (before/after), `entire recap`, and the entire-graph commands (impact/diff/health/checkpoint). Say when to use each, and that exports go to evidence/entire/.
+   - Use `entire graph` before large edits (blast radius, saves tokens).
+   - PR body requirements: list the checkpoint ids plus entire.io links (https://entire.io/gh/Navin-nash/Locke/commit/<sha>).
+   - Definition of done: commits checkpointed and refs pushed.
+   - In the ORCHESTRATOR DISPATCH section: start new worker sessions only after this config is on main; restart long-running sessions at task boundaries so hooks load; spread checkpointed work across all 4 harnesses.
+5. UPDATE CLAUDE.md: add a short Claude-Code-specific Entire section. Cover:
+   - Hooks live in .claude/settings.json and load at session start, so restart the session if Entire was enabled mid-session.
+   - Only subagents launched with run_in_background are captured.
+   - `entire checkpoint explain --generate` uses the Claude CLI.
+   - Which entire-graph commands to use for context.
+   Keep it consistent with AGENTS.md (no duplication; reference the AGENTS.md section).
+6. PROVE IT WORKS:
+   - From your own agent session, make a real change, commit it, and show that the commit has an `Entire-Checkpoint:` trailer and that `entire checkpoint list` shows it.
+   - Push, then show that `git ls-remote origin 'refs/entire/*'` is non-empty.
+   - Also check whether `entire import` (or similar) can backfill today's earlier agent sessions for this repo as checkpoints; if so, run it and push.
+   - Paste all of this output in the PR body.
+   If a checkpoint still doesn't appear, debug it systematically (superpowers:systematic-debugging) and report the exact cause.
+
+Keep pnpm lint, typecheck, test and build green. Push and open a PR "chore: Entire integration (config, docs, verified checkpoints)" against main (standing approval). Do not merge. Finish with `ao report`, including the PR URL and the verification output.
