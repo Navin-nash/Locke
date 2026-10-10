@@ -1,6 +1,7 @@
 import { randomUUID } from "node:crypto";
 
 import { smokeGraph, smokeGraphInput } from "@/lib/agent/smoke-graph";
+import { isSmokeEndpointEnabled } from "@/lib/agent/smoke-access";
 import { createNeatlogsHandler, flushNeatlogs } from "@/lib/neatlogs";
 
 export const runtime = "nodejs";
@@ -12,6 +13,10 @@ function sse(event: string, data: unknown) {
 }
 
 export async function POST(request: Request) {
+  if (!isSmokeEndpointEnabled(process.env)) {
+    return new Response("Not found", { status: 404 });
+  }
+
   const runId = randomUUID();
   const graphAbort = new AbortController();
   let cancelled = false;
