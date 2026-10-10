@@ -1,0 +1,103 @@
+[
+  { "seq": 1, "ts": "2026-10-10T09:00:00.000Z", "runId": "run_uc1_sample", "type": "run_started", "caseId": "Vq3xK9mPz2LwT8rN5bYc4H", "variant": "improved" },
+  { "seq": 2, "ts": "2026-10-10T09:00:00.050Z", "runId": "run_uc1_sample", "type": "node_started", "node": "intake" },
+  { "seq": 3, "ts": "2026-10-10T09:00:02.150Z", "runId": "run_uc1_sample", "type": "node_finished", "node": "intake", "ms": 2100 },
+  { "seq": 4, "ts": "2026-10-10T09:00:02.200Z", "runId": "run_uc1_sample", "type": "node_started", "node": "planner" },
+  { "seq": 5, "ts": "2026-10-10T09:00:04.000Z", "runId": "run_uc1_sample", "type": "node_finished", "node": "planner", "ms": 1800 },
+  { "seq": 6, "ts": "2026-10-10T09:00:04.050Z", "runId": "run_uc1_sample", "type": "node_started", "node": "employer" },
+  { "seq": 7, "ts": "2026-10-10T09:00:04.060Z", "runId": "run_uc1_sample", "type": "node_started", "node": "requests" },
+  { "seq": 8, "ts": "2026-10-10T09:00:04.100Z", "runId": "run_uc1_sample", "type": "tool_called", "callId": "c1", "node": "employer", "tool": "crustdataIdentify", "inputSummary": "name: Acme Analytics" },
+  { "seq": 9, "ts": "2026-10-10T09:00:04.600Z", "runId": "run_uc1_sample", "type": "tool_failed", "callId": "c1", "kind": "rate_limited", "message": "Company database returned 429", "willRetry": true },
+  { "seq": 10, "ts": "2026-10-10T09:00:05.300Z", "runId": "run_uc1_sample", "type": "tool_failed", "callId": "c1", "kind": "rate_limited", "message": "Still rate limited after one retry", "willRetry": false },
+  { "seq": 11, "ts": "2026-10-10T09:00:05.320Z", "runId": "run_uc1_sample", "type": "recovery", "dimension": "employer", "from": "crustdataIdentify", "to": "webSearch", "reason": "Company database unavailable; establishing the official domain through independent search results instead." },
+  { "seq": 12, "ts": "2026-10-10T09:00:05.350Z", "runId": "run_uc1_sample", "type": "tool_called", "callId": "c2", "node": "employer", "tool": "webSearch", "inputSummary": "Acme Analytics official website" },
+  { "seq": 13, "ts": "2026-10-10T09:00:08.750Z", "runId": "run_uc1_sample", "type": "tool_result", "callId": "c2", "ok": true, "ms": 3400, "summary": "5 results; 2 independent sources point to acmeanalytics.com" },
+  { "seq": 14, "ts": "2026-10-10T09:00:08.760Z", "runId": "run_uc1_sample", "type": "evidence", "evidence": { "id": "ev-search-1", "sourceType": "web_search", "tool": "webSearch", "url": "https://www.crunchbase.com/organization/acme-analytics", "title": "Acme Analytics - Company profile", "excerpt": "Acme Analytics builds data platforms for retailers. Website: acmeanalytics.com. Headquarters: Bengaluru, India.", "retrievedAt": "2026-10-10T09:00:08.760Z" } },
+  { "seq": 15, "ts": "2026-10-10T09:00:08.770Z", "runId": "run_uc1_sample", "type": "evidence", "evidence": { "id": "ev-search-2", "sourceType": "web_search", "tool": "webSearch", "url": "https://www.linkedin.com/company/acme-analytics", "title": "Acme Analytics | LinkedIn", "excerpt": "Acme Analytics. Software Development. 201-500 employees. Website: https://acmeanalytics.com", "retrievedAt": "2026-10-10T09:00:08.770Z" } },
+  { "seq": 16, "ts": "2026-10-10T09:00:08.800Z", "runId": "run_uc1_sample", "type": "tool_called", "callId": "c3", "node": "employer", "tool": "fetchPage", "inputSummary": "https://acmeanalytics.com" },
+  { "seq": 17, "ts": "2026-10-10T09:00:10.000Z", "runId": "run_uc1_sample", "type": "tool_result", "callId": "c3", "ok": true, "ms": 1200, "summary": "200 OK; title 'Acme Analytics | Data platforms for retail'; links to /careers" },
+  { "seq": 18, "ts": "2026-10-10T09:00:10.010Z", "runId": "run_uc1_sample", "type": "evidence", "evidence": { "id": "ev-home", "sourceType": "employer_controlled", "tool": "fetchPage", "url": "https://acmeanalytics.com/", "title": "Acme Analytics | Data platforms for retail", "excerpt": "Careers: we hire through our official careers page. Recruiting questions: careers@acmeanalytics.com.", "retrievedAt": "2026-10-10T09:00:10.010Z" } },
+  { "seq": 19, "ts": "2026-10-10T09:00:10.500Z", "runId": "run_uc1_sample", "type": "finding", "finding": { "dimension": "employer", "status": "confirmed", "summary": "Acme Analytics operates from acmeanalytics.com.", "reason": "The official site is reachable, and two independent sources link the company to acmeanalytics.com.", "evidenceIds": ["ev-home", "ev-search-1", "ev-search-2"] } },
+  { "seq": 20, "ts": "2026-10-10T09:00:10.520Z", "runId": "run_uc1_sample", "type": "node_finished", "node": "employer", "ms": 6470 },
+  { "seq": 21, "ts": "2026-10-10T09:00:10.540Z", "runId": "run_uc1_sample", "type": "evidence", "evidence": { "id": "ev-request", "sourceType": "recruiter_supplied", "tool": "extractSignals", "title": "Request in the message", "excerpt": "Once you accept the offer, please share your PAN for payroll. Kindly reply within 24 hours to confirm your interest.", "retrievedAt": "2026-10-10T09:00:10.540Z" } },
+  { "seq": 22, "ts": "2026-10-10T09:00:10.600Z", "runId": "run_uc1_sample", "type": "finding", "finding": { "dimension": "requests", "status": "suspicious_request_detected", "summary": "Tax ID requested with a 24-hour deadline.", "reason": "The message asks for a PAN and sets a short reply deadline.", "evidenceIds": ["ev-request"] } },
+  { "seq": 23, "ts": "2026-10-10T09:00:10.620Z", "runId": "run_uc1_sample", "type": "node_finished", "node": "requests", "ms": 6560 },
+  { "seq": 24, "ts": "2026-10-10T09:00:10.700Z", "runId": "run_uc1_sample", "type": "node_started", "node": "vacancy" },
+  { "seq": 25, "ts": "2026-10-10T09:00:10.710Z", "runId": "run_uc1_sample", "type": "node_started", "node": "recruiter" },
+  { "seq": 26, "ts": "2026-10-10T09:00:10.720Z", "runId": "run_uc1_sample", "type": "node_started", "node": "channel" },
+  { "seq": 27, "ts": "2026-10-10T09:00:10.750Z", "runId": "run_uc1_sample", "type": "tool_called", "callId": "c4", "node": "vacancy", "tool": "atsDiscover", "inputSummary": "acmeanalytics.com" },
+  { "seq": 28, "ts": "2026-10-10T09:00:10.760Z", "runId": "run_uc1_sample", "type": "tool_called", "callId": "c5", "node": "recruiter", "tool": "domainSimilarity", "inputSummary": "acmeanalytics-careers.com vs acmeanalytics.com" },
+  { "seq": 29, "ts": "2026-10-10T09:00:10.770Z", "runId": "run_uc1_sample", "type": "tool_result", "callId": "c5", "ok": true, "ms": 4, "summary": "brand_in_unrelated_domain: brand plus '-careers'" },
+  { "seq": 30, "ts": "2026-10-10T09:00:10.780Z", "runId": "run_uc1_sample", "type": "evidence", "evidence": { "id": "ev-sender", "sourceType": "derived", "tool": "domainSimilarity", "title": "Sender domain compared with the official domain", "excerpt": "acmeanalytics-careers.com is not acmeanalytics.com: the brand name plus '-careers' on an unrelated registrable domain.", "retrievedAt": "2026-10-10T09:00:10.780Z" } },
+  { "seq": 31, "ts": "2026-10-10T09:00:10.790Z", "runId": "run_uc1_sample", "type": "tool_called", "callId": "c6", "node": "channel", "tool": "domainSimilarity", "inputSummary": "acmeanalytics-careers.com/apply vs acmeanalytics.com, job-boards.greenhouse.io/acmeanalytics" },
+  { "seq": 32, "ts": "2026-10-10T09:00:10.800Z", "runId": "run_uc1_sample", "type": "tool_result", "callId": "c6", "ok": true, "ms": 5, "summary": "lookalike: combosquat of acmeanalytics.com" },
+  { "seq": 33, "ts": "2026-10-10T09:00:10.810Z", "runId": "run_uc1_sample", "type": "evidence", "evidence": { "id": "ev-link", "sourceType": "derived", "tool": "domainSimilarity", "title": "Supplied link compared with established hiring channels", "excerpt": "The supplied link goes to acmeanalytics-careers.com, which is not the official domain or its linked Greenhouse board.", "retrievedAt": "2026-10-10T09:00:10.810Z" } },
+  { "seq": 34, "ts": "2026-10-10T09:00:11.400Z", "runId": "run_uc1_sample", "type": "finding", "finding": { "dimension": "recruiter", "status": "apparent_impersonation", "summary": "The sender uses a lookalike of the employer's domain.", "reason": "Messages come from acmeanalytics-careers.com, a brand-in-domain variant of acmeanalytics.com.", "evidenceIds": ["ev-sender", "ev-home"] } },
+  { "seq": 35, "ts": "2026-10-10T09:00:11.420Z", "runId": "run_uc1_sample", "type": "node_finished", "node": "recruiter", "ms": 710 },
+  { "seq": 36, "ts": "2026-10-10T09:00:11.500Z", "runId": "run_uc1_sample", "type": "finding", "finding": { "dimension": "application_link", "status": "lookalike_destination", "summary": "The supplied application link uses a lookalike domain.", "reason": "acmeanalytics-careers.com imitates acmeanalytics.com and is not one of the employer's established hiring channels.", "evidenceIds": ["ev-link", "ev-home"] } },
+  { "seq": 37, "ts": "2026-10-10T09:00:11.520Z", "runId": "run_uc1_sample", "type": "node_finished", "node": "channel", "ms": 800 },
+  { "seq": 38, "ts": "2026-10-10T09:00:13.900Z", "runId": "run_uc1_sample", "type": "tool_result", "callId": "c4", "ok": true, "ms": 3150, "summary": "Greenhouse board 'acmeanalytics' linked from acmeanalytics.com/careers" },
+  { "seq": 39, "ts": "2026-10-10T09:00:13.950Z", "runId": "run_uc1_sample", "type": "tool_called", "callId": "c7", "node": "vacancy", "tool": "atsLookup", "inputSummary": "greenhouse/acmeanalytics" },
+  { "seq": 40, "ts": "2026-10-10T09:00:14.800Z", "runId": "run_uc1_sample", "type": "tool_result", "callId": "c7", "ok": true, "ms": 850, "summary": "Board exists; 23 postings, 1 exact title match" },
+  { "seq": 41, "ts": "2026-10-10T09:00:14.820Z", "runId": "run_uc1_sample", "type": "evidence", "evidence": { "id": "ev-posting", "sourceType": "ats_board", "tool": "atsLookup", "url": "https://job-boards.greenhouse.io/acmeanalytics/jobs/4012345", "title": "Senior Data Engineer - Bengaluru (Hybrid)", "excerpt": "Acme Analytics is hiring a Senior Data Engineer in Bengaluru. Hybrid, full-time. Apply on this page.", "retrievedAt": "2026-10-10T09:00:14.820Z", "linkedFromOfficialSite": true } },
+  { "seq": 42, "ts": "2026-10-10T09:00:15.600Z", "runId": "run_uc1_sample", "type": "finding", "finding": { "dimension": "vacancy", "status": "officially_confirmed", "summary": "The Senior Data Engineer role is posted on Acme Analytics' own Greenhouse board.", "reason": "An exact title, location, and workplace match on a board linked from acmeanalytics.com/careers.", "evidenceIds": ["ev-posting"] } },
+  { "seq": 43, "ts": "2026-10-10T09:00:15.620Z", "runId": "run_uc1_sample", "type": "node_finished", "node": "vacancy", "ms": 4920 },
+  { "seq": 44, "ts": "2026-10-10T09:00:15.700Z", "runId": "run_uc1_sample", "type": "node_started", "node": "verifier" },
+  { "seq": 45, "ts": "2026-10-10T09:00:19.100Z", "runId": "run_uc1_sample", "type": "verifier_challenge", "dimension": "application_link", "verdict": "uphold", "fromStatus": "lookalike_destination", "reason": "A derived similarity result shows a combosquat of the established official domain." },
+  { "seq": 46, "ts": "2026-10-10T09:00:19.200Z", "runId": "run_uc1_sample", "type": "verifier_challenge", "dimension": "requests", "verdict": "downgrade", "fromStatus": "suspicious_request_detected", "toStatus": "needs_confirmation", "reason": "The only request is a tax ID for payroll after an offer, a plausible stage. No payment or secrecy is involved, and a deadline alone does not meet the warning rule." },
+  { "seq": 47, "ts": "2026-10-10T09:00:19.300Z", "runId": "run_uc1_sample", "type": "node_finished", "node": "verifier", "ms": 3600 },
+  { "seq": 48, "ts": "2026-10-10T09:00:19.350Z", "runId": "run_uc1_sample", "type": "node_started", "node": "resolver" },
+  {
+    "seq": 49, "ts": "2026-10-10T09:00:23.900Z", "runId": "run_uc1_sample", "type": "dossier",
+    "dossier": {
+      "outcome": "significant_warning",
+      "reasonCodes": ["R1:recruiter=apparent_impersonation", "R1:application_link=lookalike_destination"],
+      "outcomeReason": "The sender and the application link use lookalikes of Acme Analytics' official domain.",
+      "headline": "The role looks real, but this recruiter's channel does not match Acme Analytics. Apply through the official posting instead.",
+      "dimensions": [
+        { "dimension": "employer", "status": "confirmed", "summary": "Acme Analytics operates from acmeanalytics.com.", "reason": "The official site is reachable, and two independent sources link the company to acmeanalytics.com.", "evidenceIds": ["ev-home", "ev-search-1", "ev-search-2"] },
+        { "dimension": "vacancy", "status": "officially_confirmed", "summary": "The Senior Data Engineer role is posted on Acme Analytics' own Greenhouse board.", "reason": "An exact title, location, and workplace match on a board linked from acmeanalytics.com/careers.", "evidenceIds": ["ev-posting"] },
+        { "dimension": "recruiter", "status": "apparent_impersonation", "summary": "The sender uses a lookalike of the employer's domain.", "reason": "Messages come from acmeanalytics-careers.com, a brand-in-domain variant of acmeanalytics.com.", "evidenceIds": ["ev-sender", "ev-home"] },
+        { "dimension": "application_link", "status": "lookalike_destination", "summary": "The supplied application link uses a lookalike domain.", "reason": "acmeanalytics-careers.com imitates acmeanalytics.com and is not one of the employer's established hiring channels.", "evidenceIds": ["ev-link", "ev-home"], "verifier": { "verdict": "uphold", "reason": "A derived similarity result shows a combosquat of the established official domain." } },
+        { "dimension": "requests", "status": "needs_confirmation", "summary": "A tax ID is requested for payroll after an offer.", "reason": "This can be normal after an offer. Confirm it through an Acme Analytics channel before sending anything.", "evidenceIds": ["ev-request"], "verifier": { "verdict": "downgrade", "from": "suspicious_request_detected", "reason": "The only request is a tax ID for payroll after an offer, a plausible stage. No payment or secrecy is involved, and a deadline alone does not meet the warning rule." } },
+        { "dimension": "safe_route", "status": "role_posting_confirmed", "summary": "The official posting for this role is on Acme Analytics' Greenhouse board.", "reason": "The board is linked from acmeanalytics.com/careers and lists this exact role.", "evidenceIds": ["ev-posting"] }
+      ],
+      "safeRoute": {
+        "status": "role_posting_confirmed",
+        "url": "https://job-boards.greenhouse.io/acmeanalytics/jobs/4012345",
+        "label": "Senior Data Engineer on Acme Analytics' Greenhouse board",
+        "evidenceIds": ["ev-posting"],
+        "caveat": "This is the employer's own posting. It does not confirm the person who contacted you."
+      },
+      "verified": [
+        "Acme Analytics' official domain is acmeanalytics.com.",
+        "The Senior Data Engineer role is listed on the company's own Greenhouse board."
+      ],
+      "notVerified": [
+        "Whether the sender works for or recruits on behalf of Acme Analytics."
+      ],
+      "concerns": [
+        "The sender's domain acmeanalytics-careers.com imitates acmeanalytics.com.",
+        "The application link points to the same lookalike domain, not the official posting."
+      ],
+      "missingEvidence": [
+        "Company database record (the lookup was rate limited)."
+      ],
+      "nextSteps": [
+        { "kind": "apply_via_safe_route", "text": "If you are interested, apply through the official Greenhouse posting rather than the link in the message." },
+        { "kind": "do_not_send_documents", "text": "Do not send your PAN or other documents to the sender until Acme Analytics confirms the request." },
+        { "kind": "confirm_recruiter_with_employer", "text": "Ask Acme Analytics at careers@acmeanalytics.com whether this recruiter represents them." },
+        { "kind": "save_case_link", "text": "Save this case link to come back to the evidence later." }
+      ],
+      "verificationDraft": {
+        "to": "careers@acmeanalytics.com",
+        "contactEvidenceId": "ev-home",
+        "subject": "Confirming a recruiter contact for the Senior Data Engineer role",
+        "body": "Hello,\n\nI was contacted about the Senior Data Engineer role in Bengaluru by someone writing from acmeanalytics-careers.com. Could you confirm whether this person recruits on behalf of Acme Analytics, and whether I should apply through your Greenhouse posting?\n\nThank you."
+      },
+      "generatedAt": "2026-10-10T09:00:23.900Z"
+    }
+  },
+  { "seq": 50, "ts": "2026-10-10T09:00:23.950Z", "runId": "run_uc1_sample", "type": "node_finished", "node": "resolver", "ms": 4600 },
+  { "seq": 51, "ts": "2026-10-10T09:00:23.980Z", "runId": "run_uc1_sample", "type": "run_finished", "outcome": "significant_warning", "latencyMs": 23980, "costUsdEstimate": 0.031 }
+]
