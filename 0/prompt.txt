@@ -1,0 +1,15 @@
+The following 1 unresolved review comment(s) are on PR #2 "docs: foundation rulebook, spec, build plan" (ao/locke-4/foundation-docs → main) as of just now. You should not need to re-fetch this data unless you need additional context.
+
+1. docs/SPEC.md:255 (@chatgpt-codex-connector):
+**<sub><sub>![P1 Badge](https://img.shields.io/badge/P1-orange?style=flat)</sub></sub>  Select the Safe Route before guarding and deciding**
+
+Move Safe Route selection ahead of G3 and `decideOutcome`. The graph places the guard before the resolver, while the resolver is the only documented place that computes `safeRoute` and even lists `decideOutcome` first; consequently G3 has no candidate URL to validate and R2 cannot observe `safe_route=role_posting_confirmed`, causing fully confirmed cases to miss `verified_route` or allowing an unguarded route.
+
+AGENTS.md reference: [AGENTS.md:L25-L28](https://github.com/Navin-nash/Locke/blob/e0df9509968780869e8ee542dc69ea18bae93a2f/AGENTS.md#L25-L28)
+
+Useful? React with 👍 / 👎.
+   https://github.com/Navin-nash/Locke/pull/2#discussion_r4237089999
+   Thread ID: PRRT_kwDOVDdnZ86rCp5K
+
+Address each comment and push fixes. Use the thread ID to resolve each thread directly after pushing when available. You should not need to re-fetch review data unless you need additional context beyond what is provided here.
+PR: https://github.com/Navin-nash/Locke/pull/2
