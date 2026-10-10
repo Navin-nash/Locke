@@ -1,0 +1,1 @@
+T05 implementing SPEC tool contracts. Please advise existing/planned schemas for extractSignals/redactPii/fetchPage/ToolResult; currently using minimal local zod schemas TODO(T02).
