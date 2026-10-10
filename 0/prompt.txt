@@ -1,0 +1,17 @@
+Research how Entire (entire.io) and cfo.ai actually work for the hackathon context. This determines what we need to build for the mandatory tool integrations.
+
+Specifically investigate:
+1. What is Entire.io - what does it do, what are checkpoints, how does graph output work?
+2. How do you integrate Entire into a project? REST API? SDK? Webhooks?
+3. What is cfo.ai - what business planning features does it provide?
+4. How to create/use a cfo.ai business plan (pricing, costs, revenue, runway calculations)?
+5. What format/output does cfo.ai produce that judges will want to see?
+6. Can these be integrated with TypeScript/Next.js projects?
+7. Create an evidence checklist mapping how Entire and cfo.ai evidence maps to the judging weights:
+   - Agent quality (30%)
+   - Use of three tools (25%)
+   - Demo video (20%)
+   - Building in public (15%)
+   - Usefulness/originality (10%)
+
+Return findings as a markdown report with sources and the evidence checklist.
