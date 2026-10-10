@@ -1,4 +1,4 @@
-import { flush, init } from "neatlogs";
+import { flush, init, shutdown } from "neatlogs";
 import { langchainHandler } from "neatlogs/langchain";
 
 import { getServerEnv } from "@/lib/env";
@@ -23,4 +23,8 @@ export async function createNeatlogsHandler() {
 export async function flushNeatlogs(): Promise<boolean> {
   await initializeNeatlogs();
   return flush();
+}
+
+export function shutdownNeatlogs(): Promise<boolean> {
+  return shutdown("locke-smoke-cli");
 }

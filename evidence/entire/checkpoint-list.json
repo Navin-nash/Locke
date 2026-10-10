@@ -1,0 +1,1202 @@
+﻿[
+  {
+    "checkpoint_id": "01M4JP20GXNJ2D2PRSE93PG4GK",
+    "session_id": "973a0074-7079-547e-900d-bc6136bd5ebc",
+    "agent": "Claude Code",
+    "date": "2026-10-10T16:04:35+05:30",
+    "message": "fix: allow .env.example, typegen before typecheck, sync tldts lockfile specifier",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "973a0074-7079-547e-900d-bc6136bd5ebc"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JNH2PT8CDHYYHDPY3BBTNV",
+    "session_id": "973a0074-7079-547e-900d-bc6136bd5ebc",
+    "agent": "Claude Code",
+    "date": "2026-10-10T15:55:20+05:30",
+    "message": "chore(entire): install entire-graph agent guide",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "973a0074-7079-547e-900d-bc6136bd5ebc"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JNDME7TET82Y1EP0NBKMKR",
+    "session_id": "973a0074-7079-547e-900d-bc6136bd5ebc",
+    "agent": "Claude Code",
+    "date": "2026-10-10T15:53:24+05:30",
+    "message": "chore(entire): enable Entire with claude-code, codex, cursor, antigravity hooks",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "973a0074-7079-547e-900d-bc6136bd5ebc"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JP804QZP62QRRDJMF0WZ5C",
+    "session_id": "agent-a440028",
+    "agent": "Claude Code",
+    "date": "2026-10-10T10:37:53.175Z",
+    "message": "Execute the following steps in order to set up Entire int...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-a440028"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JP44WJX743ZT0G79K17KNF",
+    "session_id": "2ea4f117-6bc8-446f-823b-b764514bebad",
+    "agent": "Claude Code",
+    "date": "2026-10-10T10:35:46.962Z",
+    "message": "\u003ctask-notification\u003e\n\u003ctask-id\u003ebxq927wzd\u003c/task-id\u003e\n\u003ctool-us...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "2ea4f117-6bc8-446f-823b-b764514bebad"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JNKM0YFFNGDGCXY7SB6NKB",
+    "session_id": "4f914d18-31d2-4926-a4db-8cf36c5db191",
+    "agent": "Claude Code",
+    "date": "2026-10-10T10:26:45.406Z",
+    "message": "Context: This summary will be shown in a list to help use...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "4f914d18-31d2-4926-a4db-8cf36c5db191"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JNKK083T1AZCM99TNGY9V0",
+    "session_id": "agent-a216e42",
+    "agent": "Claude Code",
+    "date": "2026-10-10T10:26:44.36Z",
+    "message": "Warmup",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-a216e42"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JNKK03JPSGNTNJWSP8F4GD",
+    "session_id": "agent-a2e0fa1",
+    "agent": "Claude Code",
+    "date": "2026-10-10T10:26:44.355Z",
+    "message": "Warmup",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-a2e0fa1"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JNKJZ1N2CXNZS43GYQTX2E",
+    "session_id": "agent-a26ed3d",
+    "agent": "Claude Code",
+    "date": "2026-10-10T10:26:44.321Z",
+    "message": "Warmup",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-a26ed3d"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JNK49S68B726PQB0386B05",
+    "session_id": "8a8bcaf6-6f66-529a-a39a-d4f3f5051b61",
+    "agent": "Claude Code",
+    "date": "2026-10-10T10:26:29.305Z",
+    "message": "Base directory for this skill: C:\\Users\\govin\\.claude\\plu...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "8a8bcaf6-6f66-529a-a39a-d4f3f5051b61"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JNJDX38T1W24CY7YGBPBF4",
+    "session_id": "8a8bcaf6-6f66-529a-a39a-d4f3f5051b61",
+    "agent": "Claude Code",
+    "date": "2026-10-10T10:26:06.371Z",
+    "message": "Locke task T07: ATS adapters, discovery, matching (Claude...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "8a8bcaf6-6f66-529a-a39a-d4f3f5051b61"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JNHBESRAQAT850N62J0WFY",
+    "session_id": "2ea4f117-6bc8-446f-823b-b764514bebad",
+    "agent": "Claude Code",
+    "date": "2026-10-10T10:25:31.097Z",
+    "message": "Reports since your previous turn:\n\n[done] [brand: Locke l...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "2ea4f117-6bc8-446f-823b-b764514bebad"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JN9BYZ096Z6PSAGFZF1N2E",
+    "session_id": "2ea4f117-6bc8-446f-823b-b764514bebad",
+    "agent": "Claude Code",
+    "date": "2026-10-10T10:21:09.471Z",
+    "message": "Reports since your previous turn:\n\n[done] [infra: Neon li...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "2ea4f117-6bc8-446f-823b-b764514bebad"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JMVY31NTSNQPZ9ZZ27JXZV",
+    "session_id": "7ee0df6e-5652-4aea-9fbf-338366a977a5",
+    "agent": "Claude Code",
+    "date": "2026-10-10T10:13:49.281Z",
+    "message": "Context: This summary will be shown in a list to help use...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "7ee0df6e-5652-4aea-9fbf-338366a977a5"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JMVXSDWTWA7F5PY8B9X2NV",
+    "session_id": "agent-a63dcf6",
+    "agent": "Claude Code",
+    "date": "2026-10-10T10:13:48.973Z",
+    "message": "Warmup",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-a63dcf6"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JMVXS7Z3GT9Q5G7N3HBVKG",
+    "session_id": "agent-a3ec0c2",
+    "agent": "Claude Code",
+    "date": "2026-10-10T10:13:48.967Z",
+    "message": "Warmup",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-a3ec0c2"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JMVXQP5HZBTKJJSGK39334",
+    "session_id": "agent-a0b956c",
+    "agent": "Claude Code",
+    "date": "2026-10-10T10:13:48.918Z",
+    "message": "Warmup",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-a0b956c"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JMVTWHDAQMH5BSFTXTMRGE",
+    "session_id": "3120e38a-2494-53f6-af7f-b4c0290b4416",
+    "agent": "Claude Code",
+    "date": "2026-10-10T10:13:46.001Z",
+    "message": "\u003ctask-notification\u003e\n\u003ctask-id\u003ebshva41jm\u003c/task-id\u003e\n\u003ctool-us...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "3120e38a-2494-53f6-af7f-b4c0290b4416"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JMSKP6WSCKTSB5BETA1CWS",
+    "session_id": "8f12013d-ae6e-4092-b080-06ab2770d92f",
+    "agent": "Claude Code",
+    "date": "2026-10-10T10:12:33.094Z",
+    "message": "Context: This summary will be shown in a list to help use...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "8f12013d-ae6e-4092-b080-06ab2770d92f"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JMSKN88XP74JE2AT76B349",
+    "session_id": "agent-ad8eb47",
+    "agent": "Claude Code",
+    "date": "2026-10-10T10:12:33.064Z",
+    "message": "Warmup",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-ad8eb47"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JMSK6N3T7VSVS7ZT5NMT4D",
+    "session_id": "agent-a41511d",
+    "agent": "Claude Code",
+    "date": "2026-10-10T10:12:32.597Z",
+    "message": "Warmup",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-a41511d"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JMSK4E1PFW2H4W9MQD4KPN",
+    "session_id": "agent-add561f",
+    "agent": "Claude Code",
+    "date": "2026-10-10T10:12:32.526Z",
+    "message": "Warmup",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-add561f"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JMRFWTXMMYA670APRS7NXZ",
+    "session_id": "973a0074-7079-547e-900d-bc6136bd5ebc",
+    "agent": "Claude Code",
+    "date": "2026-10-10T10:11:56.442Z",
+    "message": "Locke task: ENTIRE INTEGRATION (Claude Code). One PR that...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "973a0074-7079-547e-900d-bc6136bd5ebc"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JMP0PPV2NJES2QM1R529F7",
+    "session_id": "2ea4f117-6bc8-446f-823b-b764514bebad",
+    "agent": "Claude Code",
+    "date": "2026-10-10T10:10:35.35Z",
+    "message": "[from locke-11] locke-11: no need to wait/resume. The use...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "2ea4f117-6bc8-446f-823b-b764514bebad"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JMMEB72WAH8C4B31QMFSH8",
+    "session_id": "4f30338e-9a36-4189-a495-f2aefdc8be6c",
+    "agent": "Claude Code",
+    "date": "2026-10-10T10:09:43.783Z",
+    "message": "[from locke-1] Orchestrator: the user will run 'neon logi...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "4f30338e-9a36-4189-a495-f2aefdc8be6c"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JMDP669D7S90P35RTMS9R0",
+    "session_id": "2ea4f117-6bc8-446f-823b-b764514bebad",
+    "agent": "Claude Code",
+    "date": "2026-10-10T10:06:02.438Z",
+    "message": "Check and update the CLAUDE.md and AGENTS.md file to ensu...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "2ea4f117-6bc8-446f-823b-b764514bebad"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JKY2DXK5C47YACAWVKAPHH",
+    "session_id": "4f30338e-9a36-4189-a495-f2aefdc8be6c",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:57:30.685Z",
+    "message": "Can you try now, I have loggged in with the correct account",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "4f30338e-9a36-4189-a495-f2aefdc8be6c"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JKV1Z0703N4VDS6Z2V0QN3",
+    "session_id": "3120e38a-2494-53f6-af7f-b4c0290b4416",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:55:51.904Z",
+    "message": "Base directory for this skill: C:\\Users\\govin\\.claude\\plu...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "3120e38a-2494-53f6-af7f-b4c0290b4416"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JKT9QZJKHH2BJF3JJYQ15Y",
+    "session_id": "3120e38a-2494-53f6-af7f-b4c0290b4416",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:55:27.103Z",
+    "message": "Locke task T06: domain tools (Claude Code, reassigned fro...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "3120e38a-2494-53f6-af7f-b4c0290b4416"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JKDQB079Y3V2D8JTPAH9VQ",
+    "session_id": "2ea4f117-6bc8-446f-823b-b764514bebad",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:48:35.04Z",
+    "message": "Reports since your previous turn:\n\n[needs_input] [infra: ...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "2ea4f117-6bc8-446f-823b-b764514bebad"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JK9VHWDPP8BW80W6ERTXZQ",
+    "session_id": "2ea4f117-6bc8-446f-823b-b764514bebad",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:46:28.284Z",
+    "message": "Reports since your previous turn:\n\n[done] [T02: domain co...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "2ea4f117-6bc8-446f-823b-b764514bebad"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JJZ1YCHKKTAJFN14VJ27WF",
+    "session_id": "2ea4f117-6bc8-446f-823b-b764514bebad",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:40:34.38Z",
+    "message": "Our product build should mandatorily use neatlogs, entire...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "2ea4f117-6bc8-446f-823b-b764514bebad"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JJXS1CTKGVW98BWJJZZ7ZG",
+    "session_id": "eff180b7-b1a8-4494-9d56-b71cbaf5dd53",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:39:52.492Z",
+    "message": "[from locke-1] Orchestrator, from T20 (locke-8, PR #4): p...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "eff180b7-b1a8-4494-9d56-b71cbaf5dd53"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JJWJ5Y7H47HDR7RVYK85YD",
+    "session_id": "2ea4f117-6bc8-446f-823b-b764514bebad",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:39:12.702Z",
+    "message": "[from locke-8] T20 PR #4 open (https://github.com/Navin-n...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "2ea4f117-6bc8-446f-823b-b764514bebad"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JJSBDD1S6N52RSGG21X2JE",
+    "session_id": "eff180b7-b1a8-4494-9d56-b71cbaf5dd53",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:37:27.469Z",
+    "message": "[from locke-1] Orchestrator, Entire setup: the shared Ent...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "eff180b7-b1a8-4494-9d56-b71cbaf5dd53"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JJSB6ZVHMSTN9PE65WZXE0",
+    "session_id": "243f30c4-5835-477e-9f95-dc1d09029566",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:37:27.263Z",
+    "message": "Context: This summary will be shown in a list to help use...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "243f30c4-5835-477e-9f95-dc1d09029566"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JJSAYF30QK0F03KPCKMC0A",
+    "session_id": "agent-adf4e3f",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:37:26.991Z",
+    "message": "Warmup",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-adf4e3f"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JJSAY9C6VCT6WMS0K3RXR3",
+    "session_id": "agent-ac52001",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:37:26.985Z",
+    "message": "Warmup",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-ac52001"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JJSAXBREJ777PQJWQFQ43K",
+    "session_id": "agent-a41600d",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:37:26.955Z",
+    "message": "Warmup",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-a41600d"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JJRQV58BB3C96P7FJ69KBF",
+    "session_id": "03f6e803-c0b4-40c2-a574-ccfff28aa08e",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:37:07.429Z",
+    "message": "reply with just: ok",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "03f6e803-c0b4-40c2-a574-ccfff28aa08e"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JJRGYXD9HWST12FTH2SW8X",
+    "session_id": "eff180b7-b1a8-4494-9d56-b71cbaf5dd53",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:37:00.381Z",
+    "message": "T05 implementing SPEC tool contracts. Please advise exist...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "eff180b7-b1a8-4494-9d56-b71cbaf5dd53"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JJQ4CSQWSSXDKJYZ1K06W5",
+    "session_id": "f923a149-b35e-4a7d-a5f8-691cd3b1e00c",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:36:14.745Z",
+    "message": "Stop hook feedback:\nBefore concluding, provide a brief su...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "f923a149-b35e-4a7d-a5f8-691cd3b1e00c"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JJC293S87MVE1NM10TCCJW",
+    "session_id": "4f30338e-9a36-4189-a495-f2aefdc8be6c",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:30:12.131Z",
+    "message": "\u003ctask-notification\u003e\n\u003ctask-id\u003ebixxjck3t\u003c/task-id\u003e\n\u003ctool-us...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "4f30338e-9a36-4189-a495-f2aefdc8be6c"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JJC24FV4FXSSR5H02QTS9F",
+    "session_id": "4f30338e-9a36-4189-a495-f2aefdc8be6c",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:30:11.983Z",
+    "message": "[Request interrupted by user for tool use]",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "4f30338e-9a36-4189-a495-f2aefdc8be6c"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JJBH3T50QZY0193TJC00GZ",
+    "session_id": "0bebdd0f-40e6-44af-a440-777cfd8e16b8",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:29:54.554Z",
+    "message": "[from locke-1] Orchestrator, Entire setup: the shared Ent...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "0bebdd0f-40e6-44af-a440-777cfd8e16b8"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JJ7GFMPH308W47HB7XXJ4D",
+    "session_id": "f923a149-b35e-4a7d-a5f8-691cd3b1e00c",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:27:42.836Z",
+    "message": "Base directory for this skill: D:\\hackathon\\Locke\\.claude...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "f923a149-b35e-4a7d-a5f8-691cd3b1e00c"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JJ6RK6YMCVHX0A52KXW5FH",
+    "session_id": "eff180b7-b1a8-4494-9d56-b71cbaf5dd53",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:27:18.374Z",
+    "message": "[from locke-1] Orchestrator FYI: the spec now allows crea...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "eff180b7-b1a8-4494-9d56-b71cbaf5dd53"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JJ6F4DYJ3K1BPNVXGPW5B1",
+    "session_id": "f923a149-b35e-4a7d-a5f8-691cd3b1e00c",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:27:08.685Z",
+    "message": "You are integrating Neatlogs observability into a typescr...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "f923a149-b35e-4a7d-a5f8-691cd3b1e00c"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JHWP6J05D0FMRXDG200M9H",
+    "session_id": "4abe2521-b866-4362-8f63-efdd7ae22fa2",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:21:48.242Z",
+    "message": "Stop hook feedback:\nDo NOT stop yet — these instrumentati...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "4abe2521-b866-4362-8f63-efdd7ae22fa2"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JHTN2ASDG2V455FQT0BJB4",
+    "session_id": "f7df4bd4-5633-4bc7-b265-b09c97c9f49d",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:20:41.546Z",
+    "message": "Context: This summary will be shown in a list to help use...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "f7df4bd4-5633-4bc7-b265-b09c97c9f49d"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JHSFPZBC74Y9FM9JBA9VWM",
+    "session_id": "agent-a2b24cd",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:20:03.295Z",
+    "message": "Warmup",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-a2b24cd"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JHSFPVJRH0XNZH65BB0SPW",
+    "session_id": "agent-a4c7400",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:20:03.291Z",
+    "message": "Warmup",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-a4c7400"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JHSFPJ4699Y5T106RFFM6J",
+    "session_id": "agent-abf3630",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:20:03.282Z",
+    "message": "Warmup",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-abf3630"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JHQHRN9P5K5N6QP30TTYJ7",
+    "session_id": "4abe2521-b866-4362-8f63-efdd7ae22fa2",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:18:59.861Z",
+    "message": "Stop hook feedback:\nDo NOT stop yet — these instrumentati...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "4abe2521-b866-4362-8f63-efdd7ae22fa2"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JHGFQZY8V32XDWDAKZP2XB",
+    "session_id": "4abe2521-b866-4362-8f63-efdd7ae22fa2",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:15:08.415Z",
+    "message": "Stop hook feedback:\nDo NOT stop yet — these instrumentati...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "4abe2521-b866-4362-8f63-efdd7ae22fa2"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JHG3A9M2F04PRKY6AY926K",
+    "session_id": "4abe2521-b866-4362-8f63-efdd7ae22fa2",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:14:55.689Z",
+    "message": "Stop hook feedback:\nBefore concluding, provide a brief su...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "4abe2521-b866-4362-8f63-efdd7ae22fa2"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JHD6H9PCA0GNRSMKWXM2XX",
+    "session_id": "2ea4f117-6bc8-446f-823b-b764514bebad",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:13:20.681Z",
+    "message": "Codex limit has been exhausted, and takes 4 more hours to...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "2ea4f117-6bc8-446f-823b-b764514bebad"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JHC6JA2NYF637N1VXMKSBQ",
+    "session_id": "4f30338e-9a36-4189-a495-f2aefdc8be6c",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:12:47.946Z",
+    "message": "Base directory for this skill: C:\\Users\\govin\\.claude\\plu...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "4f30338e-9a36-4189-a495-f2aefdc8be6c"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JHBKFA4KS5YRG68F1DMG7T",
+    "session_id": "4f30338e-9a36-4189-a495-f2aefdc8be6c",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:12:28.394Z",
+    "message": "Locke infra task: set up the Neon project in this repo (C...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "4f30338e-9a36-4189-a495-f2aefdc8be6c"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JH5V5MX6YDMYFQQH6MNKSC",
+    "session_id": "2ea4f117-6bc8-446f-823b-b764514bebad",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:09:19.668Z",
+    "message": "Set up this Neon project in the current working directory...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "2ea4f117-6bc8-446f-823b-b764514bebad"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JH3CY5144W3N4AW9R1Z2XP",
+    "session_id": "agent-a6690dd",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:07:59.557Z",
+    "message": "Warmup",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-a6690dd"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JH3CWKE26T4MTF5MF0M1JE",
+    "session_id": "01ae3897-626a-4c6f-919d-b7a45c4d910e",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:07:59.507Z",
+    "message": "Context: This summary will be shown in a list to help use...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "01ae3897-626a-4c6f-919d-b7a45c4d910e"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JH3CGVYZ51PR119DH65DA8",
+    "session_id": "agent-a0ace21",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:07:59.131Z",
+    "message": "Warmup",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-a0ace21"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JH3CFG4HQ63TMDPET2M18D",
+    "session_id": "agent-a558ac9",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:07:59.088Z",
+    "message": "Warmup",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-a558ac9"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JH2X0SHR2J0XMYD9ZSPE50",
+    "session_id": "ed6f1e9b-f154-420f-9597-faa13b9a995b",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:07:43.257Z",
+    "message": "Context: This summary will be shown in a list to help use...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "ed6f1e9b-f154-420f-9597-faa13b9a995b"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JH2WZTHHGHQAH6VYJPS4XY",
+    "session_id": "agent-a068393",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:07:43.226Z",
+    "message": "Warmup",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-a068393"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JH2VT287ESQPP69CQ2S074",
+    "session_id": "agent-abf0802",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:07:42.018Z",
+    "message": "Warmup",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-abf0802"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JH2VRJ20EK84NAG4WSNS0A",
+    "session_id": "agent-aa3abef",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:07:41.97Z",
+    "message": "Warmup",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-aa3abef"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JH2MHSS9W1TMCZ49SYTPT8",
+    "session_id": "2ea4f117-6bc8-446f-823b-b764514bebad",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:07:34.585Z",
+    "message": "T05 started from latest origin/main. entire status report...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "2ea4f117-6bc8-446f-823b-b764514bebad"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JH1Z2NB7W8JYTFVXKD60ZT",
+    "session_id": "4abe2521-b866-4362-8f63-efdd7ae22fa2",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:07:12.597Z",
+    "message": "You are integrating Neatlogs observability into a typescr...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "4abe2521-b866-4362-8f63-efdd7ae22fa2"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JH0395PBCZ040C235EMBJ7",
+    "session_id": "2ea4f117-6bc8-446f-823b-b764514bebad",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:06:11.365Z",
+    "message": "Reports since your previous turn:\n\n[checkpoint] [docs: AG...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "2ea4f117-6bc8-446f-823b-b764514bebad"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JGYVGCZNRD6F9Y8WVK9Z2M",
+    "session_id": "bd9c42d8-ab0f-4a53-9134-9f333b2e150b",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:05:30.636Z",
+    "message": "[Request interrupted by user]",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "bd9c42d8-ab0f-4a53-9134-9f333b2e150b"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JGS8GMEHNE0N3FY6YW98AE",
+    "session_id": "bd9c42d8-ab0f-4a53-9134-9f333b2e150b",
+    "agent": "Claude Code",
+    "date": "2026-10-10T09:02:27.348Z",
+    "message": "The following 1 unresolved review comment(s) are on PR #2...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "bd9c42d8-ab0f-4a53-9134-9f333b2e150b"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JGM76SY37Q32528VGKGPBB",
+    "session_id": "bd9c42d8-ab0f-4a53-9134-9f333b2e150b",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:59:42.169Z",
+    "message": "The following 1 unresolved review comment(s) are on PR #2...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "bd9c42d8-ab0f-4a53-9134-9f333b2e150b"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JGJ7FC3XDF7QHZJNKWWNN9",
+    "session_id": "eff180b7-b1a8-4494-9d56-b71cbaf5dd53",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:58:36.908Z",
+    "message": "Base directory for this skill: C:\\Users\\govin\\.claude\\plu...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "eff180b7-b1a8-4494-9d56-b71cbaf5dd53"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JGHNXG3XMBK05R0F1Y01AS",
+    "session_id": "2ea4f117-6bc8-446f-823b-b764514bebad",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:58:18.928Z",
+    "message": "I have added the env variables to .env.local to main bran...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "2ea4f117-6bc8-446f-823b-b764514bebad"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JGG4111D4RY712MXP88TFH",
+    "session_id": "eff180b7-b1a8-4494-9d56-b71cbaf5dd53",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:57:27.841Z",
+    "message": "Base directory for this skill: C:\\Users\\govin\\.claude\\ski...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "eff180b7-b1a8-4494-9d56-b71cbaf5dd53"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JGG295E5G9BX20HC9E04F7",
+    "session_id": "bd9c42d8-ab0f-4a53-9134-9f333b2e150b",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:57:26.053Z",
+    "message": "The following 1 unresolved review comment(s) are on PR #2...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "bd9c42d8-ab0f-4a53-9134-9f333b2e150b"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JGD8SK0Y30BQZERPV5Q915",
+    "session_id": "eff180b7-b1a8-4494-9d56-b71cbaf5dd53",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:55:54.419Z",
+    "message": "Base directory for this skill: C:\\Users\\govin\\.claude\\plu...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "eff180b7-b1a8-4494-9d56-b71cbaf5dd53"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JGA6JQQSMHW8V53A5PG3NK",
+    "session_id": "bd9c42d8-ab0f-4a53-9134-9f333b2e150b",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:54:13.847Z",
+    "message": "The following 1 unresolved review comment(s) are on PR #2...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "bd9c42d8-ab0f-4a53-9134-9f333b2e150b"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JG8TZW4S7X477BHW7YSXPP",
+    "session_id": "2ea4f117-6bc8-446f-823b-b764514bebad",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:53:29.212Z",
+    "message": "Entire has been installed. Can you merge the PR with main.",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "2ea4f117-6bc8-446f-823b-b764514bebad"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JG6MVR1Q2QSJS3JXKGHJ8D",
+    "session_id": "bd9c42d8-ab0f-4a53-9134-9f333b2e150b",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:52:17.4Z",
+    "message": "The following 1 unresolved review comment(s) are on PR #2...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "bd9c42d8-ab0f-4a53-9134-9f333b2e150b"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JG4REHVC8R9Z94KRNCATFJ",
+    "session_id": "2ea4f117-6bc8-446f-823b-b764514bebad",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:51:15.537Z",
+    "message": "Reports since your previous turn:\n\n[done] [M0: Next.js sc...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "2ea4f117-6bc8-446f-823b-b764514bebad"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JG2GPPYEJYM3V972K4E6KT",
+    "session_id": "0bebdd0f-40e6-44af-a440-777cfd8e16b8",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:50:02.07Z",
+    "message": "Locke task T20: labeled eval cases (Claude Code).\n\nContex...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "0bebdd0f-40e6-44af-a440-777cfd8e16b8"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JG1V0KDJ0YSHENZ26HF9WN",
+    "session_id": "d9a23a91-b53a-4c99-a3a4-9921dcfc96f5",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:49:39.859Z",
+    "message": "Context: This summary will be shown in a list to help use...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "d9a23a91-b53a-4c99-a3a4-9921dcfc96f5"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JG1SN72H7YAD6GSREF75AZ",
+    "session_id": "agent-a76c76d",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:49:38.471Z",
+    "message": "Warmup",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-a76c76d"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JG1S9C19FMA646S5YK958T",
+    "session_id": "agent-ae39a63",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:49:38.092Z",
+    "message": "Warmup",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-ae39a63"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JG1S7M1P9EXGZ1E077MV5D",
+    "session_id": "agent-a6a1455",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:49:38.036Z",
+    "message": "Warmup",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-a6a1455"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JG1H2RWM37VRFBKNHJZDHW",
+    "session_id": "eff180b7-b1a8-4494-9d56-b71cbaf5dd53",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:49:29.688Z",
+    "message": "Locke task T02: domain contracts in lib/types (Claude Cod...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "eff180b7-b1a8-4494-9d56-b71cbaf5dd53"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JFZ9BDK2P66YQ1A3A0HV03",
+    "session_id": "bd9c42d8-ab0f-4a53-9134-9f333b2e150b",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:48:16.237Z",
+    "message": "[from locke-1] Orchestrator: the user added global Claude...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "bd9c42d8-ab0f-4a53-9134-9f333b2e150b"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JFSFRYJ0CMY6DV2CY2159H",
+    "session_id": "2ea4f117-6bc8-446f-823b-b764514bebad",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:45:06.206Z",
+    "message": "Reports since your previous turn:\n\n[needs_input] [docs: A...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "2ea4f117-6bc8-446f-823b-b764514bebad"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JFPVZT49RQV0NB1H4XBT95",
+    "session_id": "bd9c42d8-ab0f-4a53-9134-9f333b2e150b",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:43:40.41Z",
+    "message": "[from locke-1] Orchestrator: the user granted standing ap...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "bd9c42d8-ab0f-4a53-9134-9f333b2e150b"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JFKV7J689SJKVVG12F7RY4",
+    "session_id": "2ea4f117-6bc8-446f-823b-b764514bebad",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:42:01.33Z",
+    "message": "Reports since your previous turn:\n\n[done] [M0: Next.js sc...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "2ea4f117-6bc8-446f-823b-b764514bebad"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JFEGSYS4XY9EB3Z7F5D2P6",
+    "session_id": "bd9c42d8-ab0f-4a53-9134-9f333b2e150b",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:39:06.814Z",
+    "message": "[from locke-1] FYI from orchestrator: two parallel worker...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "bd9c42d8-ab0f-4a53-9134-9f333b2e150b"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JEBZ2P9NFCEMGG4MCK8JJS",
+    "session_id": "bd9c42d8-ab0f-4a53-9134-9f333b2e150b",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:20:14.55Z",
+    "message": "You are the docs/spec author for \"Locke\" (neatHack AI Age...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "bd9c42d8-ab0f-4a53-9134-9f333b2e150b"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JE6ZWB8B7EPY64T7HW77B3",
+    "session_id": "2ea4f117-6bc8-446f-823b-b764514bebad",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:17:31.531Z",
+    "message": "Continue, this is the product usecase\n# Product Use Case ...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "2ea4f117-6bc8-446f-823b-b764514bebad"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JE6RX85RMYS6674HG6CW8X",
+    "session_id": "agent-a67a525",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:17:24.392Z",
+    "message": "Research how Entire (entire.io) and cfo.ai actually work ...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-a67a525"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JE6RPT5XGW4EMZ9GKCXZ8Q",
+    "session_id": "agent-aa3fd8d",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:17:24.186Z",
+    "message": "Research whether neatlogs (neatlogs.com) has a TypeScript...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-aa3fd8d"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JE6NX6MJ1S90J1MZBA8E3D",
+    "session_id": "6d5011dd-3b7f-4e13-a729-f80e3b9a3d74",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:17:21.318Z",
+    "message": "Context: This summary will be shown in a list to help use...",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "6d5011dd-3b7f-4e13-a729-f80e3b9a3d74"
+    ]
+  },
+  {
+    "checkpoint_id": "01M4JE6NRVKWSV0GT3AFZFE1G3",
+    "session_id": "agent-af1f079",
+    "agent": "Claude Code",
+    "date": "2026-10-10T08:17:21.179Z",
+    "message": "Warmup",
+    "is_logs_only": true,
+    "session_count": 1,
+    "session_ids": [
+      "agent-af1f079"
+    ]
+  }
+]

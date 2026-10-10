@@ -229,15 +229,52 @@ only from server code (`import "server-only"`). Never prefix a secret with `NEXT
 
 ## 10. Entire rules (dev-loop evidence)
 
-- Entire must be enabled in the repo (`entire enable --agent <harness>`, or `--local`) before your
-  first commit. Check with `entire status`. If it is missing, tell the orchestrator; do not skip.
-- **Commit small and often**: one logical step per commit, after each green test. Conventional commit
-  messages. Every commit then carries an `Entire-Checkpoint:` trailer.
-- **Push your branch regularly** (at least every couple of commits). Entire's pre-push hook ships the
-  checkpoint refs, and checkpoints that never reach the remote are invisible to judges.
-- Never rewrite pushed history (no force-push, no squash of checkpointed commits). PRs merge with
-  **merge commits**, not squash or rebase, so checkpointed commits stay in `main`.
-- When a commit fixes something found in neatlogs, put the trace or detection ID in the commit body.
+## 10. Entire (mandatory)
+
+Entire is judged ("checkpoints or entire-graph output from the repository"), so every harness uses it.
+Config is committed: `.entire/settings.json` plus hook files for each harness (`.claude/settings.json`,
+`.codex/hooks.json`, `.cursor/hooks.json`, `.agents/hooks.json`). Hooks load when an agent session
+starts, so a session that began before the config reached its branch has no checkpoints.
+
+**Session start (every session, before the first commit)**
+- `entire status` must show `Enabled` with your agent in the `Agents` line. If not, stop and tell the
+  orchestrator. Do not enable it yourself in a shared checkout or skip it.
+- Codex only: approve the Entire hooks once per machine in `/hooks` (`entire doctor` reports
+  "Codex hook trust: REVIEW NEEDED" until you do).
+
+**Commit, push, verify**
+- Commit small and often: one logical step per commit, after each green test, with a conventional message.
+- After each commit confirm the checkpoint exists:
+  `git log -1 --format='%(trailers:key=Entire-Checkpoint)'`. An empty result means hooks did not run.
+  Run `entire doctor` and tell the orchestrator.
+- Push at least every couple of commits. The pre-push hook uploads the checkpoint refs. Verify with
+  `git ls-remote origin 'refs/entire/*'`. Unpushed checkpoints are invisible to judges.
+- Never squash, rebase, amend, or force-push checkpointed commits. PRs merge with **merge commits**.
+  After pushing, merge `main` in (do not rebase).
+- A commit that fixes something found in neatlogs puts the trace or detection ID in its body.
+
+**Analytics and evidence** (write exports to `evidence/entire/`, one file per command, named by task)
+- `entire checkpoint list [--json]`: checkpoints on the current branch. Use it to confirm a task's commits.
+- `entire checkpoint explain <id> [--json|--short]`: what a checkpoint did (prompts, files, tokens). Use it
+  for PR bodies and for the demo. `--generate` writes an AI summary onto the checkpoint, so run it only
+  for checkpoints you cite.
+- `entire checkpoint tokens <id> --compare <baseline-id>`: token before/after. Use it when a prompt or
+  workflow change claims a cost saving.
+- `entire recap --static [--week|--day]`: activity summary. Use it at the end of a work session and at
+  demo prep.
+- `entire session list`: which sessions are active across worktrees. Use it to find stuck sessions;
+  `entire doctor` offers the fix.
+- `entire import <agent>` (experimental): backfills older transcripts as read-only checkpoints. Use it
+  only to recover sessions that ran before hooks were committed.
+- entire-graph (`entire graph ...`, plugin v0.4.0, no network egress):
+  `search --query "..." --repo .` to locate code, `impact --symbol NAME --repo .` for blast radius,
+  `diff --base main --head HEAD --json` for entity-level change review before a PR,
+  `checkpoint <id> --json` to analyze the commit behind a checkpoint, `doctor` to check the setup.
+  Run `search` and `impact` before large edits instead of broad grep or whole-file reads. That is the
+  blast-radius check and it saves tokens. Save `diff` and `checkpoint` output to `evidence/entire/`.
+
+**PR body**: list the checkpoint ids of the PR's commits and an entire.io link per commit:
+`https://entire.io/gh/Navin-nash/Locke/commit/<sha>`.
 
 ## 11. Git and PR conventions
 
@@ -261,6 +298,8 @@ A task is done when all of these hold:
 5. There are no secrets in code or logs, and nothing server-only is imported from the client.
 6. UI meets the bar in §14.
 7. The PR is open with the template above. Notable results are appended to `hackathon.md`.
+8. Every commit has an `Entire-Checkpoint:` trailer, the checkpoint refs are pushed, and the PR body
+   lists the checkpoint ids (§10).
 
 ## 13. Orchestrator dispatch
 
@@ -288,6 +327,9 @@ A task is done when all of these hold:
   `lib/types` and `lib/client`. `lib/agent` imports tools only through `lib/tools/index.ts`.
 - Each task prompt includes: task ID, owned paths, dependencies, acceptance criteria, and skills
   (copy them from `docs/PLAN.md`).
+- **Entire**: start new worker sessions only from a branch that contains the Entire config (§10).
+  Restart long-running sessions at task boundaries so hooks load. Spread checkpointed work across all
+  four harnesses, so every harness shows up in `entire checkpoint list` and `entire recap`.
 - Blockers go to the orchestrator immediately. Don't guess across ownership lines.
 
 ## 14. UI and motion principles (for harnesses without design skills)
@@ -309,3 +351,10 @@ whatever DESIGN.md says.
 - **Copy**: plain language, short sentences. State what was verified, what was not, and why. Never
   use alarmist words (see §2.7).
 - **Responsive**: works at 360 px width. Dossier rows stack on mobile.
+
+<!-- entire-graph:begin -->
+This repo has the entire-graph code graph installed. Before exploring code with
+grep/find/whole-file reads, read .entire/graph-agent.md — resolution-first guidance
+for using graph retrieval, focused source inspection, and verification.
+@.entire/graph-agent.md
+<!-- entire-graph:end -->
