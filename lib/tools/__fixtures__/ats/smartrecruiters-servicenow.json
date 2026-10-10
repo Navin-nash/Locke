@@ -1,0 +1,158 @@
+{
+ "offset": 0,
+ "limit": 5,
+ "totalFound": 697,
+ "content": [
+  {
+   "id": "744000154789179",
+   "name": "Staff Database Engineer",
+   "uuid": "d7f94241-6153-47d3-b271-f5f82840f3e2",
+   "jobAdId": "924ea869-8bf8-4e4a-88cf-98496439c88e",
+   "defaultJobAd": true,
+   "refNumber": "JB0073869",
+   "company": {
+    "identifier": "ServiceNow",
+    "name": "ServiceNow"
+   },
+   "releasedDate": "2026-10-09T22:43:34.604Z",
+   "location": {
+    "city": "Toronto",
+    "region": "Ontario",
+    "country": "ca",
+    "address": "129 Spadina Ave Suite 404",
+    "postalCode": "M5V 2L3",
+    "remote": false,
+    "hybrid": true,
+    "hybridDescription": "2 days in office",
+    "fullLocation": "Toronto, Ontario, Canada"
+   },
+   "industry": {
+    "id": "it_and_services",
+    "label": "Information Technology And Services"
+   },
+   "department": {
+    "id": "2294038",
+    "label": "Engineering, Infrastructure and Operations"
+   },
+   "function": {
+    "id": "information_technology",
+    "label": "Information Technology"
+   },
+   "typeOfEmployment": {
+    "id": "permanent",
+    "label": "Full-time"
+   },
+   "experienceLevel": {
+    "id": "not_applicable",
+    "label": "Not Applicable"
+   },
+   "visibility": "PUBLIC",
+   "ref": "https://api.smartrecruiters.com/v1/companies/ServiceNow/postings/744000154789179",
+   "creator": {
+    "name": "Tina Schneider"
+   },
+   "language": {
+    "code": "en",
+    "label": "English",
+    "labelNative": "English (US)"
+   }
+  },
+  {
+   "id": "744000154779380",
+   "name": "Senior Staff Software Engineer, Agentic AI Harness & Quality - Moveworks",
+   "uuid": "5afd6e1a-8d4e-49d8-89ac-f715a26a92aa",
+   "jobAdId": "ac60a95e-e40c-45fe-aca7-07abd97db4ed",
+   "defaultJobAd": true,
+   "refNumber": "JB0076213",
+   "company": {
+    "identifier": "ServiceNow",
+    "name": "ServiceNow"
+   },
+   "releasedDate": "2026-10-09T20:45:29.434Z",
+   "location": {
+    "city": "Mountain View",
+    "region": "CALIFORNIA",
+    "country": "us",
+    "address": "1400 Terra Bella Avenue",
+    "postalCode": "94043",
+    "remote": false,
+    "hybrid": false,
+    "fullLocation": "Mountain View, CALIFORNIA, United States"
+   },
+   "industry": {
+    "id": "it_and_services",
+    "label": "Information Technology And Services"
+   },
+   "department": {},
+   "function": {
+    "id": "engineering",
+    "label": "Engineering"
+   },
+   "typeOfEmployment": {
+    "id": "permanent",
+    "label": "Full-time"
+   },
+   "experienceLevel": {
+    "id": "not_applicable",
+    "label": "Not Applicable"
+   },
+   "visibility": "PUBLIC",
+   "ref": "https://api.smartrecruiters.com/v1/companies/ServiceNow/postings/744000154779380",
+   "language": {
+    "code": "en",
+    "label": "English",
+    "labelNative": "English (US)"
+   }
+  },
+  {
+   "id": "744000154774511",
+   "name": "Sr Staff Inbound Product Manager",
+   "uuid": "59a0e6fc-d178-4dd7-8678-b8e37c6c9ff1",
+   "jobAdId": "86940199-add8-4446-9255-3892cf413092",
+   "defaultJobAd": true,
+   "refNumber": "JB0076087",
+   "company": {
+    "identifier": "ServiceNow",
+    "name": "ServiceNow"
+   },
+   "releasedDate": "2026-10-09T20:16:20.054Z",
+   "location": {
+    "city": "Mountain View",
+    "region": "California",
+    "country": "us",
+    "address": "1400 Terra Bella Avenue",
+    "postalCode": "94043",
+    "remote": false,
+    "hybrid": false,
+    "fullLocation": "Mountain View, California, United States"
+   },
+   "industry": {
+    "id": "it_and_services",
+    "label": "Information Technology And Services"
+   },
+   "department": {
+    "id": "2294174",
+    "label": "Product"
+   },
+   "function": {
+    "id": "engineering",
+    "label": "Engineering"
+   },
+   "typeOfEmployment": {
+    "id": "permanent",
+    "label": "Full-time"
+   },
+   "experienceLevel": {
+    "id": "not_applicable",
+    "label": "Not Applicable"
+   },
+   "visibility": "PUBLIC",
+   "ref": "https://api.smartrecruiters.com/v1/companies/ServiceNow/postings/744000154774511",
+   "language": {
+    "code": "en",
+    "label": "English",
+    "labelNative": "English (US)"
+   }
+  }
+ ]
+}
