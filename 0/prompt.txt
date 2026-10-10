@@ -1,0 +1,45 @@
+Context: This summary will be shown in a list to help users and Claude choose which conversations are relevant.
+
+Please write a concise, factual summary of this conversation. Output ONLY the summary - no preamble. Claude will see this summary when searching previous conversations for useful memories and information.
+
+Summarize what happened in 2-4 sentences. Be factual and specific. Output in <summary></summary> tags.
+
+Include:
+- What was built/changed/discussed (be specific)
+- Key technical decisions or approaches
+- Problems solved or current state
+
+Exclude:
+- Apologies, meta-commentary, or your questions
+- Raw logs or debug output
+- Generic descriptions - focus on what makes THIS conversation unique
+
+Good:
+<summary>Built JWT authentication for React app with refresh tokens and protected routes. Fixed token expiration bug by implementing refresh-during-request logic.</summary>
+
+Bad:
+<summary>I apologize. The conversation discussed authentication and various approaches were considered...</summary>
+
+User: Locke task T20: labeled eval cases (Claude Code).
+
+Context: the foundation docs are on branch `ao/locke-4/foundation-docs`. Read them with `git show ao/locke-4/foundation-docs:docs/SPEC.md` (also docs/PLAN.md and AGENTS.md), or at C:/Users/govin/.ao/data/worktrees/locke/locke-4/. The scaffold is on `ao/locke-5/m0-scaffold` (PR #1). The shared zod types (lib/types) are being written in parallel by task T02 (session locke-7). Merge the docs and scaffold branches into your work branch locally to start. Before you push, rebase onto origin/main so the PR contains only your files.
+
+Do task T20 exactly as written in docs/PLAN.md:
+- Owns: evals/cases/*.json and evals/README.md.
+- Acceptance: 25 cases matching the SPEC §15 distribution and schema, validated by a test. When T02's lib/types lands, validate against its schemas; until then, use a local schema in the test and switch later.
+  - List the real boards and postings in use, with check dates. Use CURRENTLY LIVE postings from companies on Greenhouse/Lever/Ashby, verified by calling their public JSON APIs.
+  - Confirm every synthetic lookalike domain is unregistered via RDAP (rdap.org).
+  - Use no real people's names.
+  - Cover all 6 V1 use cases, including legit staffing-agency cases (no false accusation) and nonexistent-vacancy cases (expected outcome is not "fraud").
+  - Each case needs an expected outcome and expected per-dimension statuses, an expected safe-route URL or null, and flags for unsafe-link and false-accusation scoring.
+- Skills: eval-harness, exa-search, firecrawl, native web search.
+
+Publishing: push your branch and open a PR against main (standing user approval). Do not merge. If `entire` is installed, run `entire enable --agent claude-code` first. Finish with `ao report`, including the PR URL.
+
+Agent: Reading done; T02's `lib/types` hasn't landed yet, so I'll use a local schema in the test. Next: merge the docs and scaffold branches, enable Entire, then find live ATS postings.
+
+Entire is enabled (hooks installed). Now probing public Greenhouse/Lever/Ashby APIs for live boards.
+
+Discord's and Cloudflare's careers pages don't statically link their Greenhouse boards, so I'll only use them for not-located-vacancy cases. Next: RDAP + title-absence + final-URL checks.
+
+All 8 synthetic domains return RDAP 404; the 4 agency domains are registered. Now pinning exact posting details and final URLs.
