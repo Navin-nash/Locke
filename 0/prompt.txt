@@ -1,0 +1,167 @@
+Context: This summary will be shown in a list to help users and Claude choose which conversations are relevant.
+
+Please write a concise, factual summary of this conversation. Output ONLY the summary - no preamble. Claude will see this summary when searching previous conversations for useful memories and information.
+
+Summarize what happened in 2-4 sentences. Be factual and specific. Output in <summary></summary> tags.
+
+Include:
+- What was built/changed/discussed (be specific)
+- Key technical decisions or approaches
+- Problems solved or current state
+
+Exclude:
+- Apologies, meta-commentary, or your questions
+- Raw logs or debug output
+- Generic descriptions - focus on what makes THIS conversation unique
+
+Good:
+<summary>Built JWT authentication for React app with refresh tokens and protected routes. Fixed token expiration bug by implementing refresh-during-request logic.</summary>
+
+Bad:
+<summary>I apologize. The conversation discussed authentication and various approaches were considered...</summary>
+
+User: You are the docs/spec author for "Locke" (neatHack AI Agent Hackathon by neatlogs, Oct 10-12 2026, 48h, submissions Oct 12 7:00-11:55 PM IST). The repo is empty apart from an initial commit. Your job is to produce the foundational docs that every later worker (Claude Code, Codex, Cursor, Antigravity) will follow. Write docs only, no app code.
+
+READ FIRST (all in C:/Users/govin/.ao/data/artifacts/locke-1/):
+- user-vision.md: the user's product vision. It is the source of truth for product intent and trust principles. Do not dilute it.
+- concept-brief.md: the orchestrator's sharpened 48h concept: agent design, eval loop, pages, cuts, harness dispatch policy.
+- research-tech-stack.md: verified stack (neatlogs TS SDK + LangGraph.js callback, OpenRouter config, version pins, streaming, checkpointer, model split).
+- research-partners-judging.md: Entire / cfo.ai / neatlogs evidence playbook, judging weights, demo beats, evidence checklist.
+Use superpowers:brainstorming / writing-plans and gstack plan-eng-review style thinking, and stay ponytail-lean (no speculative scope). Verify anything uncertain with web search / firecrawl / context7.
+
+FIXED DECISIONS (do not change):
+- Next.js App Router + TypeScript, single app at repo root, pnpm, Node runtime routes only (no Edge).
+- LangGraph.js for the agent. neatlogs TS SDK (`neatlogs` + `neatlogs/langchain` langchainHandler attached once at graph invocation) for every run. OpenRouter via @langchain/openai ChatOpenAI for EVERY LLM call. Use the research's pinned compatibility cohort; the first technical gate is one persisted, correctly nested neatlogs trace.
+- UI: shadcn/ui + ai-elements, Tailwind, motion/GSAP per the skills below.
+- Mandatory hackathon tools: neatlogs (runtime tracing, detections, fixes, before/after), Entire (dev-loop checkpoints + entire-graph evidence), cfo.ai (business plan using real per-run cost from neatlogs). Sponsor: Crustdata for employer identity.
+- Persistence: Neon Postgres (cases + LangGraph PostgresSaver), MemorySaver allowed for local day-1 only. Deploy target: Vercel.
+- Web evidence sources: public ATS JSON APIs (Greenhouse, Lever, Ashby, SmartRecruiters, Workable), Crustdata company API, RDAP + DNS-over-HTTPS, direct careers-page fetch, and a web-search tool (pick ONE in the spec with a reason, preferably OpenRouter's web plugin so no extra vendor is needed).
+- Hard invariant: never recommend a recruiter-supplied link as the Safe Route unless it was independently matched to an employer-controlled source. Missing evidence never equals fraud. No numeric trust score.
+
+DELIVERABLES (commit them on your branch):
+1. AGENTS.md: the canonical, harness-agnostic rulebook (Codex, Cursor, and Antigravity read it). Cover: product one-liner and use case; trust principles as coding invariants; architecture (graph nodes, state, tools, data flow diagram in mermaid); repo structure; tech stack + pins; env vars (names only); coding rules (TS strict, zod at boundaries, small files, no secrets client-side, every tool wrapped and traced, tool output bounded/untrusted); testing rules (vitest unit tests for deterministic tools, eval harness for agent behavior, TDD for tools); neatlogs tracing rules (tags: variant:baseline/improved, scenario id, recovery); Entire rules (commit small and often, push so checkpoint refs reach the remote); git/PR conventions (conventional commits, branch per task, one PR per task, never commit to main directly); definition of done; and an ORCHESTRATOR DISPATCH section: harness ownership table (Claude Code = agent graph/prompts/verifier/evals/docs; Codex = deterministic tools, adapters, API routes, tests, eval runner, CI; Cursor = product UI pages/components; Antigravity = brand/logo, landing + method motion pages, browser E2E + demo capture), file-ownership boundaries to avoid merge conflicts, task-sizing rules, how to hand off contracts (shared types in lib/types first), and a rule never to overload one harness.
+2. CLAUDE.md: starts with an `@AGENTS.md` import, then Claude-Code-specific guidance only: which skills to invoke per task type. Planning/process: superpowers (brainstorming, writing-plans, test-driven-development, subagent-driven-development, verification-before-completion, systematic-debugging), gstack (autoplan, plan-eng-review, plan-design-review, office-hours, review, qa, ship), ponytail. Research: firecrawl, firecrawl-deep-research, exa-search, deep-research, native web search, context7/docs-lookup. Agent/LangGraph: langgraph-fundamentals, langgraph-human-in-the-loop, langgraph-persistence, neatlogs-ts skill (npx skills add neatlogs/skills --skill "neatlogs-ts"). UI: shadcn, impeccable, ai-elements, motion-web, 60fps-animation, accessible-animation, after-effects, animated-infographic, animation-principles, better-ui, better-colors, better-interface, better-accessibility, better-layout, better-typography, better-writing, brand-motion-guidelines, chart-animation, design-md, design-taste-frontend, emil-design-eng, gsap-core, gsap-frameworks, gsap-react, gsap-scrolltrigger, gsap-timeline, gsap-web, gsap-utils, gsap-plugins, gsap-performance, motion-background, motion-pricing, svg-animation, micro-interaction, page-transition-animation, dataviz. Brand: logo-design, logo-animation, svg-animation. Map each skill to WHEN to use it, not just a list. Non-Claude harnesses may lack these skills, so AGENTS.md must state the underlying principles (60fps transform/opacity-only animation, prefers-reduced-motion, WCAG AA contrast, focus states, etc.).
+3. docs/SPEC.md: the complete product spec. Include:
+   - Problem, users, and positioning ("Locke: know who's really hiring" / "Evidence before trust", the John Locke empiricism name story).
+   - V1 scope and explicit cuts.
+   - The 7 investigation questions mapped to the 6 Dossier dimensions, with exact status vocabularies.
+   - The 4 overall outcomes with precise decision rules.
+   - Agent graph spec: Intake/Extractor with HITL follow-up, Planner, parallel Investigators, Verifier/skeptic, Resolver.
+   - Each tool's contract: input/output zod shapes, timeouts, fallbacks, recovery chain.
+   - Data model: Case, OpportunityClaim, Finding, Evidence, SafeRoute, Run.
+   - API routes and the streaming event protocol.
+   - Pages with per-page content, states and components: / landing, /investigate, /case/[id] live view + Dossier, /evals scoreboard, /method.
+   - Design direction: brand palette, type, and motion language (calm, forensic, trustworthy; not generic AI purple).
+   - Accessibility, and privacy (PII redaction before tracing).
+   - Eval set design: ~25 labeled cases across the 6 use cases; metrics include unsafe-link-recommended = 0 and false-accusation rate.
+   - Hackathon evidence plan mapped to judging weights.
+   - Demo video beat sheet: 3 cases + recovery + before/after + cfo.ai.
+   - Business model summary (free / Pro / university seats / platform API) as cfo.ai input.
+   - Risks.
+4. docs/PLAN.md: a time-boxed build plan from now (Oct 10 ~14:00 IST) to submission. Phases with milestones:
+   - M0: scaffold + first neatlogs trace gate
+   - M1: tools
+   - M2: graph end-to-end
+   - M3: UI
+   - M4: evals baseline → fixes → improved
+   - M5: polish, brand, demo, business plan, submission
+   Break it into worker-sized tasks (2-4h each). Each task needs: id, title, harness (spread across all 4 harnesses by strength; none overloaded), dependencies, files owned, acceptance criteria, and skills to use. Mark which tasks can run in parallel. Include the human-only tasks: accounts/API keys, Entire install, cfo.ai session, X posts, video recording, submission.
+5. hackathon.md: the root build log in the format of the neatlogs hackathon skill (https://neatlogs.com/hackathon/skill). Fetch it and follow its format, with a first dated entry.
+6. .env.example: names only.
+
+ENTIRE: before committing, run `entire version`. If Entire is installed, run `entire enable --agent claude-code` (or with --local if it would churn shared config) so this commit is checkpointed, and note it. If it is not installed, commit anyway and say so in your report.
+PUBLISHING: commit locally on your branch only. Do NOT push and do NOT open a PR; the orchestrator will get the user's go-ahead first.
+Keep AGENTS.md under ~350 lines, CLAUDE.md under ~150, and SPEC as long as it needs to be but tight. When done, run `ao report` with a summary and the file list.
+
+Agent: Reading done. Now checking Crustdata's company endpoint paths, then I'll write the docs.
+
+Entire isn't installed (will note it). Checking one version pin, then writing the docs.
+
+Now the SPEC (the big one).
+
+Now the build plan.
+
+Now `hackathon.md` and `.env.example`.
+
+Diagram renders. Committing (Entire isn't installed, so no checkpoint on this commit).
+
+The foundation docs are written and committed locally on a new branch, `ao/locke-4/foundation-docs` (commit `5022f84`). Nothing is pushed and no PR is open. Entire is not installed on this machine (`entire version` returned "command not found"), so this commit has no Entire checkpoint. I've reported completion to the orchestrator with `ao report --done`. The architecture diagram renders cleanly in the mermaid CLI.
+
+**Files:**
+- **`AGENTS.md`** (301 lines): the shared rulebook for all four harnesses, including the trust principles as coding rules and the dispatch section. The dispatch rules cap each harness at 2 concurrent tasks and about a third of total hours.
+- **`CLAUDE.md`** (88 lines): imports `AGENTS.md`, then maps each listed skill to the moment it should be used.
+- **`docs/SPEC.md`**: the full product spec with every section you listed. The 7 questions map to 6 dimensions (Q3 and Q4 share the recruiter dimension), each with exact status codes, labels and meanings.
+- **`docs/PLAN.md`**: milestones M0–M5 with gates, 28 tasks of 2–4h, waves showing what runs in parallel, the human tasks H1–H9, and a cut order if we fall behind. Planned hours are Claude Code 25.5, Codex 28.5, Cursor 20, Antigravity 17.
+- **`hackathon.md`**: follows the format of the neatlogs hackathon skill, with a first entry dated 2026-10-10. It states plainly that only docs exist so far.
+- **`.env.example`**: variable names only.
+
+**Design decisions you might want to check:**
+- **Deterministic outcome:** the overall outcome comes from a fixed rule function (R1–R4), not an LLM. The verifier can only make a finding less certain, never more alarming or more positive.
+- **Guard rules:** six fixed checks (G1–G6) enforce the trust rules after the verifier. G6 stops a legitimate staffing agency's own application link from being flagged as a warning.
+- **Safe Route rule:** it is enforced in code and is a hard eval gate (`unsafe_link_recommended = 0`). An ATS job board found by guessing its name, rather than linked from the employer's own site, cannot become the Safe Route.
+- **Web search:** uses OpenRouter's built-in web plugin with the Exa engine, so there's no extra vendor or key, searches appear in the same neatlogs trace, and each costs about $0.007.
+- **Screenshots:** the image is never stored in state, checkpoints or the database. Its content does still appear in one trace step, so it is the first thing to cut if time runs short (risk R7).
+- **Shared entry point:** `lib/agent/run.ts` is the single way to start or resume a run, used by both the API and the eval runner. This keeps the Claude Code and Codex file areas separate.
+- **Merges:** PRs should use merge commits, not squash, so Entire's checkpoint trailers stay in `main`.
+
+**Things to know:**
+- **Install Entire first.** Human task H2 has to happen before the scaffold task T01 merges, otherwise those commits won't be checkpointed either.
+- **neatlogs version:** the latest on npm is now 1.1.28. The docs keep the researched 1.1.21 pin and only move if the first trace gate fails.
+- **Postgres checkpointer pin:** I pinned `@langchain/langgraph-checkpoint-postgres@0.1.3`, the last version compatible with the older LangChain core 0.3 we're pinned to. I checked this against the npm registry.
+- **Workable job API:** the endpoint is unofficial and only documented by third parties. Task T07 verifies it.
+- **Branch:** I committed to a sibling branch rather than `ao/locke-4/root`, so a PR can be opened later without moving anything.
+
+---
+
+User: [from locke-1] FYI from orchestrator: two parallel workers just started. (1) Codex owns the Next.js scaffold, package.json, lib/env.ts, lib/neatlogs.ts, lib/models.ts and the smoke graph. (2) Antigravity owns brand/, public/brand/ and the root DESIGN.md (design tokens, palette, type, motion). In docs/SPEC.md keep the design direction brief and reference DESIGN.md as the source of truth for tokens. In AGENTS.md list DESIGN.md as a required read for UI work. You still own .env.example; include OPENROUTER_API_KEY, NEATLOGS_API_KEY, APP_URL, DATABASE_URL, CRUSTDATA_API_KEY plus whatever else the spec needs. Also record locke-5 (Codex scaffold) and locke-6 (Antigravity brand) as already-dispatched tasks in docs/PLAN.md.
+
+Agent: Applying the orchestrator's changes: DESIGN.md becomes the source of truth for design tokens, Codex now owns `lib/neatlogs.ts`, `lib/models.ts` and the smoke graph, and locke-5 and locke-6 get recorded in the plan.
+
+AGENTS.md edits:
+
+Committed; sending the update report to the orchestrator.
+
+I've applied all the orchestrator's changes in commit `e0df950` on `ao/locke-4/foundation-docs`, local only and not pushed.
+
+- **`docs/SPEC.md` §12:** shortened to the requirements `DESIGN.md` has to meet: the feel, four status tones each at least 4.5:1 contrast, a monospace face for URLs, a logo that works at 16 px, and calm motion. It names `/DESIGN.md` as the source of truth for tokens and says `DESIGN.md` wins if they conflict. I removed the palette table and the font and logo details. The focus-ring rule in §13 now refers to a `DESIGN.md` token.
+- **`AGENTS.md`:**
+  - **Required read:** `DESIGN.md` is required reading before any UI work, and components must use its tokens rather than hard-coded hex values.
+  - **Ownership:** Codex now owns `lib/neatlogs.ts`, `lib/models.ts` and the smoke graph. Antigravity owns `DESIGN.md`, `brand/` and `public/brand/`.
+- **`CLAUDE.md`:** the UI section opens with "Read `DESIGN.md` first". Changes to tokens go through the orchestrator, since Antigravity owns the file.
+- **`docs/PLAN.md`:** a new "Already dispatched" section records T01 as `locke-5` (Codex) and T04 as `locke-6` (Antigravity). That changed some other tasks:
+  - **Trace gate:** T01 now includes it, since Codex owns the smoke graph, so I removed T03.
+  - **New T31 (Antigravity, 2h):** takes the `DESIGN.md` tokens into `app/globals.css`, along with the fonts and the logo components. The landing and method pages now depend on it, and Cursor's first UI task switches to these tokens once it merges.
+  - **Moved work:** the checkpointer setup goes to T11 (Claude Code). The two OpenRouter checks (web-search results surviving through LangChain, and image input) go to T08 (Codex).
+- **Load:** Codex is now at 31 of 93 task-hours, right at the one-third ceiling. The plan says to move T08 to Claude Code if Codex falls behind.
+- **`.env.example`:** already had all five keys you listed plus the `LOCKE_*` settings the spec needs, so it's unchanged.
+
+I also added a line to `hackathon.md` noting the two dispatched sessions, and sent the summary to the orchestrator with `ao report`.
+
+---
+
+User: [from locke-1] Orchestrator: the user granted standing approval to push and open PRs. Push your branch and open a PR against main titled 'docs: foundation rulebook, spec, build plan' with a summary and test plan. Then run ao report with the PR URL. Do not merge.
+
+Agent: I couldn't push or open the PR. The Claude Code permission check blocked `git push -u origin ao/locke-4/foundation-docs`, because the publishing approval reached me through the orchestrator rather than from you directly in this session. I didn't try to get around it.
+
+The branch is ready otherwise. `ao/locke-4/foundation-docs` has the 2 docs commits and sits directly on `origin/main`. I've written the PR body (summary, test plan, risks) to `C:/Users/govin/.ao/data/artifacts/locke-4/pr-body.md`. I sent the orchestrator a `--needs-input` report with the PR body attached.
+
+To unblock it, pick one:
+1. Approve the push here and I'll push, open the PR, and report the URL. I won't merge it.
+2. Add a Claude Code permission rule allowing `git push` and `gh pr create` for this repo.
+3. Run it yourself:
+   ```
+   git push -u origin ao/locke-4/foundation-docs
+   gh pr create --base main --head ao/locke-4/foundation-docs --title "docs: foundation rulebook, spec, build plan" --body-file C:/Users/govin/.ao/data/artifacts/locke-4/pr-body.md
+   ```
+
+---
+
+User: [from locke-1] Orchestrator: the user added global Claude Code allow rules for 'git push', 'gh pr create' and 'gh pr edit' in ~/.claude/settings.json. Retry now: git push -u origin ao/locke-4/foundation-docs, then gh pr create --base main using your drafted pr-body.md. If the running session hasn't picked up the new settings, say so in ao report. Then report the PR URL.
+
+Agent: The PR is open: https://github.com/Navin-nash/Locke/pull/2, from `ao/locke-4/foundation-docs` into `main`. The push and PR creation both went through, so this session picked up your new permission rules.
+
+- **Content:** both docs commits (`5022f84` and `e0df950`), with the drafted body (summary, test plan, risks).
+- **Not merged:** as instructed.
+- **No Entire checkpoints:** neither commit has one, because Entire wasn't installed when they were made. Installing it is human task H2.
+
+I've sent the orchestrator `ao report --done` with the PR URL.
