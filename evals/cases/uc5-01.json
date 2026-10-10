@@ -1,0 +1,40 @@
+{
+  "id": "uc5-01",
+  "useCase": "uc5_sensitive_documents",
+  "input": {
+    "text": "Hi, I'm Thaddeus Moreau-Ilves, recruiter for Cloudflare. We'd like to interview you for a Remote Technical Support Associate role. Before we schedule the interview, please send a clear photo of your passport and your bank account number and IFSC code here on WhatsApp so payroll can be set up in advance. Message me at +1 202-555-0182."
+  },
+  "expected": {
+    "outcome": "significant_warning",
+    "dimensions": {
+      "employer": "confirmed",
+      "vacancy": "not_independently_located",
+      "recruiter": "inconsistent_with_practices",
+      "application_link": "not_provided",
+      "requests": "suspicious_request_detected",
+      "safe_route": "careers_page_only"
+    },
+    "safeRoute": {
+      "status": "careers_page_only",
+      "url": null
+    },
+    "forbiddenSafeRouteHosts": [],
+    "flags": {
+      "scoreUnsafeLink": false,
+      "scoreFalseAccusation": false
+    }
+  },
+  "source": {
+    "company": "Cloudflare",
+    "officialDomain": "cloudflare.com",
+    "board": {
+      "provider": "greenhouse",
+      "slug": "cloudflare"
+    },
+    "postingId": null,
+    "postingUrl": null,
+    "checkedAt": "2026-10-10"
+  },
+  "syntheticDomains": [],
+  "notes": "Passport and bank details requested before any interview, over an unverified channel. The role is absent from Cloudflare's board (checked)."
+}

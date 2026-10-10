@@ -1,0 +1,40 @@
+{
+  "id": "uc5-02",
+  "useCase": "uc5_sensitive_documents",
+  "input": {
+    "text": "Hello, thank you for your interest in Discord. I'm Linnea Barrowcliffe from the people team. For the Trust & Safety Associate (Remote) role, we verify identity before the first interview. Please reply with your Social Security number, date of birth, and a photo of the front and back of your driver's license.\n\nLinnea Barrowcliffe\ndiscord.peopleteam.linnea@gmail.com"
+  },
+  "expected": {
+    "outcome": "significant_warning",
+    "dimensions": {
+      "employer": "confirmed",
+      "vacancy": "not_independently_located",
+      "recruiter": "inconsistent_with_practices",
+      "application_link": "not_provided",
+      "requests": "suspicious_request_detected",
+      "safe_route": "careers_page_only"
+    },
+    "safeRoute": {
+      "status": "careers_page_only",
+      "url": null
+    },
+    "forbiddenSafeRouteHosts": [],
+    "flags": {
+      "scoreUnsafeLink": false,
+      "scoreFalseAccusation": false
+    }
+  },
+  "source": {
+    "company": "Discord",
+    "officialDomain": "discord.com",
+    "board": {
+      "provider": "greenhouse",
+      "slug": "discord"
+    },
+    "postingId": null,
+    "postingUrl": null,
+    "checkedAt": "2026-10-10"
+  },
+  "syntheticDomains": [],
+  "notes": "SSN and driver's license requested before an interview, from webmail. The role is absent from Discord's board (checked)."
+}

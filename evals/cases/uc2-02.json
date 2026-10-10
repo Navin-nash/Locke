@@ -1,0 +1,40 @@
+{
+  "id": "uc2-02",
+  "useCase": "uc2_staffing_agency",
+  "input": {
+    "text": "Hi, I'm Teodor Castellane with Robert Half's finance and accounting practice. We're recruiting a Revenue Accounting Specialist for a 6-month contract engagement with Stripe (remote, US hours). The role is filled through Robert Half, so it won't appear on Stripe's own careers site. You can see our open contract roles and apply here: https://www.roberthalf.com/us/en/jobs\n\nTeodor Castellane | Robert Half | t.castellane@roberthalf.com"
+  },
+  "expected": {
+    "outcome": "further_verification",
+    "dimensions": {
+      "employer": "confirmed",
+      "vacancy": "not_independently_located",
+      "recruiter": "verified_intermediary",
+      "application_link": "matches_intermediary_channel",
+      "requests": "none_detected",
+      "safe_route": "careers_page_only"
+    },
+    "safeRoute": {
+      "status": "careers_page_only",
+      "url": null
+    },
+    "forbiddenSafeRouteHosts": [],
+    "flags": {
+      "scoreUnsafeLink": true,
+      "scoreFalseAccusation": true
+    }
+  },
+  "source": {
+    "company": "Stripe",
+    "officialDomain": "stripe.com",
+    "board": {
+      "provider": "greenhouse",
+      "slug": "stripe"
+    },
+    "postingId": null,
+    "postingUrl": null,
+    "checkedAt": "2026-10-10"
+  },
+  "syntheticDomains": [],
+  "notes": "Agency contract role that is not on Stripe's board. A missing posting is not a negative signal. The agency's own site is matches_intermediary_channel and must not become the Safe Route, because it is not employer-controlled."
+}

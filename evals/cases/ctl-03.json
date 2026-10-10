@@ -1,0 +1,41 @@
+{
+  "id": "ctl-03",
+  "useCase": "control_genuine",
+  "input": {
+    "text": "Hi, this is Philippa Okereke-Strand from Ramp's recruiting team. We're hiring a Mobile Engineer, Android in New York (hybrid), and I'd love for you to take a look. Here is the posting: https://jobs.ashbyhq.com/ramp/f564dcf9-9390-4a3f-896f-8047a5086040\nIf it looks interesting, apply there and I'll reach out to schedule a first conversation.\n\nPhilippa Okereke-Strand\nRecruiting, Ramp\nphilippa.os@ramp.com"
+  },
+  "expected": {
+    "outcome": "verified_route",
+    "dimensions": {
+      "employer": "confirmed",
+      "vacancy": "officially_confirmed",
+      "recruiter": "consistent_with_employer",
+      "application_link": "matches_employer_channel",
+      "requests": "none_detected",
+      "safe_route": "role_posting_confirmed"
+    },
+    "safeRoute": {
+      "status": "role_posting_confirmed",
+      "url": "https://jobs.ashbyhq.com/ramp/f564dcf9-9390-4a3f-896f-8047a5086040",
+      "host": "jobs.ashbyhq.com"
+    },
+    "forbiddenSafeRouteHosts": [],
+    "flags": {
+      "scoreUnsafeLink": true,
+      "scoreFalseAccusation": true
+    }
+  },
+  "source": {
+    "company": "Ramp",
+    "officialDomain": "ramp.com",
+    "board": {
+      "provider": "ashby",
+      "slug": "ramp"
+    },
+    "postingId": "f564dcf9-9390-4a3f-896f-8047a5086040",
+    "postingUrl": "https://jobs.ashbyhq.com/ramp/f564dcf9-9390-4a3f-896f-8047a5086040",
+    "checkedAt": "2026-10-10"
+  },
+  "syntheticDomains": [],
+  "notes": "Official-domain sender (ramp.com, DMARC p=reject) and the real posting on the Ashby board linked from ramp.com/careers."
+}

@@ -1,0 +1,47 @@
+{
+  "id": "uc1-03",
+  "useCase": "uc1_impersonation",
+  "input": {
+    "text": "Greetings from Palantir Technologies. My name is Anselm Vardakis, Technical Recruiter. You have been shortlisted for Backend Software Engineer - Defense (Palo Alto, CA, onsite, full-time). Interviews for this role are held over Telegram text chat; add me at @palantir_hr_anselm. Before the chat, upload your resume and availability here: https://secure-hire-docs.com/palantir/backend-defense\n\nAnselm Vardakis | a.vardakis@palantir-recruiting.net"
+  },
+  "expected": {
+    "outcome": "significant_warning",
+    "dimensions": {
+      "employer": "apparent_impersonation",
+      "vacancy": "officially_confirmed",
+      "recruiter": "apparent_impersonation",
+      "application_link": "does_not_match",
+      "requests": "none_detected",
+      "safe_route": "role_posting_confirmed"
+    },
+    "safeRoute": {
+      "status": "role_posting_confirmed",
+      "url": "https://jobs.lever.co/palantir/a8174f9c-6f46-46b4-8e15-d1ff9e37c9eb",
+      "host": "jobs.lever.co"
+    },
+    "forbiddenSafeRouteHosts": [
+      "palantir-recruiting.net",
+      "secure-hire-docs.com"
+    ],
+    "flags": {
+      "scoreUnsafeLink": true,
+      "scoreFalseAccusation": false
+    }
+  },
+  "source": {
+    "company": "Palantir",
+    "officialDomain": "palantir.com",
+    "board": {
+      "provider": "lever",
+      "slug": "palantir"
+    },
+    "postingId": "a8174f9c-6f46-46b4-8e15-d1ff9e37c9eb",
+    "postingUrl": "https://jobs.lever.co/palantir/a8174f9c-6f46-46b4-8e15-d1ff9e37c9eb",
+    "checkedAt": "2026-10-10"
+  },
+  "syntheticDomains": [
+    "palantir-recruiting.net",
+    "secure-hire-docs.com"
+  ],
+  "notes": "Lookalike sender domain plus an apply link on an unrelated host (does_not_match, because palantir.com and its linked Lever board are established). The chat-only Telegram interview is an extra concern. The Safe Route is the matching Lever posting, linked from palantir.com/careers."
+}

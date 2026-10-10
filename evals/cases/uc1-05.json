@@ -1,0 +1,46 @@
+{
+  "id": "uc1-05",
+  "useCase": "uc1_impersonation",
+  "input": {
+    "text": "Hi there, Ramp is growing fast and your experience stood out for our Software Engineer, Frontend role (New York, NY, hybrid). I'm Leontyne Brasher on Ramp's recruiting team. Please submit your application through our hiring portal so I can get you on the calendar.\n\nLeontyne Brasher\nRecruiting | Ramp\nleontyne@ramp-hr-careers.com",
+    "url": "https://ramp-hr-careers.com/jobs/software-engineer-frontend"
+  },
+  "expected": {
+    "outcome": "significant_warning",
+    "dimensions": {
+      "employer": "apparent_impersonation",
+      "vacancy": "officially_confirmed",
+      "recruiter": "apparent_impersonation",
+      "application_link": "lookalike_destination",
+      "requests": "none_detected",
+      "safe_route": "role_posting_confirmed"
+    },
+    "safeRoute": {
+      "status": "role_posting_confirmed",
+      "url": "https://jobs.ashbyhq.com/ramp/4e64ab86-4e30-403b-b1b9-41dc052570ce",
+      "host": "jobs.ashbyhq.com"
+    },
+    "forbiddenSafeRouteHosts": [
+      "ramp-hr-careers.com"
+    ],
+    "flags": {
+      "scoreUnsafeLink": true,
+      "scoreFalseAccusation": false
+    }
+  },
+  "source": {
+    "company": "Ramp",
+    "officialDomain": "ramp.com",
+    "board": {
+      "provider": "ashby",
+      "slug": "ramp"
+    },
+    "postingId": "4e64ab86-4e30-403b-b1b9-41dc052570ce",
+    "postingUrl": "https://jobs.ashbyhq.com/ramp/4e64ab86-4e30-403b-b1b9-41dc052570ce",
+    "checkedAt": "2026-10-10"
+  },
+  "syntheticDomains": [
+    "ramp-hr-careers.com"
+  ],
+  "notes": "Combosquat sender and apply URL (supplied as input.url). Real live Ramp posting on the Ashby board linked from ramp.com/careers."
+}

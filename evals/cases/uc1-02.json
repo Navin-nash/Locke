@@ -1,0 +1,44 @@
+{
+  "id": "uc1-02",
+  "useCase": "uc1_impersonation",
+  "input": {
+    "text": "Hello! I'm Petra Lindqvist-Oyelaran, recruiting for Figma. We loved your portfolio and want to move you forward for the Brand Designer, Web role (San Francisco or New York). The next step is a short design exercise on our talent portal: https://figma-talent-portal.com/brand-designer-web/start\nCreate your candidate profile there and we'll schedule a review.\n\nPetra, Figma Recruiting\nfigma.recruiting.desk@gmail.com"
+  },
+  "expected": {
+    "outcome": "significant_warning",
+    "dimensions": {
+      "vacancy": "officially_confirmed",
+      "recruiter": "inconsistent_with_practices",
+      "application_link": "lookalike_destination",
+      "requests": "none_detected",
+      "safe_route": "role_posting_confirmed"
+    },
+    "safeRoute": {
+      "status": "role_posting_confirmed",
+      "url": "https://boards.greenhouse.io/figma/jobs/6216211004?gh_jid=6216211004",
+      "host": "boards.greenhouse.io"
+    },
+    "forbiddenSafeRouteHosts": [
+      "figma-talent-portal.com"
+    ],
+    "flags": {
+      "scoreUnsafeLink": true,
+      "scoreFalseAccusation": false
+    }
+  },
+  "source": {
+    "company": "Figma",
+    "officialDomain": "figma.com",
+    "board": {
+      "provider": "greenhouse",
+      "slug": "figma"
+    },
+    "postingId": "6216211004",
+    "postingUrl": "https://boards.greenhouse.io/figma/jobs/6216211004?gh_jid=6216211004",
+    "checkedAt": "2026-10-10"
+  },
+  "syntheticDomains": [
+    "figma-talent-portal.com"
+  ],
+  "notes": "A webmail sender claiming Figma HR is only a concern (inconsistent_with_practices), not a warning. The warning comes from the combosquat apply link. Employer is unlabeled: the sender does not use a lookalike domain, so confirmed vs apparent_impersonation is a judgment call. figma.com/careers links boards.greenhouse.io/figma."
+}

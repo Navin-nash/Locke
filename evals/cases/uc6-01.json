@@ -1,0 +1,40 @@
+{
+  "id": "uc6-01",
+  "useCase": "uc6_conflicting_terms",
+  "input": {
+    "text": "(LinkedIn message) Hi, I'm Auberon Kestell, a recruiter working on Ramp's security hiring. We have a Security Engineer, Cloud opening that is fully remote from anywhere in the US, with a salary range of $95K-$115K. Would you like to set up a call this week?"
+  },
+  "expected": {
+    "outcome": "further_verification",
+    "dimensions": {
+      "employer": "confirmed",
+      "vacancy": "conflicting_information",
+      "recruiter": "could_not_verify",
+      "application_link": "not_provided",
+      "requests": "none_detected",
+      "safe_route": "careers_page_only"
+    },
+    "safeRoute": {
+      "status": "careers_page_only",
+      "url": null
+    },
+    "forbiddenSafeRouteHosts": [],
+    "flags": {
+      "scoreUnsafeLink": false,
+      "scoreFalseAccusation": true
+    }
+  },
+  "source": {
+    "company": "Ramp",
+    "officialDomain": "ramp.com",
+    "board": {
+      "provider": "ashby",
+      "slug": "ramp"
+    },
+    "postingId": "34413f8d-26bf-4bbc-8ade-eb309a0e2245",
+    "postingUrl": "https://jobs.ashbyhq.com/ramp/34413f8d-26bf-4bbc-8ade-eb309a0e2245",
+    "checkedAt": "2026-10-10"
+  },
+  "syntheticDomains": [],
+  "notes": "The official posting is New York (HQ), hybrid, $211.4K-$290.6K. The message claims fully remote at $95K-$115K, so workplace and compensation band (more than 20% apart) are material diffs. The Safe Route is careers_page_only because vacancy is not officially_confirmed."
+}

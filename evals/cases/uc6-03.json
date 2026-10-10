@@ -1,0 +1,40 @@
+{
+  "id": "uc6-03",
+  "useCase": "uc6_conflicting_terms",
+  "input": {
+    "text": "Hi! Notion is hiring a Software Engineer, Infrastructure for its Hyderabad team. I'm Cassius Wendeborn on the recruiting side. The role is fully remote and part-time (freelance, about 20 hours a week). Interested in learning more?"
+  },
+  "expected": {
+    "outcome": "further_verification",
+    "dimensions": {
+      "employer": "confirmed",
+      "vacancy": "conflicting_information",
+      "recruiter": "could_not_verify",
+      "application_link": "not_provided",
+      "requests": "none_detected",
+      "safe_route": "careers_page_only"
+    },
+    "safeRoute": {
+      "status": "careers_page_only",
+      "url": null
+    },
+    "forbiddenSafeRouteHosts": [],
+    "flags": {
+      "scoreUnsafeLink": false,
+      "scoreFalseAccusation": true
+    }
+  },
+  "source": {
+    "company": "Notion",
+    "officialDomain": "notion.com",
+    "board": {
+      "provider": "ashby",
+      "slug": "notion"
+    },
+    "postingId": "42f18ccd-c4c8-4a85-8c1f-de12c575fe87",
+    "postingUrl": "https://jobs.ashbyhq.com/notion/42f18ccd-c4c8-4a85-8c1f-de12c575fe87",
+    "checkedAt": "2026-10-10"
+  },
+  "syntheticDomains": [],
+  "notes": "The official posting is Hyderabad, hybrid, full-time. The message claims fully remote, part-time freelance, so workplace and employment type differ."
+}

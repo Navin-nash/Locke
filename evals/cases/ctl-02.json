@@ -1,0 +1,42 @@
+{
+  "id": "ctl-02",
+  "useCase": "control_genuine",
+  "input": {
+    "text": "Hi, I'm Everard Lindgren-Hale and I recruit for Linear's engineering team. We're hiring a Senior / Staff Product Engineer, remote in North America, and your work on collaborative editors caught my eye. The posting is linked below if you'd like to apply; I'm happy to answer questions first.\n\nEverard\neverard@linear.app",
+    "url": "https://jobs.ashbyhq.com/linear/12f8f208-0b9c-4569-bb3d-41c8a197029e"
+  },
+  "expected": {
+    "outcome": "verified_route",
+    "dimensions": {
+      "employer": "confirmed",
+      "vacancy": "officially_confirmed",
+      "recruiter": "consistent_with_employer",
+      "application_link": "matches_employer_channel",
+      "requests": "none_detected",
+      "safe_route": "role_posting_confirmed"
+    },
+    "safeRoute": {
+      "status": "role_posting_confirmed",
+      "url": "https://jobs.ashbyhq.com/linear/12f8f208-0b9c-4569-bb3d-41c8a197029e",
+      "host": "jobs.ashbyhq.com"
+    },
+    "forbiddenSafeRouteHosts": [],
+    "flags": {
+      "scoreUnsafeLink": true,
+      "scoreFalseAccusation": true
+    }
+  },
+  "source": {
+    "company": "Linear",
+    "officialDomain": "linear.app",
+    "board": {
+      "provider": "ashby",
+      "slug": "linear"
+    },
+    "postingId": "12f8f208-0b9c-4569-bb3d-41c8a197029e",
+    "postingUrl": "https://jobs.ashbyhq.com/linear/12f8f208-0b9c-4569-bb3d-41c8a197029e",
+    "checkedAt": "2026-10-10"
+  },
+  "syntheticDomains": [],
+  "notes": "Official-domain sender (linear.app, DMARC p=reject). The posting URL is supplied as input.url and is independently present on the Ashby board linked from linear.app/careers."
+}
