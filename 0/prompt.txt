@@ -1,0 +1,15 @@
+The following 1 unresolved review comment(s) are on PR #2 "docs: foundation rulebook, spec, build plan" (ao/locke-4/foundation-docs → main) as of just now. You should not need to re-fetch this data unless you need additional context.
+
+1. docs/SPEC.md:489 (@chatgpt-codex-connector):
+**<sub><sub>![P1 Badge](https://img.shields.io/badge/P1-orange?style=flat)</sub></sub>  Keep raw screenshots out of tracing**
+
+Do not record the vision request's raw image in the `screenshot:transcribe` span. On every screenshot run this stores the unredacted image in neatlogs before transcription redaction, potentially exposing IDs or financial details and directly contradicting the repository invariant that raw input is redacted before tracing and screenshots are never stored; require span-input masking or disable input capture for this call.
+
+AGENTS.md reference: [AGENTS.md:L46-L47](https://github.com/Navin-nash/Locke/blob/e0df9509968780869e8ee542dc69ea18bae93a2f/AGENTS.md#L46-L47)
+
+Useful? React with 👍 / 👎.
+   https://github.com/Navin-nash/Locke/pull/2#discussion_r4237090002
+   Thread ID: PRRT_kwDOVDdnZ86rCp5L
+
+Address each comment and push fixes. Use the thread ID to resolve each thread directly after pushing when available. You should not need to re-fetch review data unless you need additional context beyond what is provided here.
+PR: https://github.com/Navin-nash/Locke/pull/2
