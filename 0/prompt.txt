@@ -1,0 +1,9 @@
+Reports since your previous turn:
+
+[done] [M0: Next.js scaffold + LangGraph/OpenRouter + neatlogs trace gate](ao://sessions/locke/locke-5)
+Pushed commit 0c5d47e on ao/locke-5/m0-scaffold and opened PR #1 against main: feat: M0 scaffold + neatlogs trace gate. PR scope excludes AGENTS.md, CLAUDE.md, README.md, docs/, hackathon.md, and .env.example. Gate 0 is BLOCKED pending OPENROUTER_API_KEY and NEATLOGS_API_KEY; validation remains passing (typecheck, lint, 3 tests, build, one @langchain/core 0.3.79). PR was not merged.
+pr_created: https://github.com/Navin-nash/Locke/pull/1
+
+[done] [docs: AGENTS.md + CLAUDE.md + SPEC + PLAN + hackathon.md](ao://sessions/locke/locke-4)
+Pushed ao/locke-4/foundation-docs (5022f84, e0df950) and opened PR #2 against main: 'docs: foundation rulebook, spec, build plan'. The new allow rules took effect in this session. Not merged. The commits have no Entire checkpoints because Entire wasn't installed (H2).
+pr_created: https://github.com/Navin-nash/Locke/pull/2
