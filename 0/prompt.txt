@@ -1,0 +1,1 @@
+[from locke-1] Orchestrator: the user added global Claude Code allow rules for 'git push', 'gh pr create' and 'gh pr edit' in ~/.claude/settings.json. Retry now: git push -u origin ao/locke-4/foundation-docs, then gh pr create --base main using your drafted pr-body.md. If the running session hasn't picked up the new settings, say so in ao report. Then report the PR URL.
