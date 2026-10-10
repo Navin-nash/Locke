@@ -1,0 +1,15 @@
+Locke task T20: labeled eval cases (Claude Code).
+
+Context: the foundation docs are on branch `ao/locke-4/foundation-docs`. Read them with `git show ao/locke-4/foundation-docs:docs/SPEC.md` (also docs/PLAN.md and AGENTS.md), or at C:/Users/govin/.ao/data/worktrees/locke/locke-4/. The scaffold is on `ao/locke-5/m0-scaffold` (PR #1). The shared zod types (lib/types) are being written in parallel by task T02 (session locke-7). Merge the docs and scaffold branches into your work branch locally to start. Before you push, rebase onto origin/main so the PR contains only your files.
+
+Do task T20 exactly as written in docs/PLAN.md:
+- Owns: evals/cases/*.json and evals/README.md.
+- Acceptance: 25 cases matching the SPEC §15 distribution and schema, validated by a test. When T02's lib/types lands, validate against its schemas; until then, use a local schema in the test and switch later.
+  - List the real boards and postings in use, with check dates. Use CURRENTLY LIVE postings from companies on Greenhouse/Lever/Ashby, verified by calling their public JSON APIs.
+  - Confirm every synthetic lookalike domain is unregistered via RDAP (rdap.org).
+  - Use no real people's names.
+  - Cover all 6 V1 use cases, including legit staffing-agency cases (no false accusation) and nonexistent-vacancy cases (expected outcome is not "fraud").
+  - Each case needs an expected outcome and expected per-dimension statuses, an expected safe-route URL or null, and flags for unsafe-link and false-accusation scoring.
+- Skills: eval-harness, exa-search, firecrawl, native web search.
+
+Publishing: push your branch and open a PR against main (standing user approval). Do not merge. If `entire` is installed, run `entire enable --agent claude-code` first. Finish with `ao report`, including the PR URL.
