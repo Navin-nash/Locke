@@ -1,0 +1,10 @@
+Execute the following steps in order to set up Entire integration for the Locke repository:
+
+1. Check current Entire status: `entire status`
+2. Enable Entire with claude-code agent if not already enabled: `entire enable --agent claude-code`
+3. Add the remaining agents (codex, cursor, antigravity) using `entire agent add` for each
+4. Run `entire doctor` to diagnose any issues
+5. Show the generated .entire/settings.json and .claude/settings.json files
+6. Verify git status to show which config files are untracked
+
+Execute these commands sequentially and show all output. This is for an integration PR that makes Entire mandatory for checkpoints and analytics.
