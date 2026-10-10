@@ -1,0 +1,948 @@
+Context: This summary will be shown in a list to help users and Claude choose which conversations are relevant.
+
+Please write a concise, factual summary of this conversation. Output ONLY the summary - no preamble. Claude will see this summary when searching previous conversations for useful memories and information.
+
+Summarize what happened in 2-4 sentences. Be factual and specific. Output in <summary></summary> tags.
+
+Include:
+- What was built/changed/discussed (be specific)
+- Key technical decisions or approaches
+- Problems solved or current state
+
+Exclude:
+- Apologies, meta-commentary, or your questions
+- Raw logs or debug output
+- Generic descriptions - focus on what makes THIS conversation unique
+
+Good:
+<summary>Built JWT authentication for React app with refresh tokens and protected routes. Fixed token expiration bug by implementing refresh-during-request logic.</summary>
+
+Bad:
+<summary>I apologize. The conversation discussed authentication and various approaches were considered...</summary>
+
+User: This is the product idea and usecase I'm building around. What I need you to do first
+- I'm building this for a hackathon. (https://neatlogs.com/hackathon) , Check the page, to understand the mandates, requirements , tools , products that we must use to build the product.
+- And also strengthen the idea to better spec, focused more , which can be built within the timeframe, attractive, unique and has the highest winning chances.
+- First create a CLAUDE.md and AGENTS.md files which clearly states the rules, skills, structure , architecture and usecasee of the product and how it should be built and how the orchestrator should dispatch task agents too.
+- Use Next.js, Typescript, Langgraph for agent building, must use neatlogs for agent tracing, use openrouter api for AI LLM calling. 
+- For UI tasks must use shadcn, impeccable, motion-web, 60fps-animation, accessible-animation,after-effects, ai-elements, animated-infographic, animated-principles,better-ui, better-colors, better-interface, better-accessibility, better-layout, better-typograpy,better-writing, brand-motion-guidelines,chart-animation, design-md, design-taste-frontend, emil-design-eng, gsap-core, gsap-frameworks, gsap-react, gsap-scrolltrigger,gsap-timeline, gsap-web, gsap-utils, motion-background, motion-pricing, svg-animation and so on. 
+- For planning , research and implementation use gstack, ponytail, superpowers skills effectively, check which are available and accomodate accordingly. For more deeper research use firecrawl, exa , native web search capabilities of the agents along with the deep-research skill
+- For designing the logo and icon of the product , use logo-animation, logo-design and svg-animation skills.
+
+
+The product name is locke, so draft and plan everything around it. First complete the CLAUDE.md, AGENTS.md files along with the product usecase, output and expectations of what we are building after the more deeper research related to it. And also a complete spec of the product along with the plan , pages and so on as a spec file. Check the mandatory usage of other products and partner tools too and accordingly plan everything.
+
+And for specifically agent orchestrator to dispatch task agents, the available agents are 
+1. Claude code
+2. Codex
+3. Cursor
+4. Antigravity
+
+So dispatch agents accordingly, don't overuse one single agent for all things.
+
+Agent: I'll wait for your idea before writing any spec or docs, since everything depends on it.
+
+**What the hackathon requires** (from neatlogs.com/hackathon):
+- **Schedule:** 48 hours, online. It started today at 12:30 PM IST. Submissions open Oct 12 from 7:00 to 11:55 PM IST, made by quote-tweeting the neatlogs post with team name, project name, public repo and demo.
+- **Mandatory tools:** you must use all three of neatlogs, Entire (entire.io) and cfo.ai. A cfo.ai business plan covering pricing, costs, revenue and runway must be part of the submission.
+- **Code:** it has to be written during the event, in a public repo with commits dated inside the hackathon window.
+- **Judging:** the agent 30%, use of the three tools 25%, demo video 20%, building in public with #neatHack 15%, usefulness and originality 10%.
+- **Evidence judges expect:**
+  - before/after runs with the numbers compared
+  - neatlogs trace links
+  - Entire checkpoints or graph output from the repo
+  - a run where an action failed, showing how the agent recovered
+- **Optional extras:** AWS ($25, us-east-1, no Bedrock, so model calls use your own keys), Crustdata (5,000 credits for company and people data), Dodo Payments.
+
+**Research running now** (results go to `C:/Users/govin/.ao/data/artifacts/locke-1/`):
+- **Codex** (`ao://sessions/locke/locke-2`): whether neatlogs has a TypeScript SDK or is Python-only, plus how LangGraph.js, OpenRouter and Next.js fit together. If it's Python-only, that changes the architecture, so it's the most important open question.
+- **Claude Code** (`ao://sessions/locke/locke-3`): how Entire and cfo.ai actually work, and an evidence checklist mapped to each judging weight.
+
+**Once you paste the idea:**
+1. I'll tighten it into a focused concept that can be built in 48 hours and scores well on the judging weights.
+2. A worker will write `CLAUDE.md`, `AGENTS.md` and `docs/SPEC.md` (use case, architecture, pages, phased plan, which skills to use for UI and the logo). It will also cover how I split tasks across Claude Code, Codex, Cursor and Antigravity.
+3. After that, implementation workers get spread across all four agents.
+
+Send the idea whenever you're ready.
+
+---
+
+User: # Product Use Case & Vision
+## AI-Powered Job Opportunity Verification and Safe Application Assistance
+
+**Product category:** Consumer SaaS / Career Safety / AI-Assisted Investigation  
+**Primary audience:** Job seekers, students, fresh graduates, remote professionals, and career switchers  
+**Secondary audience:** Universities, career centers, recruitment platforms, and employers  
+**Core objective:** Help people distinguish legitimate employment opportunities from suspicious recruitment attempts and safely navigate toward authentic hiring channels.
+
+---
+
+# 1. Executive Summary
+
+Finding a job has become increasingly digital, convenient, and accessible. Candidates discover opportunities through job boards, professional networks, company websites, social media, messaging platforms, and unsolicited recruiter outreach.
+
+However, this accessibility has also introduced a significant trust problem.
+
+Fraudulent recruiters can impersonate legitimate companies, replicate genuine job descriptions, create misleading application websites, and approach candidates using convincing messages.
+
+A candidate might be interested in a completely legitimate job opening while unknowingly interacting with an unauthorized person pretending to recruit for it.
+
+Existing solutions often emphasize recognizing suspicious messages, identifying known scam patterns, or providing general safety guidance.
+
+**Our product aims to go beyond identifying potential fraud.**
+
+It will function as an independent job-opportunity investigation assistant that evaluates recruitment claims, establishes what can actually be verified, identifies inconsistencies, and helps candidates find a legitimate route to the employer.
+
+The ultimate objective is not simply to tell users whether something looks suspicious.
+
+It is to help them answer:
+
+> "I received this job opportunity. Can I trust it, what evidence supports it, and how can I safely proceed if the opportunity is genuine?"
+
+The product should reduce uncertainty without making unsupported claims of absolute safety.
+
+---
+
+# 2. Problem Statement
+
+## 2.1 The underlying problem: Candidates cannot easily establish recruitment authenticity
+
+Today's recruitment ecosystem is highly fragmented.
+
+A single job opportunity may involve several independent parties:
+
+- The company advertising a position.
+- A hiring manager or HR representative.
+- An external recruitment agency.
+- A job-listing platform.
+- An applicant-tracking or application website.
+- Communication through email, LinkedIn, WhatsApp, or other channels.
+
+Candidates are expected to trust these interactions despite having limited visibility into the relationships between the parties.
+
+A professional-looking message, a recognizable company logo, or even a real job description is not sufficient evidence that the sender is authorized to recruit.
+
+### Example
+
+A candidate receives a message offering a remote software engineering position at a well-known company.
+
+The recruiter shares a convincing job description, competitive compensation, and a link to complete the application.
+
+The company exists.
+
+The job title exists.
+
+The description closely matches a publicly advertised vacancy.
+
+However, the recruiter's email belongs to a separate domain, and the supplied application website is not associated with the employer's known hiring channels.
+
+A candidate may struggle to determine whether the recruiter represents an authorized staffing agency, an internal hiring team using another domain, or someone impersonating the company.
+
+**The problem is not necessarily the job itself. It is the authenticity of the recruitment interaction and the route through which the candidate is being asked to proceed.**
+
+## 2.2 Consequences for job seekers
+
+### Financial exposure
+
+Fraudulent recruiters may ask candidates to pay registration fees, onboarding deposits, equipment costs, or other charges under the promise of employment.
+
+### Personal information exposure
+
+Candidates may be asked to disclose sensitive documents, bank details, identity information, or other personal data before establishing that the recruitment process is legitimate.
+
+### Lost time and effort
+
+Candidates can spend days participating in interviews, completing assignments, or communicating with supposed recruiters before discovering that the opportunity was misleading or fraudulent.
+
+### Emotional and professional impact
+
+False employment promises can create anxiety, disappointment, damaged confidence, and disruption to legitimate job-search efforts.
+
+### Missed legitimate opportunities
+
+Suspicious-looking communication is not always fraudulent. Genuine recruiters sometimes work through external agencies, alternative hiring platforms, or unfamiliar communication channels.
+
+An overly aggressive scam detector could discourage someone from pursuing a genuine opportunity.
+
+**Our product must address both risks: proceeding with an unsafe opportunity and unnecessarily abandoning a legitimate one.**
+
+---
+
+# 3. Product Vision
+
+## 3.1 What are we building?
+
+An AI-powered service that independently investigates employment opportunities and provides evidence-backed recommendations for safely proceeding.
+
+Users should be able to submit a job listing, recruiting message, recruiter details, or application link and ask the product to verify the opportunity.
+
+Instead of producing a generic warning, the product will investigate multiple independent questions:
+
+1. Is the organization real and identifiable?
+2. Can the advertised vacancy be independently confirmed?
+3. Does the recruitment communication appear consistent with the employer's known hiring practices?
+4. Is there credible evidence connecting the recruiter to the employer?
+5. Does the supplied application destination match a legitimate hiring channel?
+6. Are there suspicious or potentially harmful requests?
+7. If the communication is unreliable, can the user reach the genuine opportunity through another verified route?
+
+Each question should receive its own evidence-backed finding.
+
+## 3.2 Product mission
+
+**Make employment opportunities easier to verify and safer to pursue, regardless of where a candidate discovers them.**
+
+## 3.3 Long-term vision
+
+Become a trusted verification and navigation layer between job seekers and recruitment channels.
+
+The product should eventually help candidates evaluate opportunities across different platforms without forcing them to change how they search for jobs.
+
+It is not intended to replace job boards, recruitment agencies, or professional networks.
+
+Rather, it should help users independently establish trust before committing their time, money, or sensitive information.
+
+---
+
+# 4. Target Users and Their Needs
+
+## 4.1 Students and fresh graduates
+
+**Situation:** Limited professional experience and unfamiliarity with formal recruitment practices.
+
+**Problems:**
+- Difficulty distinguishing legitimate recruiters from impersonators.
+- Greater uncertainty about onboarding fees and document requests.
+- Limited knowledge of authentic employer hiring channels.
+- High exposure to unsolicited employment and internship offers.
+
+**Expected value:** A straightforward way to verify opportunities and understand what actions are safe before sharing sensitive information.
+
+## 4.2 Experienced professionals and career switchers
+
+**Situation:** Actively evaluating opportunities from unfamiliar organizations, recruiters, or recruitment agencies.
+
+**Problems:**
+- Uncertainty around external recruitment firms.
+- Confusing job links and company domains.
+- Difficulty establishing whether a vacancy is current.
+- Time spent manually searching company websites and contacting employers.
+
+**Expected value:** Faster, evidence-backed assessments and direct navigation to independently verified hiring channels.
+
+## 4.3 Remote and international job seekers
+
+**Situation:** Considering employment with companies in other countries, often without local contacts.
+
+**Problems:**
+- Limited familiarity with foreign employers and recruitment norms.
+- Difficulty identifying legitimate overseas hiring arrangements.
+- Additional uncertainty around relocation, remote work, visas, and contractual terms.
+- Higher practical barriers to independently contacting or visiting employers.
+
+**Expected value:** Independent verification of employment opportunities across geographical boundaries, while making clear which immigration or employment claims remain unverified.
+
+## 4.4 Universities and career centers
+
+**Situation:** Supporting large numbers of students entering the workforce.
+
+**Problems:**
+- Students encountering questionable internship and placement offers.
+- Career advisers repeatedly performing manual checks.
+- Difficulty providing consistent and evidence-based guidance.
+- Limited visibility into common risks affecting students.
+
+**Expected value:** A scalable resource for student safety, career guidance, and employment-opportunity verification.
+
+## 4.5 Recruitment platforms and employers
+
+**Situation:** Legitimate recruiters and companies may be impersonated by third parties.
+
+**Problems:**
+- Fraudulent parties misusing company names and branding.
+- Candidates distrusting legitimate recruitment outreach.
+- Reputational damage caused by impersonation.
+- Difficulty communicating recognized hiring channels.
+
+**Expected value:** An additional mechanism for making authentic recruitment channels discoverable and reducing impersonation-related confusion.
+
+---
+
+# 5. Proposed Product Experience
+
+The product should revolve around one simple user action:
+
+**"Verify this job opportunity for me."**
+
+The investigation should require minimal effort from the user.
+
+## Stage 1 — Opportunity submission
+
+The user supplies any available information relating to the opportunity.
+
+Supported forms could include:
+
+- A job-posting URL.
+- A copied email or recruiting message.
+- A LinkedIn job listing.
+- A recruiter email address.
+- An application website.
+- An offer letter or recruitment document.
+- A screenshot containing relevant recruiting information.
+
+The user should not need to understand technical indicators of fraud or manually investigate the employer beforehand.
+
+The product begins by identifying the company, position, recruiter claims, application destination, and other relevant details.
+
+If essential information is absent, it can ask the user for the missing details.
+
+**User outcome:** The candidate can start an investigation from the information they already have.
+
+## Stage 2 — Independent employer verification
+
+The product attempts to establish whether the named employer is a legitimate, identifiable organization.
+
+This includes examining authoritative company information and finding its independently established public presence.
+
+The product must distinguish between:
+
+- A confirmed organization.
+- An organization with insufficient independent evidence.
+- Conflicting claims regarding the employer's identity.
+- An apparent impersonation of another organization.
+
+An employer's existence alone must never be presented as proof that an offer or recruiter is authentic.
+
+**User outcome:** The candidate understands whether the supposed employer can be independently identified.
+
+## Stage 3 — Job opportunity verification
+
+The product investigates whether the advertised vacancy corresponds to an opportunity published or otherwise acknowledged through a credible employer-controlled channel.
+
+It compares relevant details, such as:
+
+- Position title.
+- Location and remote-work arrangement.
+- Employment type.
+- Responsibilities and qualifications.
+- Compensation information, where publicly disclosed.
+- Job or requisition identifiers.
+- Application availability.
+
+The product should recognize that job titles may differ slightly between platforms and that some valid opportunities are not publicly advertised.
+
+Possible findings include:
+
+**Officially confirmed:** A matching vacancy was independently located through an employer-recognized source.
+
+**Partially matched:** Relevant evidence exists, but important details do not align or cannot be independently confirmed.
+
+**Not independently located:** The product could not establish the existence of a corresponding public vacancy.
+
+**Conflicting information:** Important advertised details contradict information found through a more authoritative source.
+
+**User outcome:** The candidate learns whether the opportunity itself can be substantiated, without confusing an unsuccessful search with proof of fraud.
+
+## Stage 4 — Recruiter and communication verification
+
+The product examines whether the individual or organization contacting the candidate appears authorized to represent the employer.
+
+Potential indicators include:
+
+- Consistency between the claimed employer and sender domain.
+- Independently recognizable recruiting-agency affiliations.
+- Evidence of authorized recruitment partnerships.
+- Conflicting contact or identity claims.
+- Requests to communicate through unusual or unverifiable channels.
+
+A different email domain must not automatically result in a fraud conclusion.
+
+Some companies use third-party agencies, outsourced HR teams, or alternative official communication channels.
+
+If an affiliation cannot be authenticated, the correct result is **unverified**, not automatically fraudulent.
+
+**User outcome:** The candidate can distinguish a legitimate-looking vacancy from a verified recruitment relationship.
+
+## Stage 5 — Application channel verification
+
+The product independently identifies legitimate application destinations associated with the employer and vacancy.
+
+It compares the link supplied by the recruiter against those destinations.
+
+For example, a recruiter might supply a lookalike website while the company actually accepts applications through its official careers page.
+
+Where the legitimate opportunity is found, the product should guide the user to the independently established application route.
+
+If only a general employer careers page can be verified, the product must state that the exact role or application destination remains unconfirmed.
+
+**User outcome:** The candidate is not left with a warning alone; they receive a practical and safer way to continue whenever one is available.
+
+## Stage 6 — Evidence-backed investigation report
+
+At the end of the investigation, the product presents a clear summary.
+
+The report should answer four essential questions:
+
+**What could be verified?**  
+Facts supported by credible, identifiable sources.
+
+**What could not be verified?**  
+Recruiter claims, job details, or relationships for which sufficient evidence was unavailable.
+
+**What appears suspicious or inconsistent?**  
+Specific discrepancies, misleading information, or potentially harmful requests.
+
+**What should the candidate do next?**  
+A practical recommendation, such as continuing through an official application page, contacting the employer independently, requesting further information, or avoiding the supplied recruitment channel.
+
+The report should not hide uncertainty behind an unexplained numerical trust score.
+
+## Stage 7 — Resolution and follow-up
+
+The product should guide candidates toward a clear next action rather than treating a generated report as the final objective.
+
+Examples include:
+
+- Continue through an independently verified official application destination.
+- Verify a recruiter's affiliation through an employer-controlled contact channel.
+- Request missing employment information before proceeding.
+- Avoid sending payment or sensitive documents through an unverified channel.
+- Save the investigation for later review.
+- Recheck the opportunity when additional evidence becomes available.
+
+For unclear cases, the product can prepare an appropriate verification request for the candidate to review and send.
+
+Over time, the product could maintain a history of relevant communication and update findings as the situation develops.
+
+**The desired outcome is informed action, not just information.**
+
+---
+
+# 6. Detailed Real-World Use Cases
+
+## Use Case 1 — A fake recruiter impersonates a legitimate company
+
+**Scenario**
+
+A candidate receives an unsolicited message claiming to represent a recognizable technology company.
+
+The message advertises an attractive position and includes an external application link.
+
+The company's name, logo, and job description appear convincing.
+
+**What the candidate needs**
+
+To know whether the recruiter represents the company and whether the supplied application channel can be trusted.
+
+**How the product helps**
+
+The product independently identifies the company's official presence, searches for the advertised opportunity, and compares the supplied communication and application destination against credible hiring information.
+
+It may find that the advertised job exists but the supplied application domain is unrelated to known employer channels.
+
+**Expected outcome**
+
+The product explains that the vacancy may be genuine while the recruiting approach remains unauthenticated.
+
+If an official application destination is available, the candidate can proceed through it instead.
+
+**Value delivered**
+
+Avoids potentially unsafe application channels without unnecessarily discouraging the candidate from pursuing a legitimate position.
+
+## Use Case 2 — A legitimate recruiter works for an external staffing agency
+
+**Scenario**
+
+A candidate receives a job offer from a recruiter using a staffing agency's email address.
+
+The recruiter is not employed directly by the company offering the position.
+
+A basic domain checker flags the message because the email does not match the employer's website.
+
+**What the candidate needs**
+
+To establish whether the different domain reflects an authorized recruitment arrangement rather than impersonation.
+
+**How the product helps**
+
+The product investigates the staffing firm's legitimacy, available recruitment relationships, the vacancy itself, and any employer-controlled evidence identifying approved recruiting partners.
+
+It explicitly distinguishes organizational legitimacy from verified authorization to recruit for a particular job.
+
+**Expected outcome**
+
+If sufficient evidence is available, the product explains the relationship and identifies a safe way to proceed.
+
+If the recruitment authorization cannot be established, it recommends independent employer confirmation rather than immediately labeling the recruiter fraudulent.
+
+**Value delivered**
+
+Reduces unnecessary false alarms and preserves legitimate opportunities.
+
+## Use Case 3 — A genuine company is used to advertise a nonexistent vacancy
+
+**Scenario**
+
+A candidate sees a job listing for a real company, but the position cannot be found through any accessible official hiring channel.
+
+The listing redirects candidates to an unrelated website.
+
+**What the candidate needs**
+
+To determine whether the role is real, outdated, unpublished, or potentially fabricated.
+
+**How the product helps**
+
+The product examines the company's known careers information, compares relevant postings, and investigates whether the role has an identifiable official source.
+
+It assesses suspicious redirection separately from the absence of a public posting.
+
+**Expected outcome**
+
+The product identifies the unsupported claims and advises the candidate to seek confirmation through the employer's independent contact channels.
+
+It does not classify the vacancy as fraudulent solely because it cannot find it.
+
+**Value delivered**
+
+Helps candidates avoid wasting time or disclosing information while respecting the possibility of legitimate unadvertised roles.
+
+## Use Case 4 — A recruiter requests money before onboarding
+
+**Scenario**
+
+A candidate is informed that they passed an interview and must pay an equipment deposit, registration charge, or verification fee before receiving a contract.
+
+The message emphasizes urgency.
+
+**What the candidate needs**
+
+To understand the risk and know what to do before transferring money.
+
+**How the product helps**
+
+The product identifies the financial request, examines the communication for coercive or inconsistent claims, and checks for independently verifiable employer instructions.
+
+It clearly separates suspicious conduct from facts that have been authenticated.
+
+**Expected outcome**
+
+The candidate receives a prominent recommendation not to transfer money through an unverified process, alongside an independently established contact route for further confirmation where available.
+
+**Value delivered**
+
+Helps prevent financial losses at a particularly vulnerable point in the recruitment process.
+
+## Use Case 5 — A candidate is asked to upload sensitive personal documents
+
+**Scenario**
+
+A supposed recruiter asks for government identity documents, bank details, or other sensitive information before a formal recruitment relationship can be established.
+
+The candidate is unsure whether the request is part of normal onboarding.
+
+**What the candidate needs**
+
+To understand whether the request is consistent with a verified recruitment process and which aspects require further confirmation.
+
+**How the product helps**
+
+The product investigates the recruitment source, timing of the request, stated purpose, and application destination.
+
+It explains the uncertainty and recommends verifying the recipient and process independently.
+
+**Expected outcome**
+
+The candidate avoids prematurely sharing sensitive information through an unverified channel.
+
+**Value delivered**
+
+Reduces unnecessary exposure to identity misuse and personal-data theft.
+
+## Use Case 6 — A job offer has conflicting employment information
+
+**Scenario**
+
+A candidate receives an offer describing a remote position with a particular salary, but the company's official listing describes a different location, employment type, or compensation range.
+
+**What the candidate needs**
+
+To understand whether the differences are normal negotiation changes, stale information, a separate role, or suspicious inconsistencies.
+
+**How the product helps**
+
+The product compares the recruitment details against independently established sources and identifies material differences.
+
+It explains which changes may legitimately occur during hiring and which require employer confirmation.
+
+**Expected outcome**
+
+The candidate receives specific questions to clarify before proceeding.
+
+**Value delivered**
+
+Supports better employment decisions without treating every discrepancy as fraud.
+
+## Use Case 7 — The candidate receives several messages about the same opportunity
+
+**Scenario**
+
+A candidate initially receives an opportunity through LinkedIn, later receives an email, and is eventually redirected to another application website.
+
+The claims change across these conversations.
+
+**What the candidate needs**
+
+A consolidated understanding of the opportunity rather than repeatedly checking individual messages.
+
+**How the product helps**
+
+The product associates the messages with the same investigation, compares claims across stages, identifies newly introduced inconsistencies, and revises its assessment when credible evidence changes.
+
+**Expected outcome**
+
+The candidate understands what changed, whether earlier verification still applies, and which next actions remain appropriate.
+
+**Value delivered**
+
+Provides continuity and reduces the burden of monitoring a developing recruitment process.
+
+**Product scope:** This is a subsequent capability rather than a requirement for the initial release.
+
+---
+
+# 7. How Results Should Be Communicated
+
+A major product differentiator should be the clarity and honesty of its findings.
+
+A single score such as "92% legitimate" risks creating a false impression of certainty.
+
+Instead, each investigation should provide an evidence-based assessment across distinct dimensions.
+
+| Investigation dimension | Example result |
+|---|---|
+| Employer identity | Independently confirmed |
+| Advertised vacancy | Matching official posting found |
+| Recruiter affiliation | Could not be verified |
+| Supplied application link | Does not match established hiring channel |
+| Requests for payment | Suspicious request detected |
+| Official application destination | Independently confirmed |
+
+The overall guidance should use carefully defined outcomes:
+
+### Verified route available
+
+An authentic application destination has been independently established.
+
+This does not guarantee that any external recruiter's claims or the eventual employment terms are authentic.
+
+### Further verification required
+
+Some information is credible, but a critical part of the recruitment interaction cannot yet be authenticated.
+
+### Significant warning indicators
+
+The available evidence identifies material concerns, such as a misleading destination, impersonation indicators, or an unexpected payment request.
+
+### Insufficient evidence
+
+The product cannot reliably establish the opportunity's authenticity.
+
+It should explain what evidence is missing and how the candidate may obtain it safely.
+
+This approach makes the product trustworthy by acknowledging the boundaries of what it knows.
+
+---
+
+# 8. What Makes the Product Different?
+
+## 8.1 It investigates rather than simply classifies
+
+Traditional scam detection can focus on suspicious keywords, domains, and known fraudulent patterns.
+
+Our product looks at the full recruitment claim and gathers independent supporting evidence.
+
+## 8.2 It separates employer, vacancy, recruiter, and application authenticity
+
+These are different questions.
+
+A company can be legitimate while a recruiter impersonates it. A vacancy can be real while an application website is fraudulent.
+
+The product evaluates each separately.
+
+## 8.3 It prioritizes safe continuation
+
+The goal is not merely to discourage suspicious opportunities.
+
+Where possible, it helps candidates locate the actual position and continue through an independently verified channel.
+
+## 8.4 It handles ambiguous recruitment practices
+
+Legitimate external agencies, confidential vacancies, expired listings, and unusual employer communications can all create uncertainty.
+
+The product must account for these situations instead of making simplistic assumptions.
+
+## 8.5 It provides evidence users can examine
+
+Every important conclusion should be accompanied by an explanation and relevant source information.
+
+Candidates should be able to understand why a warning was raised or a destination was recommended.
+
+## 8.6 It can remain useful throughout a recruitment journey
+
+The longer-term vision is to reassess a saved opportunity when new communication, documentation, or other evidence appears.
+
+This transforms verification from a one-time lookup into an ongoing decision-support service.
+
+---
+
+# 9. Initial Product Scope
+
+The first version should solve one problem extremely well:
+
+**Help a candidate investigate a recruiting opportunity and identify the safest supported way to continue.**
+
+### Essential capabilities
+
+1. Accept a job listing, application link, or recruiting message.
+2. Identify the organization and employment opportunity.
+3. Independently establish the employer's credible public presence.
+4. Attempt to locate a matching official vacancy.
+5. Examine the recruitment channel and supplied application destination.
+6. Identify material discrepancies and warning signals.
+7. Produce an understandable report with evidence and uncertainty.
+8. Present an independently verified application route when available.
+9. Recommend concrete next steps when the investigation remains unresolved.
+
+### Not included in the initial product
+
+- Automatically submitting job applications.
+- Guaranteed identification of every fraudulent recruiter.
+- Background checks on private individuals.
+- Automatic contact with recruiters without user approval.
+- Uploading personal documents to external applications.
+- Providing immigration, employment-law, or financial guarantees.
+- Making claims that an offer is completely safe or that employment is guaranteed.
+- Acting as a job board or replacing established recruitment services.
+
+These exclusions allow the product to concentrate on a valuable, realistic, and trustworthy initial experience.
+
+---
+
+# 10. Intended User Journey
+
+### Step 1 — Discovery
+
+The candidate receives or finds an employment opportunity and feels uncertain about its legitimacy.
+
+### Step 2 — Submission
+
+They open the product and paste the relevant link or message.
+
+### Step 3 — Investigation
+
+The product independently examines the employer, advertised vacancy, recruiter claims, and application destination.
+
+### Step 4 — Explanation
+
+The candidate receives a structured assessment distinguishing confirmed facts, unresolved claims, discrepancies, and warning indicators.
+
+### Step 5 — Recommended action
+
+The product presents the most appropriate next action based on available evidence.
+
+### Step 6 — Outcome
+
+The candidate either continues through an independently established hiring route, requests verification through a credible channel, or avoids an opportunity presenting serious unresolved concerns.
+
+### Step 7 — Optional follow-up
+
+The candidate can save the case and provide additional information later, allowing the assessment to be updated.
+
+**The experience should feel like receiving help from a careful, independent investigator—not interacting with a generic chatbot.**
+
+---
+
+# 11. Expected Product Value
+
+## For individual candidates
+
+**Confidence:** Better understanding of what is verified and what remains uncertain.
+
+**Protection:** Reduced exposure to suspicious payment requests, impersonation, and unsafe data collection.
+
+**Efficiency:** Less manual effort searching company websites and comparing job postings.
+
+**Opportunity preservation:** A better chance of finding the genuine application route when a suspicious message references a real vacancy.
+
+**Clarity:** Specific next steps instead of vague warnings.
+
+## For educational institutions
+
+**Student protection:** A practical tool for evaluating unfamiliar internships and graduate recruitment opportunities.
+
+**Scalable support:** A consistent verification experience available to many students.
+
+**Career awareness:** Greater understanding of recruitment safety and appropriate verification practices.
+
+## For employers and recruitment platforms
+
+**Brand protection:** Potential to help candidates identify legitimate employer-controlled recruitment destinations.
+
+**Trust:** Better visibility into recognized hiring channels.
+
+**Candidate safety:** Reduced opportunities for impersonators to redirect candidates away from genuine recruitment processes.
+
+---
+
+# 12. Product Success Criteria
+
+The product should not be assessed only by the number of opportunities scanned.
+
+Its success depends on whether it helps users make safer, better-informed decisions.
+
+| Objective | How success can be evaluated |
+|---|---|
+| Verify authentic opportunities | Proportion of supported genuine opportunities correctly matched to authoritative sources |
+| Avoid harmful recommendations | Frequency of unsafe links incorrectly recommended as legitimate |
+| Minimize false accusations | Rate at which legitimate opportunities are incorrectly described as fraudulent |
+| Provide useful outcomes | Percentage of investigations that return a verified next step or a clear reason verification remains impossible |
+| Establish user confidence | Whether users understand the evidence and feel able to make an informed decision |
+| Reduce manual effort | Time and number of steps saved compared with independent verification |
+| Support continued engagement | Whether users return with new opportunities or follow-up evidence |
+| Support commercial adoption | Institutional trials, repeat usage, paid conversion, and customer retention |
+
+A successful investigation does not always end with an official application link.
+
+Sometimes, the correct outcome is identifying insufficient evidence and helping the candidate avoid an unsupported assumption.
+
+This must be recognized as a valid and useful result.
+
+---
+
+# 13. SaaS Business Opportunity
+
+The product has potential across both consumer and institutional segments.
+
+## Consumer offering
+
+A free or low-cost service allowing candidates to investigate individual opportunities.
+
+Possible paid benefits could include additional investigations, saved case histories, reassessments, and ongoing recruitment monitoring.
+
+However, individual job searching is often temporary, which may limit subscription duration.
+
+## Educational institutions
+
+Universities, training organizations, and career centers could provide the service to students as part of their career-support resources.
+
+This offers a possible recurring business model with broader distribution.
+
+Individual investigation details should remain private unless the student explicitly authorizes sharing.
+
+## Recruitment platforms
+
+Job platforms and career services could incorporate verification capabilities into their existing candidate experiences.
+
+This would require additional partnerships, product validation, and careful consideration of accuracy and liability.
+
+## Employer participation
+
+In the longer term, employers could help candidates identify recognized recruiting partners and official application channels.
+
+This could improve the quality of verification evidence, but it depends on employer participation and cannot be assumed during initial launch.
+
+**The initial commercialization hypothesis should prioritize user adoption and evidence of genuine utility, followed by testing institutional and platform-based revenue models.**
+
+---
+
+# 14. Future Product Expansion
+
+The initial product should remain focused, but several natural opportunities exist.
+
+### Phase 1 — Independent opportunity verification
+
+Candidates submit recruitment information and receive evidence-backed findings and a safe next action.
+
+### Phase 2 — Ongoing recruitment case assistance
+
+Candidates can maintain a history of messages, offer changes, and newly received documents relating to the same opportunity.
+
+The product identifies material changes and recommends further checks.
+
+### Phase 3 — Candidate-side employment safety workspace
+
+Users can manage multiple ongoing investigations and receive relevant updates about previously assessed opportunities.
+
+### Phase 4 — Institutional verification services
+
+Universities and recruitment platforms can provide verification access to larger groups.
+
+### Phase 5 — Employer-recognized recruitment channels
+
+Participating employers can publish or confirm recognized hiring domains and authorized recruitment channels.
+
+The product can use this information to improve the strength and transparency of its assessments.
+
+These phases are possible directions, not commitments or proof of market demand.
+
+---
+
+# 15. Product Principles and Trust Boundaries
+
+The value of this service depends on users trusting its conclusions.
+
+That trust must be earned through accurate evidence, transparent reasoning, and clear boundaries.
+
+**Evidence before conclusions:** Important findings must be supported by identifiable sources.
+
+**Uncertainty must remain visible:** Missing evidence cannot automatically be treated as evidence of fraud.
+
+**No absolute safety promises:** Even an authentic application channel cannot guarantee a fair, safe, or legitimate eventual employment arrangement.
+
+**Candidate control:** Users decide whether to apply, contact an employer, share documents, or take any consequential action.
+
+**Privacy by default:** Sensitive recruitment messages and personal data should not be exposed or shared unnecessarily.
+
+**Independent verification:** Information supplied by a potentially suspicious recruiter should not be the sole basis for verifying that same recruiter.
+
+**No discriminatory assessments:** The product evaluates verifiable recruitment claims and behaviors, not assumptions based on names, nationalities, identities, or protected characteristics.
+
+**Explainable recommendations:** Users should understand what was found, what remains unresolved, and why a particular next step is recommended.
+
+**Respect legitimate recruitment diversity:** External recruiters, nonpublic vacancies, and nonstandard hiring arrangements are not inherently fraudulent.
+
+---
+
+# 16. Final Product Narrative
+
+The modern job market offers candidates more opportunities than ever, but also exposes them to increasingly convincing recruitment impersonation and misleading application channels.
+
+Candidates often lack the resources, experience, or time required to independently investigate every opportunity they encounter.
+
+Existing safety measures frequently focus on warning indicators without helping candidates determine what is genuinely verifiable or how to continue safely.
+
+**Our product addresses that gap by acting as an independent employment-opportunity investigation and navigation assistant.**
+
+Given a recruitment message or job listing, it establishes what can be verified about the employer, advertised position, recruiting relationship, and application destination.
+
+It identifies meaningful inconsistencies, explains uncertainty, and helps candidates reach legitimate hiring channels whenever sufficient evidence is available.
+
+For suspicious or unresolved opportunities, it guides candidates toward safer verification actions instead of making unsupported promises.
+
+The initial product focuses on one measurable outcome:
+
+**Turning an uncertain recruitment opportunity into an evidence-backed decision with a practical, safer next step.**
+
+Over time, this can evolve into a broader employment-trust service for individuals, educational institutions, job platforms, and employers.
+
+The long-term ambition is to make independently verifiable recruitment information accessible to everyone—not only candidates with established professional networks or recruitment expertise.
+
+**Core value proposition:** *Know who is actually hiring, understand what you can trust, and find a safer way to apply.*
+
+Agent: The idea is strong and maps well onto the judging criteria. I'm writing a sharper concept brief now; when the two research reports land, it goes to a docs worker.
+
+Next I'm saving your vision doc to the artifacts folder so the docs worker can read it word for word.
+
+Both briefs are saved. Now I'm waiting for the two research reports, since the architecture depends on whether neatlogs works with TypeScript.
