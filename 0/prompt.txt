@@ -1,0 +1,9 @@
+Reports since your previous turn:
+
+[done] [T02: domain contracts lib/types + UC1 fixture stream](ao://sessions/locke/locke-7)
+T02 done: lib/types zod contracts (SPEC §4/§8/§9), StreamEvent union, STATUS_LABELS/TONE, sample-uc1.json (51 events, recovery + verifier challenges). 25 vitest tests pass; eslint clean. Rebased on origin/main (scaffold + docs already merged), PR diff is only my 7 files. pnpm typecheck has one pre-existing error in app/layout.tsx (LayoutProps), not mine. Not merged, per instructions.
+pr_created: https://github.com/Navin-nash/Locke/pull/3
+
+[done] [T20: 25 labeled eval cases (live ATS postings + lookalikes)](ao://sessions/locke/locke-8)
+T20 done: 25 labeled eval cases (SPEC §15 distribution) on 8 live Greenhouse/Lever/Ashby boards checked 2026-10-10; 8 synthetic domains RDAP 404; invented names only; validation test 78/78 (local zod schema until T02 lands). Note: commits lack Entire-Checkpoint trailers (Entire enabled mid-session); typecheck needs next typegen on clean checkout.
+pr_created: https://github.com/Navin-nash/Locke/pull/4
